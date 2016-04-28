@@ -1,0 +1,1423 @@
+<doc>
+    <assembly>
+        <name>ActionTray</name>
+    </assembly>
+    <members>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTray">
+            <summary>
+            The <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> is a dockable, customizable, slide-out <see cref="T:MonoTouch.UIKit.UIView" /> controller
+            with a <c>dragTab</c> that can be attached to the edge of any parent <see cref="T:MonoTouch.UIKit.UIView" />. The <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> handles
+            sliding the attached <see cref="T:MonoTouch.UIKit.UIView" /> based on the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayType" />. The <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" />
+            can either be created in a .xib file in Xcode or manually in C# code.
+            </summary>
+            <remarks>WARNING! You MUST manually set the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" />'s <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayOrientation" />
+            when the <see cref="T:MonoTouch.UIKit.UIView" /> first loads or the tray will not display or behave correctly.</remarks>
+            <description>The <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> can be styled by setting its <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance" />
+            and <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabType" /> properties. You can also control the position of the <c>dragTab</c> by setting the tray's
+            <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabLocation" />, <c>tabOffset</c> and <c>tabWidth</c> properties.</description>
+        </member>
+        <member name="C:Appracatappra.ActionComponents.ActionTray.UIActionTray">
+            <summary>
+            Initializes a new instance of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> class.
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:Appracatappra.ActionComponents.ActionTray.UIActionTray(Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance)">
+            <param name="appearance">The user specified appearance for the control</param>
+            <summary>
+            Initializes a new instance of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> class
+            with the user provided appearance
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:Appracatappra.ActionComponents.ActionTray.UIActionTray(MonoTouch.Foundation.NSCoder)">
+            <param name="coder">Coder.</param>
+            <summary>
+            Initializes a new instance of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> class.
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:Appracatappra.ActionComponents.ActionTray.UIActionTray(MonoTouch.Foundation.NSObjectFlag)">
+            <param name="flag">Flag.</param>
+            <summary>
+            Initializes a new instance of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> class.
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:Appracatappra.ActionComponents.ActionTray.UIActionTray(System.Drawing.RectangleF)">
+            <param name="bounds">Bounds.</param>
+            <summary>
+            Initializes a new instance of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> class.
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:Appracatappra.ActionComponents.ActionTray.UIActionTray(System.IntPtr)">
+            <param name="ptr">Ptr.</param>
+            <summary>
+            Initializes a new instance of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> class.
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTray.AddBlur(MonoTouch.UIKit.UIBlurEffectStyle,System.Boolean)">
+            <param name="style">To be added.</param>
+            <param name="blurThumb">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.amountVisible">
+            <summary>
+            Gets the current amount of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" />'s <c>ContentArea</c> that is
+            currently visible on screen
+            </summary>
+            <value>The amount of the <c>ContentArea</c> that is currently visible</value>
+            <remarks>NOTE: This amount excludes the always visible <c>DragTab</c></remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTray.AnimationCompleted">
+            <summary>
+            Handles the finalization of an opened or closed animation
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.appearance">
+            <summary>
+            Controlls the general appearance of the control
+            </summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.background">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.border">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTray.bringToFrontOnTouch">
+            <summary>
+            If <c>true</c> the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> becomes the top most view
+            when it is touched by the user
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="E:Appracatappra.ActionComponents.ActionTray.UIActionTray.Closed">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTray.CloseTray(System.Boolean)">
+            <param name="animated">If set to <c>true</c> animated.</param>
+            <summary>
+            Closes the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="E:Appracatappra.ActionComponents.ActionTray.UIActionTray.CustomDrawDragTab">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTray.Dispose(System.Boolean)">
+            <param name="disposing">If set to <c>true</c> disposing.</param>
+            <summary>
+            Dispose the specified disposing.
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.dragging">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> is dragging.
+            </summary>
+            <value>
+                <c>true</c> if dragging; otherwise, <c>false</c>.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTray.Draw(System.Drawing.RectangleF)">
+            <param name="rect">Rect.</param>
+            <summary>
+            Draw the specified rect.
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.flat">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.frameColor">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.frameType">
+            <summary>
+            Gets or sets the type of the frame drawn around the edge of this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></summary>
+            <value>The type of the frame.</value>
+            <remarks>This property reacts with the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayOrientation" /> property to
+            control the appearance and the location of the frame</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.gripBackground">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.gripBorder">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTray.HitTest(System.Drawing.PointF,MonoTouch.UIKit.UIEvent)">
+            <param name="point">Point.</param>
+            <param name="uievent">Uievent.</param>
+            <summary>
+            Tests to see if this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> or any of it's <c>subviews</c> were hit during an event
+            </summary>
+            <returns>The test.</returns>
+            <remarks>If this is an auto closing type of <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> a touch inside it's
+            content area will force to tray closed</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.icon">
+            <summary>
+            Gets or sets the icon displayed on the <c>dragTab</c> of this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></summary>
+            <value>The icon.</value>
+            <remarks>The icon will be displayed based on the <c>dragTab</c>'s <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabType" /></remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.isClosed">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> is closed.
+            </summary>
+            <value>
+                <c>true</c> if is closed; otherwise, <c>false</c>.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.isOpened">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> is opened.
+            </summary>
+            <value>
+                <c>true</c> if is opened; otherwise, <c>false</c>.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTray.LayoutSubviews">
+            <summary>
+            Layouts the subviews.
+            </summary>
+            <remarks>To be added.</remarks>
+            <Docs>Lays out subviews.</Docs>
+        </member>
+        <member name="E:Appracatappra.ActionComponents.ActionTray.UIActionTray.Moved">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTray.MoveTo(System.Drawing.PointF)">
+            <param name="point">Point.</param>
+            <summary>
+            Moves this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> to the given location
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTray.OnDoubleTap(MonoTouch.UIKit.UIGestureRecognizer)">
+            <param name="sender">Sender.</param>
+            <summary>
+            Handles the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> being double tapped
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="E:Appracatappra.ActionComponents.ActionTray.UIActionTray.Opened">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTray.OpenTray(System.Boolean)">
+            <param name="animated">If set to <c>true</c> animated.</param>
+            <summary>
+            Opens the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.orientation">
+            <summary>
+            Gets or sets the orientation of this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> on the screen
+            </summary>
+            <value>The tray's orientation.</value>
+            <remarks>This property controls how the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> responds to user
+            interaction and where the <c>dragTab</c> is located</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTray.PointInside(System.Drawing.PointF,MonoTouch.UIKit.UIEvent)">
+            <param name="point">Point.</param>
+            <param name="uievent">Uievent.</param>
+            <summary>
+            Tests to see if the given point is inside this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" />.
+            </summary>
+            <returns>
+                <c>true</c>, if inside was pointed, <c>false</c> otherwise.</returns>
+            <remarks>A point is considered inside only if it is in the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" />'s <c>contentArea</c> or <c>dragTab</c>. It
+            excludes the invisible strip on either side of the control.</remarks>
+        </member>
+        <member name="E:Appracatappra.ActionComponents.ActionTray.UIActionTray.Released">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.shadow">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.tabAlpha">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.tabLocation">
+            <summary>
+            Gets or sets the location of the <c>dragTab&gt;</c> on this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></summary>
+            <value>The tab location.</value>
+            <remarks>This property interacts with the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayOrientation" /> property</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.tabOffset">
+            <summary>
+            Gets or sets the tab offset for a <c>Custom</c><see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabLocation" /></summary>
+            <value>The tab offset.</value>
+            <remarks>Based on the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" />'s <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayOrientation" />, the offset will
+            either be from the tray's top or left side</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.tabType">
+            <summary>
+            Gets or sets the type of the <c>dragTab</c> drawn on this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></summary>
+            <value>The type of the tab.</value>
+            <remarks>The <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance" /> also controls the appearance of the <c>dragTab</c></remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.tabWidth">
+            <summary>
+            Gets or sets the width of the <c>dragTab</c> for this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></summary>
+            <value>The width of the tab.</value>
+            <remarks>The minimum width is 30 pixels.</remarks>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTray.tag">
+            <summary>
+            [OPTIONAL] Tag to hold user information about this control
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.thumbBackground">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.thumbBlendMode">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.thumbBorder">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.title">
+            <summary>
+            Gets or sets the title for the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" />'s <c>dragTab</c></summary>
+            <value>The title.</value>
+            <remarks>This title will be displayed based on the <c>dragTab</c>'s <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabType" /></remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.titleColor">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.titleSize">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="E:Appracatappra.ActionComponents.ActionTray.UIActionTray.Touched">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTray.TouchesBegan(MonoTouch.Foundation.NSSet,MonoTouch.UIKit.UIEvent)">
+            <param name="touches">Touches.</param>
+            <param name="evt">Evt.</param>
+            <summary>
+            Sent when one or more fingers touches the screen.
+            </summary>
+            <remarks>To be added.</remarks>
+            <Docs>Set containing the touches.</Docs>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTray.TouchesCancelled(MonoTouch.Foundation.NSSet,MonoTouch.UIKit.UIEvent)">
+            <param name="touches">Touches.</param>
+            <param name="evt">Evt.</param>
+            <summary>
+            Sent when the touch processing has been cancelled.
+            </summary>
+            <remarks>To be added.</remarks>
+            <Docs>Set containing the touches.</Docs>
+            <para>This method is typically involved because the application
+            was interrupted by an external source, like for example,
+            an incoming phone call.</para>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTray.TouchesEnded(MonoTouch.Foundation.NSSet,MonoTouch.UIKit.UIEvent)">
+            <param name="touches">Touches.</param>
+            <param name="evt">Evt.</param>
+            <summary>
+            Send when one or more fingers are lifted from the screen.
+            </summary>
+            <remarks>To be added.</remarks>
+            <Docs>Set containing the touches.</Docs>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTray.TouchesMoved(MonoTouch.Foundation.NSSet,MonoTouch.UIKit.UIEvent)">
+            <param name="touches">Touches.</param>
+            <param name="evt">Evt.</param>
+            <summary>
+            To be added.
+            </summary>
+            <remarks>To be added.</remarks>
+            <Docs>Set containing the touches.</Docs>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTray.trayType">
+            <summary>
+            Gets or sets the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayType" /> of this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></summary>
+            <value>The type of the tray.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTray+CustomDrawDragTabDelegate">
+            <param name="tray">To be added.</param>
+            <param name="rect">To be added.</param>
+            <summary>
+            Occurs when the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabType" /> is set to <c>CustomDrawn</c> and the <c>dragTab</c>
+            needs to be drawn
+            </summary>
+            <remarks>The passed <c>rect</c> contains the boundary that the custom tab should be drawn against</remarks>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTray+UIActionTrayClosedDelegate">
+            <param name="tray">To be added.</param>
+            <summary>
+            Occurs when this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> is completely closed by the user
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTray+UIActionTrayMovedDelegate">
+            <param name="tray">To be added.</param>
+            <summary>
+            Occurs when this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> is moved
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTray+UIActionTrayOpenedDelegate">
+            <param name="tray">To be added.</param>
+            <summary>
+            Occurs when this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> is opened fully by the user
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTray+UIActionTrayReleasedDelegate">
+            <param name="tray">To be added.</param>
+            <summary>
+            Occurs when this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> was <c>Touched</c> and released
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTray+UIActionTrayTouchDelegate">
+            <param name="tray">To be added.</param>
+            <summary>
+            Occurs when this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> is touched
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance">
+            <summary>
+            Controls the appearance of a <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> with properties such as
+            background color, border color, and shadow color.
+            </summary>
+            <remarks>The <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance" /> also controls the appearance of the
+            <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" />'s <c>dragTab</c>.</remarks>
+        </member>
+        <member name="C:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance">
+            <summary>
+            Initializes a new instance of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance" /> class and
+            sets the default appearance for the control
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance(MonoTouch.UIKit.UIColor,MonoTouch.UIKit.UIColor,MonoTouch.UIKit.UIColor)">
+            <param name="background">The control's background color</param>
+            <param name="border">The control's border color</param>
+            <param name="shadow">The control's shadow color</param>
+            <summary>
+            Initializes a new instance of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance" /> class with
+            the specified user defined appearance properties
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance.background">
+            <summary>
+            Gets or sets the background color
+            </summary>
+            <value>The background color</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance.border">
+            <summary>
+            Gets or sets the border color
+            </summary>
+            <value>The border color</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance.flat">
+            <summary>
+            Gets or sets a value indicating whether this
+            <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance" /> is flat.
+            </summary>
+            <value>
+                <c>true</c> if flat; otherwise, <c>false</c>.</value>
+            <remarks>This value was added to support the iOS 7 degisn language</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance.Flatten">
+            <summary>
+            Flattens the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance" /> to match the new iOS 7 design language
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance.Flatten(MonoTouch.UIKit.UIColor)">
+            <param name="backgroundColor">Background color.</param>
+            <summary>
+            Flattens the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance" /> to match the new iOS 7 design language
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance.Flatten(MonoTouch.UIKit.UIColor,MonoTouch.UIKit.UIColor)">
+            <param name="backgroundColor">Background color.</param>
+            <param name="foregroundColor">Foreground color.</param>
+            <summary>
+            Flattens the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance" /> to match the new iOS 7 design language
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance.frame">
+            <summary>
+            Gets or sets the frame color
+            </summary>
+            <value>The frame color</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance.gripBackground">
+            <summary>
+            Gets or sets the grip background.
+            </summary>
+            <value>The grip background.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance.gripBorder">
+            <summary>
+            Gets or sets the grip border.
+            </summary>
+            <value>The grip border.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance.shadow">
+            <summary>
+            Gets or sets the shadow color
+            </summary>
+            <value>The shadow color</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance.tabAlpha">
+            <summary>
+            Gets or sets the thumb aplha.
+            </summary>
+            <value>The thumb aplha.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance.thumbBackground">
+            <summary>
+            Gets or sets the thumb background.
+            </summary>
+            <value>The thumb background.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance.thumbBlendMode">
+            <summary>
+            Gets or sets the thumb blend mode.
+            </summary>
+            <value>The thumb blend mode.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance.thumbBorder">
+            <summary>
+            Gets or sets the thumb border.
+            </summary>
+            <value>The thumb border.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance.titleColor">
+            <summary>
+            Gets or sets the color of the title.
+            </summary>
+            <value>The color of the title.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance.titleSize">
+            <summary>
+            Gets or sets the size of the title.
+            </summary>
+            <value>The size of the title.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayFrameType">
+            <summary>
+            Controls the frame drawn around a <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></summary>
+            <remarks>The frame interacts with the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayOrientation" /> property</remarks>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayFrameType.EdgeAndSides">
+            <summary>
+            All edges of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> except the back one will receive the frame
+            </summary>
+            <remarks>The <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayOrientation" /> defines the back edge of the
+            <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></remarks>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayFrameType.EdgeOnly">
+            <summary>
+            Only the edge of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> containing the <c>dragTab</c>
+            will be framed
+            </summary>
+            <remarks>The <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayOrientation" /> controls which edge gets the frame </remarks>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayFrameType.FullFrame">
+            <summary>
+            All edges of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> will receive the frame
+            </summary>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayFrameType.None">
+            <summary>
+            No frame will be drawn around the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></summary>
+            <remarks>The <c>dragTab</c> will be drawn in the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" />'s
+            <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayAppearance" /><c>background</c> color </remarks>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager">
+            <summary>
+            The <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager" /> controls a collection of <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" />s and manages them like
+            a set of palettes or menus. Only one <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> in the collection can be open at one time. The
+            <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager" /> defines events that can be handled based on the user's interaction with any <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" />
+            in the group.
+            </summary>
+            <remarks>The <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager" /> will automatically close any open <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> when another tray
+            in the group is opened.</remarks>
+        </member>
+        <member name="C:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager">
+            <summary>
+            Initializes a new instance of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager" /> class.
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager.AddTray(Appracatappra.ActionComponents.ActionTray.UIActionTray)">
+            <param name="tray">The <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> to add </param>
+            <summary>
+            Adds the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> to this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager" />'s
+            collection
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager.CloseAllTrays">
+            <summary>
+            Closes all open <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> in this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager" />'s collection
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager.count">
+            <summary>
+            Returns the number of <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" />s that this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager" /> is controlling
+            </summary>
+            <value>The count.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager.RemoveTray(System.Int32)">
+            <param name="index">Index.</param>
+            <summary>
+            Removes the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> at the given <c>index</c> from this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager" />'s
+            collection
+            </summary>
+            <remarks>This method is ignored if the <c>index</c> is out of range</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager.Tray(System.Int32)">
+            <param name="index">Index.</param>
+            <summary>
+            Returns the requested <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> at the given <c>index</c> from this
+            <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager" />'s collection
+            </summary>
+            <returns>The requested <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> or <c>null</c> if the <c>index</c> is out of range</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="E:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager.TrayClosed">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="E:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager.TrayMoved">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="E:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager.TrayOpened">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="E:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager.TrayReleased">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager.trays">
+            <summary>
+            Returns the collection of <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" />s that this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager" /> is controlling
+            </summary>
+            <value>The trays.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="E:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager.TrayTouched">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager+UIActionTrayClosedDelegate">
+            <param name="tray">To be added.</param>
+            <summary>
+            Occurs when this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> is completely closed by the user
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager+UIActionTrayMovedDelegate">
+            <param name="tray">To be added.</param>
+            <summary>
+            Occurs when this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> is moved
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager+UIActionTrayOpenedDelegate">
+            <param name="tray">To be added.</param>
+            <summary>
+            Occurs when any <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> in this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager" />'s collection
+            is opened fully by the user
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager+UIActionTrayReleasedDelegate">
+            <param name="tray">To be added.</param>
+            <summary>
+            Occurs when this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> was <c>Touched</c> and released
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayManager+UIActionTrayTouchDelegate">
+            <param name="tray">To be added.</param>
+            <summary>
+            Occurs when this <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> is touched
+            </summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayOrientation">
+            <summary>
+            Defines the orientation of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> within the screen
+            </summary>
+            <remarks>This property also controls how the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> responds to user interaction and where
+            the <c>dragTab</c> is located</remarks>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayOrientation.Bottom">
+            <summary>
+            The <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> is at the bottom of the screen
+            </summary>
+            <remarks>The <c>dragTab</c> will be drawn at the top of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></remarks>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayOrientation.Left">
+            <summary>
+            The <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> is on the left side of the screen
+            </summary>
+            <remarks>The <c>dragTab</c> will be drawn on the right side of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></remarks>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayOrientation.Right">
+            <summary>
+            The <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> is on the ride side of the screen
+            </summary>
+            <remarks>The <c>dragTab</c> will be drawn on the left side of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></remarks>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayOrientation.Top">
+            <summary>
+            The <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> is at the top of the screen
+            </summary>
+            <remarks>The <c>dragTab</c> will be drawn at the bottom of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></remarks>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabLocation">
+            <summary>
+            Controls where the <c>dragTab</c> is located on the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></summary>
+            <remarks>This location also interacts with the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayOrientation" /></remarks>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabLocation.BottomOrRight">
+            <summary>
+            The <c>dragTab</c> will be either on the bottom or the right side of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> based on its
+            <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayOrientation" /></summary>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabLocation.Custom">
+            <summary>
+            The <c>dragTab</c> position will be based on a user defined <c>tabOffset</c> on the side of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></summary>
+            <remarks>Based on the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" />'s <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayOrientation" />, the
+            <c>tabOffset</c> will be measured from the top or left side of the tray</remarks>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabLocation.Middle">
+            <summary>
+            The <c>dragTab</c> will be in the middle of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></summary>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabLocation.TopOrLeft">
+            <summary>
+            The <c>dragTab</c> will be either on the top or left side of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> based on its
+            <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayOrientation" /></summary>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabType">
+            <summary>
+            Defines the type of <c>dragTab</c> for the given <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></summary>
+            <remarks>the <c>appearance</c> property of the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> controls the look/feel of the <c>dragTab</c></remarks>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabType.CustomDrawn">
+            <summary>
+            Allow the user to custom draw the <c>dragTab</c> inside the specified <c>dragTabRectangleF</c> and <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></summary>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabType.GripAndTitle">
+            <summary>
+            The <c>dragTab</c> contains a three line grip and a title
+            </summary>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabType.GripOnly">
+            <summary>
+            The <c>dragTab</c> contains only a three line grip area
+            </summary>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabType.IconAndTitle">
+            <summary>
+            The <c>dragTab</c> contains an icon and a title
+            </summary>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabType.IconOnly">
+            <summary>
+            The <c>dragTab</c> contains only an icon
+            </summary>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabType.Plain">
+            <summary>
+            A <c>Plain</c><c>dragTab</c> contains no grip area, icon or text
+            </summary>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayTabType.TitleOnly">
+            <summary>
+            The <c>dragTab</c> contains only a title
+            </summary>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.ActionTray.UIActionTrayType">
+            <summary>
+            Defines the user's interaction with the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /></summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayType.AutoClosingPopup">
+            <summary>
+            When the user taps the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" />'s <c>dragTab</c>, the tray will snap between
+            its <c>openedPostion</c> and <c>closedPostion</c>. If the tray is open and the user taps anywhere within its <c>content</c> area,
+            the tray will automatically close.
+            </summary>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayType.Draggable">
+            <summary>
+            The <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> can be dragged by its <c>dragTab</c> between
+            the specified <c>openedPosition</c> and <c>closedPosition</c></summary>
+            <remarks>Double tapping the <c>dragTab</c> will snap the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" /> between its
+            <c>openedPosition</c> and <c>closedPosition</c></remarks>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.ActionTray.UIActionTrayType.Popup">
+            <summary>
+            When the user taps the <see cref="T:Appracatappra.ActionComponents.ActionTray.UIActionTray" />'s <c>dragTab</c>, the tray will snap between
+            its <c>openedPosition</c> and <c>closedPosition</c></summary>
+        </member>
+    </members>
+</doc>
+">Text.</param>
+            <param name="gravity">Gravity.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.MakeText(System.String,Appracatappra.ActionComponents.UIActionToastGravity,System.Drawing.PointF)">
+            <summary>
+            Creates a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message with the given
+            properties and returns it
+            </summary>
+            <returns>The text.</returns>
+            <param name="text">Text.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="offset">Offset.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.MakeText(System.String,Appracatappra.ActionComponents.UIActionToastGravity,Appracatappra.ActionComponents.UIActionToastAppearance)">
+            <summary>
+            Creates a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message with the given
+            properties and returns it
+            </summary>
+            <returns>The text.</returns>
+            <param name="text">Text.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="appearance">Appearance.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.MakeText(System.String,Appracatappra.ActionComponents.UIActionToastGravity,Appracatappra.ActionComponents.UIActionToastAppearance,System.Drawing.PointF)">
+            <summary>
+            Creates a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message with the given
+            properties and returns it
+            </summary>
+            <returns>The text.</returns>
+            <param name="text">Text.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="appearance">Appearance.</param>
+            <param name="offset">Offset.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.MakeText(System.String,System.Single)">
+            <summary>
+            Creates a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message with the given
+            properties and returns it
+            </summary>
+            <returns>The text.</returns>
+            <param name="text">Text.</param>
+            <param name="duration">Duration.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.MakeText(System.String,System.Single,Appracatappra.ActionComponents.UIActionToastGravity)">
+            <summary>
+            Creates a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message with the given
+            properties and returns it
+            </summary>
+            <returns>The text.</returns>
+            <param name="text">Text.</param>
+            <param name="duration">Duration.</param>
+            <param name="gravity">Gravity.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.MakeText(System.String,System.Single,Appracatappra.ActionComponents.UIActionToastGravity,System.Drawing.PointF)">
+            <summary>
+            Creates a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message with the given
+            properties and returns it
+            </summary>
+            <returns>The text.</returns>
+            <param name="text">Text.</param>
+            <param name="duration">Duration.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="offset">Offset.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.MakeText(System.String,System.Single,Appracatappra.ActionComponents.UIActionToastGravity,Appracatappra.ActionComponents.UIActionToastAppearance)">
+            <summary>
+            Creates a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message with the given
+            properties and returns it
+            </summary>
+            <returns>The text.</returns>
+            <param name="text">Text.</param>
+            <param name="duration">Duration.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="appearance">Appearance.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.MakeText(System.String,System.Single,Appracatappra.ActionComponents.UIActionToastGravity,Appracatappra.ActionComponents.UIActionToastAppearance,System.Drawing.PointF)">
+            <summary>
+            Creates a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message with the given
+            properties and returns it
+            </summary>
+            <returns>The text.</returns>
+            <param name="text">Text.</param>
+            <param name="duration">Duration.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="appearance">Appearance.</param>
+            <param name="offset">Offset.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.MakeText(System.String,System.Single,System.Single,System.Single,Appracatappra.ActionComponents.UIActionToastGravity,Appracatappra.ActionComponents.UIActionToastAppearance,System.Drawing.PointF)">
+            <summary>
+            Creates a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message with the given
+            properties and returns it
+            </summary>
+            <returns>The text.</returns>
+            <param name="text">Text.</param>
+            <param name="duration">Duration.</param>
+            <param name="fadeInDuration">Fade in duration.</param>
+            <param name="fadeOutDuration">Fade out duration.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="appearance">Appearance.</param>
+            <param name="offset">Offset.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.MakeText(System.String,Appracatappra.ActionComponents.UIActionToastLength)">
+            <summary>
+            Creates a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message with the given
+            properties and returns it
+            </summary>
+            <returns>The text.</returns>
+            <param name="text">Text.</param>
+            <param name="length">Length.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.MakeText(System.String,Appracatappra.ActionComponents.UIActionToastLength,Appracatappra.ActionComponents.UIActionToastGravity)">
+            <summary>
+            Creates a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message with the given
+            properties and returns it
+            </summary>
+            <returns>The text.</returns>
+            <param name="text">Text.</param>
+            <param name="length">Length.</param>
+            <param name="gravity">Gravity.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.MakeText(System.String,Appracatappra.ActionComponents.UIActionToastLength,Appracatappra.ActionComponents.UIActionToastGravity,System.Drawing.PointF)">
+            <summary>
+            Creates a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message with the given
+            properties and returns it
+            </summary>
+            <returns>The text.</returns>
+            <param name="text">Text.</param>
+            <param name="length">Length.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="offset">Offset.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.MakeText(System.String,Appracatappra.ActionComponents.UIActionToastLength,Appracatappra.ActionComponents.UIActionToastGravity,Appracatappra.ActionComponents.UIActionToastAppearance)">
+            <summary>
+            Creates a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message with the given
+            properties and returns it
+            </summary>
+            <returns>The text.</returns>
+            <param name="text">Text.</param>
+            <param name="length">Length.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="appearance">Appearance.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.MakeText(System.String,Appracatappra.ActionComponents.UIActionToastLength,Appracatappra.ActionComponents.UIActionToastGravity,Appracatappra.ActionComponents.UIActionToastAppearance,System.Drawing.PointF)">
+            <summary>
+            Creates a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message with the given
+            properties and returns it
+            </summary>
+            <returns>The text.</returns>
+            <param name="text">Text.</param>
+            <param name="length">Length.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="appearance">Appearance.</param>
+            <param name="offset">Offset.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.MakeText(System.String,Appracatappra.ActionComponents.UIActionToastLength,System.Single,System.Single,Appracatappra.ActionComponents.UIActionToastGravity,Appracatappra.ActionComponents.UIActionToastAppearance,System.Drawing.PointF)">
+            <summary>
+            Creates a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message with the given
+            properties and returns it
+            </summary>
+            <returns>The text.</returns>
+            <param name="text">Text.</param>
+            <param name="length">Length.</param>
+            <param name="fadeInDuration">Fade in duration.</param>
+            <param name="fadeOutDuration">Fade out duration.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="appearance">Appearance.</param>
+            <param name="offset">Offset.</param>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.UIActionToast.duration">
+            <summary>
+            Gets or sets the duration in seconds that this <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message will be displayed.
+            </summary>
+            <value>The duration.</value>
+            <remarks>Set the duration to zero (0) to display the message forever until dismissed by the user or programmatically. This provides an alternative to
+            setting the <c>length</c> property to a <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToastLength" />.</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.UIActionToast.length">
+            <summary>
+            Gets or sets the length that the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message will be displayed
+            </summary>
+            <value>The length.</value>
+            <remarks>This provides an alternative to setting the <c>duration</c> in seconds</remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.UIActionToast.fadeInDuration">
+            <summary>
+            Gets or sets the duration of the fade in animation for this <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message
+            </summary>
+            <value>The duration of the fade in.</value>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.UIActionToast.fadeOutDuration">
+            <summary>
+            Gets or sets the duration of the fade out animation for this <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message
+            </summary>
+            <value>The duration of the fade in.</value>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.UIActionToast.gravity">
+            <summary>
+            Gets or sets the gravity for this <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message
+            </summary>
+            <value>The gravity.</value>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.UIActionToast.appearance">
+            <summary>
+            Gets or sets the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToastAppearance" /> for this
+            <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message
+            </summary>
+            <value>The appearance.</value>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.UIActionToast.text">
+            <summary>
+            Gets or sets the text displayed in this <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message
+            </summary>
+            <value>The text.</value>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.UIActionToast.view">
+            <summary>
+            Gets the view controlled by this <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message
+            </summary>
+            <value>The view.</value>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.UIActionToast.position">
+            <summary>
+            Gets or sets the position this <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message will be
+            displayed at
+            </summary>
+            <value>The position.</value>
+            <remarks>The <c>position</c> property is only honored if the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToastGravity" /> is set to
+            <c>Custom</c></remarks>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.UIActionToast.offset">
+            <summary>
+            Gets or sets the offset that can be applied to the <c>position</c> automatically calculated for this <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" />
+            based on the selected <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToastGravity" /></summary>
+            <value>The offset.</value>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> class.
+            </summary>
+            <param name="text">Text.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.#ctor(System.String,Appracatappra.ActionComponents.UIActionToastGravity)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> class.
+            </summary>
+            <param name="text">Text.</param>
+            <param name="gravity">Gravity.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.#ctor(System.String,Appracatappra.ActionComponents.UIActionToastGravity,System.Drawing.PointF)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> class.
+            </summary>
+            <param name="text">Text.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="offset">Offset.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.#ctor(System.String,Appracatappra.ActionComponents.UIActionToastGravity,Appracatappra.ActionComponents.UIActionToastAppearance)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> class.
+            </summary>
+            <param name="text">Text.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="appearance">Appearance.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.#ctor(System.String,Appracatappra.ActionComponents.UIActionToastGravity,Appracatappra.ActionComponents.UIActionToastAppearance,System.Drawing.PointF)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> class.
+            </summary>
+            <param name="text">Text.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="appearance">Appearance.</param>
+            <param name="offset">Offset.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.#ctor(System.String,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> class.
+            </summary>
+            <param name="text">Text.</param>
+            <param name="duration">Duration.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.#ctor(System.String,System.Single,Appracatappra.ActionComponents.UIActionToastGravity)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> class.
+            </summary>
+            <param name="text">Text.</param>
+            <param name="duration">Duration.</param>
+            <param name="gravity">Gravity.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.#ctor(System.String,System.Single,Appracatappra.ActionComponents.UIActionToastGravity,System.Drawing.PointF)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> class.
+            </summary>
+            <param name="text">Text.</param>
+            <param name="duration">Duration.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="offset">Offset.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.#ctor(System.String,System.Single,Appracatappra.ActionComponents.UIActionToastGravity,Appracatappra.ActionComponents.UIActionToastAppearance)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> class.
+            </summary>
+            <param name="text">Text.</param>
+            <param name="duration">Duration.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="appearance">Appearance.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.#ctor(System.String,System.Single,Appracatappra.ActionComponents.UIActionToastGravity,Appracatappra.ActionComponents.UIActionToastAppearance,System.Drawing.PointF)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> class.
+            </summary>
+            <param name="text">Text.</param>
+            <param name="duration">Duration.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="appearance">Appearance.</param>
+            <param name="offset">Offset.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.#ctor(System.String,System.Single,System.Single,System.Single,Appracatappra.ActionComponents.UIActionToastGravity,Appracatappra.ActionComponents.UIActionToastAppearance,System.Drawing.PointF)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> class.
+            </summary>
+            <param name="text">Text.</param>
+            <param name="duration">Duration.</param>
+            <param name="fadeInDuration">Fade in duration.</param>
+            <param name="fadeOutDuration">Fade out duration.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="appearance">Appearance.</param>
+            <param name="offset">Offset.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.#ctor(System.String,Appracatappra.ActionComponents.UIActionToastLength)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> class.
+            </summary>
+            <param name="text">Text.</param>
+            <param name="length">Length.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.#ctor(System.String,Appracatappra.ActionComponents.UIActionToastLength,Appracatappra.ActionComponents.UIActionToastGravity)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> class.
+            </summary>
+            <param name="text">Text.</param>
+            <param name="length">Length.</param>
+            <param name="gravity">Gravity.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.#ctor(System.String,Appracatappra.ActionComponents.UIActionToastLength,Appracatappra.ActionComponents.UIActionToastGravity,System.Drawing.PointF)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> class.
+            </summary>
+            <param name="text">Text.</param>
+            <param name="length">Length.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="offset">Offset.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.#ctor(System.String,Appracatappra.ActionComponents.UIActionToastLength,Appracatappra.ActionComponents.UIActionToastGravity,Appracatappra.ActionComponents.UIActionToastAppearance)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> class.
+            </summary>
+            <param name="text">Text.</param>
+            <param name="length">Length.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="appearance">Appearance.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.#ctor(System.String,Appracatappra.ActionComponents.UIActionToastLength,Appracatappra.ActionComponents.UIActionToastGravity,Appracatappra.ActionComponents.UIActionToastAppearance,System.Drawing.PointF)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> class.
+            </summary>
+            <param name="text">Text.</param>
+            <param name="length">Length.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="appearance">Appearance.</param>
+            <param name="offset">Offset.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.#ctor(System.String,Appracatappra.ActionComponents.UIActionToastLength,System.Single,System.Single,Appracatappra.ActionComponents.UIActionToastGravity,Appracatappra.ActionComponents.UIActionToastAppearance,System.Drawing.PointF)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> class.
+            </summary>
+            <param name="text">Text.</param>
+            <param name="length">Length.</param>
+            <param name="fadeInDuration">Fade in duration.</param>
+            <param name="fadeOutDuration">Fade out duration.</param>
+            <param name="gravity">Gravity.</param>
+            <param name="appearance">Appearance.</param>
+            <param name="offset">Offset.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.Show">
+            <summary>
+            Show the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message
+            </summary>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.HideToast">
+            <summary>
+            Hides this <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message
+            </summary>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.RemoveToast">
+            <summary>
+            Removes the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> from the parent <c>window</c> and releases it from
+            memory
+            </summary>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.FadeInComplete">
+            <summary>
+            Called when the fade in animation has completed
+            </summary>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToast.FadeOutComplete">
+            <summary>
+            Called when the fade out animation has completed
+            </summary>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.UIActionToastAppearance.textSize">
+            <summary>
+            Gets or sets the size of the text.
+            </summary>
+            <value>The size of the font.</value>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.UIActionToastAppearance.cornerRadius">
+            <summary>
+            Gets or sets the corner radius.
+            </summary>
+            <value>The corner radius.</value>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.UIActionToastAppearance.textColor">
+            <summary>
+            Gets or sets the color of the text.
+            </summary>
+            <value>The color of the text.</value>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.UIActionToastAppearance.textShadow">
+            <summary>
+            Gets or sets the text shadow.
+            </summary>
+            <value>The text shadow.</value>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.UIActionToastAppearance.background">
+            <summary>
+            Gets or sets the background color
+            </summary>
+            <value>The background.</value>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.UIActionToastAppearance.flat">
+            <summary>
+            Gets or sets a value indicating whether this
+            <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToastAppearance" /> is flat.
+            </summary>
+            <value>
+                <c>true</c> if flat; otherwise, <c>false</c>.</value>
+            <remarks>This value was added to support the iOS 7 degisn language</remarks>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToastAppearance.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToastAppearance" /> class.
+            </summary>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToastAppearance.Flatten">
+            <summary>
+            Flattens the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToastAppearance" /> to match the new iOS 7 design language
+            </summary>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToastAppearance.Flatten(MonoTouch.UIKit.UIColor)">
+            <summary>
+            Flattens the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToastAppearance" /> to match the new iOS 7 design language
+            </summary>
+            <param name="backgroundColor">Background color.</param>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToastAppearance.Flatten(MonoTouch.UIKit.UIColor,MonoTouch.UIKit.UIColor)">
+            <summary>
+            Flattens the <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToastAppearance" /> to match the new iOS 7 design language
+            </summary>
+            <param name="backgroundColor">Background color.</param>
+            <param name="foregroundColor">Foreground color.</param>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.UIActionToastAppearance.AppearanceModifiedDelegate">
+            <summary>
+            Occurs when the appearance is modified.
+            </summary>
+        </member>
+        <member name="M:Appracatappra.ActionComponents.UIActionToastAppearance.RaiseAppearanceModified">
+            <summary>
+            Raises the appearance modified event
+            </summary>
+            <remarks>Used to inform the attached component that an appearance
+            attribute has been modified</remarks>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.UIActionToastGravity">
+            <summary>
+            User interface action toast gravity.
+            </summary>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.UIActionToastGravity.Top">
+            <summary>
+            Displays the Toast message at the top of the screen
+            </summary>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.UIActionToastGravity.Center">
+            <summary>
+            Displays the Toast message in the middle of the screen
+            </summary>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.UIActionToastGravity.Bottom">
+            <summary>
+            Displays the Toast message at the bottom of the screen
+            </summary>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.UIActionToastGravity.Custom">
+            <summary>
+            Displays the Toast message at a custom position
+            </summary>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.UIActionToastLength">
+            <summary>
+            Provides a alternative way to specify how long a <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message will be displayed
+            </summary>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.UIActionToastLength.Forever">
+            <summary>
+            The <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message will be displayed until the user touches it or it is
+            removed programatically
+            </summary>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.UIActionToastLength.Short">
+            <summary>
+            The <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message will be displayed for a short amount of time
+            </summary>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.UIActionToastLength.Medium">
+            <summary>
+            The <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message will be displayed for a medium amount of time
+            </summary>
+        </member>
+        <member name="F:Appracatappra.ActionComponents.UIActionToastLength.Long">
+            <summary>
+            The <see cref="!:Appracatappra.ActionComponents.ActionToast.UIActionToast" /> message will be displayed for a long amount of time
+            </summary>
+        </member>
+        <member name="T:Appracatappra.ActionComponents.iOSDevice">
+            <summary>
+            Helper class that returns information about the iOS device that the Xamarin.iOS app is running on
+            </summary>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.iOSDevice.isPhone">
+            <summary>
+            Gets a value indicating whether this <see cref="!:Appracatappra.ActionComponents.Device.iOSDevice" /> is phone.
+            </summary>
+            <value>
+                <c>true</c> if is phone; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.iOSDevice.isPad">
+            <summary>
+            Gets a value indicating whether this <see cref="!:Appracatappra.ActionComponents.Device.iOSDevice" /> is pad.
+            </summary>
+            <value>
+                <c>true</c> if is pad; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.iOSDevice.is568h">
+            <summary>
+            Gets a value indicating whether this <see cref="!:Appracatappra.ActionComponents.Device.iOSDevice" /> is a is568h device such as the iPhone 5.
+            </summary>
+            <value>
+                <c>true</c> if is568h; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.iOSDevice.isRetina">
+            <summary>
+            Gets a value indicating whether this <see cref="!:Appracatappra.ActionComponents.Device.iOSDevice" /> has a retina display.
+            </summary>
+            <value>
+                <c>true</c> if is retina; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.iOSDevice.isIOS7">
+            <summary>
+            Gets a value indicating whether the app is running on an iOS 7 device.
+            </summary>
+            <value>
+                <c>true</c> if is IO s7; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.iOSDevice.currentDeviceOrientation">
+            <summary>
+            Gets the current device orientation.
+            </summary>
+            <value>The current device orientation.</value>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.iOSDevice.RotatedScreenBounds">
+            <summary>
+            Returns the bounds for the device's <c>MainScreen</c> adjusted to fit the current <c>UIInterfaceOrientation</c></summary>
+            <value>The rotated screen bounds.</value>
+        </member>
+        <member name="P:Appracatappra.ActionComponents.iOSDevice.AvailableScreenBounds">
+            <summary>
+            Returns the bounds for the device's <c>MainScreen</c> adjusted to fit the current <c>UIInterfaceOrientation</c> taking into
+            account if the system status bar is being displayed
+            </summary>
+            <value>The rotated screen bounds optionally minus the system status bar area</value>
+        </member>
+    </members>
+</doc>

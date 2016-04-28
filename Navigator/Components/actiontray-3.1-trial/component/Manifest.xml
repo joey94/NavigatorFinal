@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component format="1" id="actiontray">
+  <name>ActionTray</name>
+  <publisher>Appracatappra, LLC.</publisher>
+  <publisher-url>http://appracatappra.com/actioncomponents/actiontray</publisher-url>
+  <version>3.1</version>
+  <summary>A dockable, customizable, slide-out, tray view controller for iOS and Android</summary>
+  <samples>
+    <sample id="ActionTraySample">
+      <name>iOS Sample.</name>
+      <summary>Demonstrates ActionTray on iOS.</summary>
+    </sample>
+    <sample id="ActionTraySampleUnified">
+      <name>iOS Unified Sample.</name>
+      <summary>Demonstrates ActionTray on iOS.</summary>
+    </sample>
+    <sample id="ActionTraySampleAndroid">
+      <name>Android Sample.</name>
+      <summary>Demonstrates ActionTray on Android.</summary>
+    </sample>
+  </samples>
+</component>

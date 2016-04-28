@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:minWidth="25px"
+    p1:minHeight="25px"
+    p1:layout_width="fill_parent"
+    p1:layout_height="fill_parent"
+    p1:id="@+id/masterContainer"
+    p1:background="@drawable/Linen">
+    <ImageView
+        p1:src="@drawable/bullseye"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/imageView1"
+        p1:layout_centerInParent="true" />
+    <Appracatappra.ActionComponents.ActionTray.UIActionTray
+        p1:layout_width="334.0dp"
+        p1:layout_height="fill_parent"
+        p1:id="@+id/trayLeft"
+        p1:background="#ffdd1d1d"
+        p1:layout_alignParentLeft="true" />
+    <Appracatappra.ActionComponents.ActionTray.UIActionTray
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="300dp"
+        p1:layout_height="fill_parent"
+        p1:id="@+id/trayRight"
+        p1:layout_alignParentRight="true"
+        p1:layout_marginLeft="199.0dp" />
+    <Appracatappra.ActionComponents.ActionTray.UIActionTray
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="100dp"
+        p1:layout_height="250dp"
+        p1:id="@+id/trayTools"
+        p1:layout_alignParentTop="true"
+        p1:layout_marginLeft="10dp" />
+    <Appracatappra.ActionComponents.ActionTray.UIActionTray
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="200dp"
+        p1:layout_height="200dp"
+        p1:id="@+id/trayProperty"
+        p1:layout_alignParentTop="true"
+        p1:layout_marginLeft="100dp" />
+    <Appracatappra.ActionComponents.ActionTray.UIActionTray
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="200dp"
+        p1:layout_height="200dp"
+        p1:id="@+id/trayPalette"
+        p1:layout_alignParentTop="true"
+        p1:layout_marginLeft="225dp" />
+    <Appracatappra.ActionComponents.ActionTray.UIActionTray
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="fill_parent"
+        p1:layout_height="150dp"
+        p1:id="@+id/trayDocuments"
+        p1:layout_alignParentBottom="true" />
+</RelativeLayout>

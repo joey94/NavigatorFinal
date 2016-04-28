@@ -1,0 +1,2586 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XLabs.Ioc.TinyIOC</name>
+    </assembly>
+    <members>
+        <member name="T:XLabs.Ioc.TinyIOC.TinyContainer">
+            <summary>
+            The tiny container wrapper
+            Allows registering a tinyioc container with the IDependencyContainer interface
+            </summary>
+        </member>
+        <member name="F:XLabs.Ioc.TinyIOC.TinyContainer.container">
+            <summary>
+            The container.
+            </summary>
+        </member>
+        <member name="M:XLabs.Ioc.TinyIOC.TinyContainer.#ctor(TinyIoC.TinyIoCContainer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:XLabs.Ioc.TinyIOC.TinyContainer"/> class.
+            </summary>
+            <param name="container">
+            The container.
+            </param>
+        </member>
+        <member name="M:XLabs.Ioc.TinyIOC.TinyContainer.GetResolver">
+            <summary>
+            Gets the resolver from the container
+            </summary>
+            <returns>An instance of <see cref="T:XLabs.Ioc.IResolver"/></returns>
+        </member>
+        <member name="M:XLabs.Ioc.TinyIOC.TinyContainer.Register``1(``0)">
+            <summary>
+            Registers an instance of T to be stored in the container.
+            </summary>
+            <typeparam name="T">Type of instance</typeparam>
+            <param name="instance">Instance of type T.</param>
+            <returns>An instance of <see cref="T:XLabs.Ioc.IDependencyContainer"/></returns>
+        </member>
+        <member name="M:XLabs.Ioc.TinyIOC.TinyContainer.Register``2">
+            <summary>
+            Registers a type to instantiate for type T.
+            </summary>
+            <typeparam name="T">Type of instance</typeparam>
+            <typeparam name="TImpl">Type to register for instantiation.</typeparam>
+            <returns>An instance of <see cref="T:XLabs.Ioc.IDependencyContainer"/></returns>
+        </member>
+        <member name="M:XLabs.Ioc.TinyIOC.TinyContainer.RegisterSingle``2">
+            <summary>
+            Registers a type to instantiate for type T as singleton.
+            </summary>
+            <typeparam name="T">Type of instance</typeparam>
+            <typeparam name="TImpl">Type to register for instantiation.</typeparam>
+            <returns>An instance of <see cref="T:XLabs.Ioc.IDependencyContainer"/></returns>
+        </member>
+        <member name="M:XLabs.Ioc.TinyIOC.TinyContainer.Register``1(System.Type)">
+            <summary>
+            Tries to register a type
+            </summary>
+            <typeparam name="T">Type of instance</typeparam>
+            <param name="type">Type of implementation</param>
+            <returns>An instance of <see cref="T:XLabs.Ioc.IDependencyContainer"/></returns>
+        </member>
+        <member name="M:XLabs.Ioc.TinyIOC.TinyContainer.Register(System.Type,System.Type)">
+            <summary>
+            Tries to register a type
+            </summary>
+            <param name="type">Type to register.</param>
+            <param name="impl">Type that implements registered type.</param>
+            <returns>An instance of <see cref="T:XLabs.Ioc.IDependencyContainer"/></returns>
+        </member>
+        <member name="M:XLabs.Ioc.TinyIOC.TinyContainer.Register``1(System.Func{XLabs.Ioc.IResolver,``0})">
+            <summary>
+            Registers a function which returns an instance of type T.
+            </summary>
+            <typeparam name="T">Type of instance.</typeparam>
+            <param name="func">Function which returns an instance of T.</param>
+            <returns>An instance of <see cref="T:XLabs.Ioc.IDependencyContainer"/></returns>
+        </member>
+        <member name="T:TinyIoC.SafeDictionary`2">
+            <summary>
+            Class SafeDictionary.
+            </summary>
+            <typeparam name="TKey">The type of the t key.</typeparam>
+            <typeparam name="TValue">The type of the t value.</typeparam>
+        </member>
+        <member name="F:TinyIoC.SafeDictionary`2._Padlock">
+            <summary>
+            The _ padlock
+            </summary>
+        </member>
+        <member name="F:TinyIoC.SafeDictionary`2._Dictionary">
+            <summary>
+            The _ dictionary
+            </summary>
+        </member>
+        <member name="M:TinyIoC.SafeDictionary`2.TryGetValue(`0,`1@)">
+            <summary>
+            Tries the get value.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:TinyIoC.SafeDictionary`2.Remove(`0)">
+            <summary>
+            Removes the specified key.
+            </summary>
+            <param name="key">The key.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:TinyIoC.SafeDictionary`2.Clear">
+            <summary>
+            Clears this instance.
+            </summary>
+        </member>
+        <member name="M:TinyIoC.SafeDictionary`2.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:TinyIoC.SafeDictionary`2.Item(`0)">
+            <summary>
+            Set key
+            </summary>
+            <param name="key">The key.</param>
+            <returns>TValue.</returns>
+        </member>
+        <member name="P:TinyIoC.SafeDictionary`2.Keys">
+            <summary>
+            Gets the keys.
+            </summary>
+            <value>The keys.</value>
+        </member>
+        <member name="T:TinyIoC.AssemblyExtensions">
+            <summary>
+            Class AssemblyExtensions.
+            </summary>
+        </member>
+        <member name="M:TinyIoC.AssemblyExtensions.SafeGetTypes(System.Reflection.Assembly)">
+            <summary>
+            Safes the get types.
+            </summary>
+            <param name="assembly">The assembly.</param>
+            <returns>Type[].</returns>
+        </member>
+        <member name="T:TinyIoC.TypeExtensions">
+            <summary>
+            Class TypeExtensions.
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TypeExtensions._genericMethodCache">
+            <summary>
+            The _generic method cache
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TypeExtensions.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:TinyIoC.TypeExtensions"/> class.
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TypeExtensions.GetGenericMethod(System.Type,System.Reflection.BindingFlags,System.String,System.Type[],System.Type[])">
+            <summary>
+            Gets a generic method from a type given the method name, binding flags, generic types and parameter types
+            </summary>
+            <param name="sourceType">Source type</param>
+            <param name="bindingFlags">Binding flags</param>
+            <param name="methodName">Name of the method</param>
+            <param name="genericTypes">Generic types to use to make the method generic</param>
+            <param name="parameterTypes">Method parameters</param>
+            <returns>MethodInfo or null if no matches found</returns>
+            <exception cref="T:System.Reflection.AmbiguousMatchException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:TinyIoC.TypeExtensions.GetMethod(System.Type,System.Reflection.BindingFlags,System.String,System.Type[],System.Type[])">
+            <summary>
+            Gets the method.
+            </summary>
+            <param name="sourceType">Type of the source.</param>
+            <param name="bindingFlags">The binding flags.</param>
+            <param name="methodName">Name of the method.</param>
+            <param name="genericTypes">The generic types.</param>
+            <param name="parameterTypes">The parameter types.</param>
+            <returns>MethodInfo.</returns>
+            <exception cref="T:System.Reflection.AmbiguousMatchException"></exception>
+        </member>
+        <member name="T:TinyIoC.TypeExtensions.GenericMethodCacheKey">
+            <summary>
+            Class GenericMethodCacheKey. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TypeExtensions.GenericMethodCacheKey._sourceType">
+            <summary>
+            The _source type
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TypeExtensions.GenericMethodCacheKey._methodName">
+            <summary>
+            The _method name
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TypeExtensions.GenericMethodCacheKey._genericTypes">
+            <summary>
+            The _generic types
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TypeExtensions.GenericMethodCacheKey._parameterTypes">
+            <summary>
+            The _parameter types
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TypeExtensions.GenericMethodCacheKey._hashCode">
+            <summary>
+            The _hash code
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TypeExtensions.GenericMethodCacheKey.#ctor(System.Type,System.String,System.Type[],System.Type[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TypeExtensions.GenericMethodCacheKey"/> class.
+            </summary>
+            <param name="sourceType">Type of the source.</param>
+            <param name="methodName">Name of the method.</param>
+            <param name="genericTypes">The generic types.</param>
+            <param name="parameterTypes">The parameter types.</param>
+        </member>
+        <member name="M:TinyIoC.TypeExtensions.GenericMethodCacheKey.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to this instance.
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns><c>true</c> if the specified <see cref="T:System.Object"/> is equal to this instance; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:TinyIoC.TypeExtensions.GenericMethodCacheKey.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
+        </member>
+        <member name="M:TinyIoC.TypeExtensions.GenericMethodCacheKey.GenerateHashCode">
+            <summary>
+            Generates the hash code.
+            </summary>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="T:TinyIoC.TinyIoCResolutionException">
+            <summary>
+            Class TinyIoCResolutionException.
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCResolutionException.ERROR_TEXT">
+            <summary>
+            The erro r_ text
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCResolutionException.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCResolutionException"/> class.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCResolutionException.#ctor(System.Type,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCResolutionException"/> class.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:TinyIoC.TinyIoCRegistrationTypeException">
+            <summary>
+            Class TinyIoCRegistrationTypeException.
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCRegistrationTypeException.REGISTER_ERROR_TEXT">
+            <summary>
+            The registe r_ erro r_ text
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCRegistrationTypeException.#ctor(System.Type,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCRegistrationTypeException"/> class.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="factory">The factory.</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCRegistrationTypeException.#ctor(System.Type,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCRegistrationTypeException"/> class.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="factory">The factory.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:TinyIoC.TinyIoCRegistrationException">
+            <summary>
+            Class TinyIoCRegistrationException.
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCRegistrationException.CONVERT_ERROR_TEXT">
+            <summary>
+            The conver t_ erro r_ text
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCRegistrationException.GENERIC_CONSTRAINT_ERROR_TEXT">
+            <summary>
+            The generi c_ constrain t_ erro r_ text
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCRegistrationException.#ctor(System.Type,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCRegistrationException"/> class.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="method">The method.</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCRegistrationException.#ctor(System.Type,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCRegistrationException"/> class.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="method">The method.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCRegistrationException.#ctor(System.Type,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCRegistrationException"/> class.
+            </summary>
+            <param name="registerType">Type of the register.</param>
+            <param name="implementationType">Type of the implementation.</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCRegistrationException.#ctor(System.Type,System.Type,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCRegistrationException"/> class.
+            </summary>
+            <param name="registerType">Type of the register.</param>
+            <param name="implementationType">Type of the implementation.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:TinyIoC.TinyIoCWeakReferenceException">
+            <summary>
+            Class TinyIoCWeakReferenceException.
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCWeakReferenceException.ERROR_TEXT">
+            <summary>
+            The erro r_ text
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCWeakReferenceException.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCWeakReferenceException"/> class.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCWeakReferenceException.#ctor(System.Type,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCWeakReferenceException"/> class.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:TinyIoC.TinyIoCConstructorResolutionException">
+            <summary>
+            Class TinyIoCConstructorResolutionException.
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCConstructorResolutionException.ERROR_TEXT">
+            <summary>
+            The erro r_ text
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCConstructorResolutionException.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCConstructorResolutionException"/> class.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCConstructorResolutionException.#ctor(System.Type,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCConstructorResolutionException"/> class.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCConstructorResolutionException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Exception" /> class with a specified error message and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCConstructorResolutionException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Exception" /> class with a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="T:TinyIoC.TinyIoCAutoRegistrationException">
+            <summary>
+            Class TinyIoCAutoRegistrationException.
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCAutoRegistrationException.ERROR_TEXT">
+            <summary>
+            The erro r_ text
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCAutoRegistrationException.#ctor(System.Type,System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCAutoRegistrationException"/> class.
+            </summary>
+            <param name="registerType">Type of the register.</param>
+            <param name="types">The types.</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCAutoRegistrationException.#ctor(System.Type,System.Collections.Generic.IEnumerable{System.Type},System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCAutoRegistrationException"/> class.
+            </summary>
+            <param name="registerType">Type of the register.</param>
+            <param name="types">The types.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCAutoRegistrationException.GetTypesString(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Gets the types string.
+            </summary>
+            <param name="types">The types.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="T:TinyIoC.NamedParameterOverloads">
+            <summary>
+            Name/Value pairs for specifying "user" parameters when resolving
+            </summary>
+        </member>
+        <member name="M:TinyIoC.NamedParameterOverloads.FromIDictionary(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Froms the i dictionary.
+            </summary>
+            <param name="data">The data.</param>
+            <returns>NamedParameterOverloads.</returns>
+        </member>
+        <member name="M:TinyIoC.NamedParameterOverloads.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.NamedParameterOverloads"/> class.
+            </summary>
+        </member>
+        <member name="M:TinyIoC.NamedParameterOverloads.#ctor(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.NamedParameterOverloads"/> class.
+            </summary>
+            <param name="data">The data.</param>
+        </member>
+        <member name="F:TinyIoC.NamedParameterOverloads._Default">
+            <summary>
+            The _ default
+            </summary>
+        </member>
+        <member name="P:TinyIoC.NamedParameterOverloads.Default">
+            <summary>
+            Gets the default.
+            </summary>
+            <value>The default.</value>
+        </member>
+        <member name="T:TinyIoC.UnregisteredResolutionActions">
+            <summary>
+            Enum UnregisteredResolutionActions
+            </summary>
+        </member>
+        <member name="F:TinyIoC.UnregisteredResolutionActions.AttemptResolve">
+            <summary>
+            Attempt to resolve type, even if the type isn't registered.
+            Registered types/options will always take precedence.
+            </summary>
+        </member>
+        <member name="F:TinyIoC.UnregisteredResolutionActions.Fail">
+            <summary>
+            Fail resolution if type not explicitly registered
+            </summary>
+        </member>
+        <member name="F:TinyIoC.UnregisteredResolutionActions.GenericsOnly">
+            <summary>
+            Attempt to resolve unregistered type if requested type is generic
+            and no registration exists for the specific generic parameters used.
+            Registered types/options will always take precedence.
+            </summary>
+        </member>
+        <member name="T:TinyIoC.NamedResolutionFailureActions">
+            <summary>
+            Enum NamedResolutionFailureActions
+            </summary>
+        </member>
+        <member name="F:TinyIoC.NamedResolutionFailureActions.AttemptUnnamedResolution">
+            <summary>
+            The attempt unnamed resolution
+            </summary>
+        </member>
+        <member name="F:TinyIoC.NamedResolutionFailureActions.Fail">
+            <summary>
+            The fail
+            </summary>
+        </member>
+        <member name="T:TinyIoC.ResolveOptions">
+            <summary>
+            Resolution settings
+            </summary>
+        </member>
+        <member name="F:TinyIoC.ResolveOptions._Default">
+            <summary>
+            The _ default
+            </summary>
+        </member>
+        <member name="F:TinyIoC.ResolveOptions._FailUnregisteredAndNameNotFound">
+            <summary>
+            The _ fail unregistered and name not found
+            </summary>
+        </member>
+        <member name="F:TinyIoC.ResolveOptions._FailUnregisteredOnly">
+            <summary>
+            The _ fail unregistered only
+            </summary>
+        </member>
+        <member name="F:TinyIoC.ResolveOptions._FailNameNotFoundOnly">
+            <summary>
+            The _ fail name not found only
+            </summary>
+        </member>
+        <member name="F:TinyIoC.ResolveOptions._UnregisteredResolutionAction">
+            <summary>
+            The _ unregistered resolution action
+            </summary>
+        </member>
+        <member name="F:TinyIoC.ResolveOptions._NamedResolutionFailureAction">
+            <summary>
+            The _ named resolution failure action
+            </summary>
+        </member>
+        <member name="P:TinyIoC.ResolveOptions.UnregisteredResolutionAction">
+            <summary>
+            Gets or sets the unregistered resolution action.
+            </summary>
+            <value>The unregistered resolution action.</value>
+        </member>
+        <member name="P:TinyIoC.ResolveOptions.NamedResolutionFailureAction">
+            <summary>
+            Gets or sets the named resolution failure action.
+            </summary>
+            <value>The named resolution failure action.</value>
+        </member>
+        <member name="P:TinyIoC.ResolveOptions.Default">
+            <summary>
+            Gets the default options (attempt resolution of unregistered types, fail on named resolution if name not found)
+            </summary>
+            <value>The default.</value>
+        </member>
+        <member name="P:TinyIoC.ResolveOptions.FailNameNotFoundOnly">
+            <summary>
+            Preconfigured option for attempting resolution of unregistered types and failing on named resolution if name not found
+            </summary>
+            <value>The fail name not found only.</value>
+        </member>
+        <member name="P:TinyIoC.ResolveOptions.FailUnregisteredAndNameNotFound">
+            <summary>
+            Preconfigured option for failing on resolving unregistered types and on named resolution if name not found
+            </summary>
+            <value>The fail unregistered and name not found.</value>
+        </member>
+        <member name="P:TinyIoC.ResolveOptions.FailUnregisteredOnly">
+            <summary>
+            Preconfigured option for failing on resolving unregistered types, but attempting unnamed resolution if name not found
+            </summary>
+            <value>The fail unregistered only.</value>
+        </member>
+        <member name="T:TinyIoC.TinyIoCContainer">
+            <summary>
+            Class TinyIoCContainer. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.GetChildContainer">
+            <summary>
+            Gets the child container.
+            </summary>
+            <returns>TinyIoCContainer.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.AutoRegister">
+            <summary>
+            Attempt to automatically register all non-generic classes and interfaces in the current app domain.
+            If more than one class implements an interface then only one implementation will be registered
+            although no error will be thrown.
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.AutoRegister(System.Func{System.Type,System.Boolean})">
+            <summary>
+            Attempt to automatically register all non-generic classes and interfaces in the current app domain.
+            Types will only be registered if they pass the supplied registration predicate.
+            If more than one class implements an interface then only one implementation will be registered
+            although no error will be thrown.
+            </summary>
+            <param name="registrationPredicate">Predicate to determine if a particular type should be registered</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.AutoRegister(System.Boolean)">
+            <summary>
+            Attempt to automatically register all non-generic classes and interfaces in the current app domain.
+            </summary>
+            <param name="ignoreDuplicateImplementations">Whether to ignore duplicate implementations of an interface/base class. False=throw an exception</param>
+            <exception cref="T:TinyIoC.TinyIoCAutoRegistrationException"></exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.AutoRegister(System.Boolean,System.Func{System.Type,System.Boolean})">
+            <summary>
+            Attempt to automatically register all non-generic classes and interfaces in the current app domain.
+            Types will only be registered if they pass the supplied registration predicate.
+            </summary>
+            <param name="ignoreDuplicateImplementations">Whether to ignore duplicate implementations of an interface/base class. False=throw an exception</param>
+            <param name="registrationPredicate">Predicate to determine if a particular type should be registered</param>
+            <exception cref="T:TinyIoC.TinyIoCAutoRegistrationException"></exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.AutoRegister(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            Attempt to automatically register all non-generic classes and interfaces in the specified assemblies
+            If more than one class implements an interface then only one implementation will be registered
+            although no error will be thrown.
+            </summary>
+            <param name="assemblies">Assemblies to process</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.AutoRegister(System.Collections.Generic.IEnumerable{System.Reflection.Assembly},System.Func{System.Type,System.Boolean})">
+            <summary>
+            Attempt to automatically register all non-generic classes and interfaces in the specified assemblies
+            Types will only be registered if they pass the supplied registration predicate.
+            If more than one class implements an interface then only one implementation will be registered
+            although no error will be thrown.
+            </summary>
+            <param name="assemblies">Assemblies to process</param>
+            <param name="registrationPredicate">Predicate to determine if a particular type should be registered</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.AutoRegister(System.Collections.Generic.IEnumerable{System.Reflection.Assembly},System.Boolean)">
+            <summary>
+            Attempt to automatically register all non-generic classes and interfaces in the specified assemblies
+            </summary>
+            <param name="assemblies">Assemblies to process</param>
+            <param name="ignoreDuplicateImplementations">Whether to ignore duplicate implementations of an interface/base class. False=throw an exception</param>
+            <exception cref="T:TinyIoC.TinyIoCAutoRegistrationException"></exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.AutoRegister(System.Collections.Generic.IEnumerable{System.Reflection.Assembly},System.Boolean,System.Func{System.Type,System.Boolean})">
+            <summary>
+            Attempt to automatically register all non-generic classes and interfaces in the specified assemblies
+            Types will only be registered if they pass the supplied registration predicate.
+            </summary>
+            <param name="assemblies">Assemblies to process</param>
+            <param name="ignoreDuplicateImplementations">Whether to ignore duplicate implementations of an interface/base class. False=throw an exception</param>
+            <param name="registrationPredicate">Predicate to determine if a particular type should be registered</param>
+            <exception cref="T:TinyIoC.TinyIoCAutoRegistrationException"></exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register(System.Type)">
+            <summary>
+            Creates/replaces a container class registration with default options.
+            </summary>
+            <param name="registerType">Type to register</param>
+            <returns>RegisterOptions for fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register(System.Type,System.String)">
+            <summary>
+            Creates/replaces a named container class registration with default options.
+            </summary>
+            <param name="registerType">Type to register</param>
+            <param name="name">Name of registration</param>
+            <returns>RegisterOptions for fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register(System.Type,System.Type)">
+            <summary>
+            Creates/replaces a container class registration with a given implementation and default options.
+            </summary>
+            <param name="registerType">Type to register</param>
+            <param name="registerImplementation">Type to instantiate that implements RegisterType</param>
+            <returns>RegisterOptions for fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register(System.Type,System.Type,System.String)">
+            <summary>
+            Creates/replaces a named container class registration with a given implementation and default options.
+            </summary>
+            <param name="registerType">Type to register</param>
+            <param name="registerImplementation">Type to instantiate that implements RegisterType</param>
+            <param name="name">Name of registration</param>
+            <returns>RegisterOptions for fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register(System.Type,System.Object)">
+            <summary>
+            Creates/replaces a container class registration with a specific, strong referenced, instance.
+            </summary>
+            <param name="registerType">Type to register</param>
+            <param name="instance">Instance of RegisterType to register</param>
+            <returns>RegisterOptions for fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register(System.Type,System.Object,System.String)">
+            <summary>
+            Creates/replaces a named container class registration with a specific, strong referenced, instance.
+            </summary>
+            <param name="registerType">Type to register</param>
+            <param name="instance">Instance of RegisterType to register</param>
+            <param name="name">Name of registration</param>
+            <returns>RegisterOptions for fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register(System.Type,System.Type,System.Object)">
+            <summary>
+            Creates/replaces a container class registration with a specific, strong referenced, instance.
+            </summary>
+            <param name="registerType">Type to register</param>
+            <param name="registerImplementation">Type of instance to register that implements RegisterType</param>
+            <param name="instance">Instance of RegisterImplementation to register</param>
+            <returns>RegisterOptions for fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register(System.Type,System.Type,System.Object,System.String)">
+            <summary>
+            Creates/replaces a named container class registration with a specific, strong referenced, instance.
+            </summary>
+            <param name="registerType">Type to register</param>
+            <param name="registerImplementation">Type of instance to register that implements RegisterType</param>
+            <param name="instance">Instance of RegisterImplementation to register</param>
+            <param name="name">Name of registration</param>
+            <returns>RegisterOptions for fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register(System.Type,System.Func{TinyIoC.TinyIoCContainer,TinyIoC.NamedParameterOverloads,System.Object})">
+            <summary>
+            Creates/replaces a container class registration with a user specified factory
+            </summary>
+            <param name="registerType">Type to register</param>
+            <param name="factory">Factory/lambda that returns an instance of RegisterType</param>
+            <returns>RegisterOptions for fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register(System.Type,System.Func{TinyIoC.TinyIoCContainer,TinyIoC.NamedParameterOverloads,System.Object},System.String)">
+            <summary>
+            Creates/replaces a container class registration with a user specified factory
+            </summary>
+            <param name="registerType">Type to register</param>
+            <param name="factory">Factory/lambda that returns an instance of RegisterType</param>
+            <param name="name">Name of registation</param>
+            <returns>RegisterOptions for fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register``1">
+            <summary>
+            Creates/replaces a container class registration with default options.
+            </summary>
+            <typeparam name="RegisterType">The type of the register type.</typeparam>
+            <returns>RegisterOptions for fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register``1(System.String)">
+            <summary>
+            Creates/replaces a named container class registration with default options.
+            </summary>
+            <typeparam name="RegisterType">The type of the register type.</typeparam>
+            <param name="name">Name of registration</param>
+            <returns>RegisterOptions for fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register``2">
+            <summary>
+            Creates/replaces a container class registration with a given implementation and default options.
+            </summary>
+            <typeparam name="RegisterType">Type to register</typeparam>
+            <typeparam name="RegisterImplementation">Type to instantiate that implements RegisterType</typeparam>
+            <returns>RegisterOptions for fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register``2(System.String)">
+            <summary>
+            Creates/replaces a named container class registration with a given implementation and default options.
+            </summary>
+            <typeparam name="RegisterType">Type to register</typeparam>
+            <typeparam name="RegisterImplementation">Type to instantiate that implements RegisterType</typeparam>
+            <param name="name">Name of registration</param>
+            <returns>RegisterOptions for fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register``1(``0)">
+            <summary>
+            Creates/replaces a container class registration with a specific, strong referenced, instance.
+            </summary>
+            <typeparam name="RegisterType">Type to register</typeparam>
+            <param name="instance">Instance of RegisterType to register</param>
+            <returns>RegisterOptions for fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register``1(``0,System.String)">
+            <summary>
+            Creates/replaces a named container class registration with a specific, strong referenced, instance.
+            </summary>
+            <typeparam name="RegisterType">Type to register</typeparam>
+            <param name="instance">Instance of RegisterType to register</param>
+            <param name="name">Name of registration</param>
+            <returns>RegisterOptions for fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register``2(``1)">
+            <summary>
+            Creates/replaces a container class registration with a specific, strong referenced, instance.
+            </summary>
+            <typeparam name="RegisterType">Type to register</typeparam>
+            <typeparam name="RegisterImplementation">Type of instance to register that implements RegisterType</typeparam>
+            <param name="instance">Instance of RegisterImplementation to register</param>
+            <returns>RegisterOptions for fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register``2(``1,System.String)">
+            <summary>
+            Creates/replaces a named container class registration with a specific, strong referenced, instance.
+            </summary>
+            <typeparam name="RegisterType">Type to register</typeparam>
+            <typeparam name="RegisterImplementation">Type of instance to register that implements RegisterType</typeparam>
+            <param name="instance">Instance of RegisterImplementation to register</param>
+            <param name="name">Name of registration</param>
+            <returns>RegisterOptions for fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register``1(System.Func{TinyIoC.TinyIoCContainer,TinyIoC.NamedParameterOverloads,``0})">
+            <summary>
+            Creates/replaces a container class registration with a user specified factory
+            </summary>
+            <typeparam name="RegisterType">Type to register</typeparam>
+            <param name="factory">Factory/lambda that returns an instance of RegisterType</param>
+            <returns>RegisterOptions for fluent API</returns>
+            <exception cref="T:System.ArgumentNullException">factory</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Register``1(System.Func{TinyIoC.TinyIoCContainer,TinyIoC.NamedParameterOverloads,``0},System.String)">
+            <summary>
+            Creates/replaces a named container class registration with a user specified factory
+            </summary>
+            <typeparam name="RegisterType">Type to register</typeparam>
+            <param name="factory">Factory/lambda that returns an instance of RegisterType</param>
+            <param name="name">Name of registation</param>
+            <returns>RegisterOptions for fluent API</returns>
+            <exception cref="T:System.ArgumentNullException">factory</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.RegisterMultiple``1(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Register multiple implementations of a type.
+            Internally this registers each implementation using the full name of the class as its registration name.
+            </summary>
+            <typeparam name="RegisterType">Type that each implementation implements</typeparam>
+            <param name="implementationTypes">Types that implement RegisterType</param>
+            <returns>MultiRegisterOptions for the fluent API</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.RegisterMultiple(System.Type,System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Register multiple implementations of a type.
+            Internally this registers each implementation using the full name of the class as its registration name.
+            </summary>
+            <param name="registrationType">Type that each implementation implements</param>
+            <param name="implementationTypes">Types that implement RegisterType</param>
+            <returns>MultiRegisterOptions for the fluent API</returns>
+            <exception cref="T:System.ArgumentNullException">types;types is null.</exception>
+            <exception cref="T:System.ArgumentException">
+            types: The same implementation type cannot be specificed multiple times
+            </exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Resolve(System.Type)">
+            <summary>
+            Attempts to resolve a type using default options.
+            </summary>
+            <param name="resolveType">Type to resolve</param>
+            <returns>Instance of type</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException">Unable to resolve the type.</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Resolve(System.Type,TinyIoC.ResolveOptions)">
+            <summary>
+            Attempts to resolve a type using specified options.
+            </summary>
+            <param name="resolveType">Type to resolve</param>
+            <param name="options">Resolution options</param>
+            <returns>Instance of type</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException">Unable to resolve the type.</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Resolve(System.Type,System.String)">
+            <summary>
+            Attempts to resolve a type using default options and the supplied name.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            </summary>
+            <param name="resolveType">Type to resolve</param>
+            <param name="name">Name of registration</param>
+            <returns>Instance of type</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException">Unable to resolve the type.</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Resolve(System.Type,System.String,TinyIoC.ResolveOptions)">
+            <summary>
+            Attempts to resolve a type using supplied options and  name.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            </summary>
+            <param name="resolveType">Type to resolve</param>
+            <param name="name">Name of registration</param>
+            <param name="options">Resolution options</param>
+            <returns>Instance of type</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException">Unable to resolve the type.</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Resolve(System.Type,TinyIoC.NamedParameterOverloads)">
+            <summary>
+            Attempts to resolve a type using default options and the supplied constructor parameters.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            </summary>
+            <param name="resolveType">Type to resolve</param>
+            <param name="parameters">User specified constructor parameters</param>
+            <returns>Instance of type</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException">Unable to resolve the type.</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Resolve(System.Type,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Attempts to resolve a type using specified options and the supplied constructor parameters.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            </summary>
+            <param name="resolveType">Type to resolve</param>
+            <param name="parameters">User specified constructor parameters</param>
+            <param name="options">Resolution options</param>
+            <returns>Instance of type</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException">Unable to resolve the type.</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Resolve(System.Type,System.String,TinyIoC.NamedParameterOverloads)">
+            <summary>
+            Attempts to resolve a type using default options and the supplied constructor parameters and name.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            </summary>
+            <param name="resolveType">Type to resolve</param>
+            <param name="name">Name of registration</param>
+            <param name="parameters">User specified constructor parameters</param>
+            <returns>Instance of type</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException">Unable to resolve the type.</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Resolve(System.Type,System.String,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Attempts to resolve a named type using specified options and the supplied constructor parameters.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            </summary>
+            <param name="resolveType">Type to resolve</param>
+            <param name="name">Name of registration</param>
+            <param name="parameters">User specified constructor parameters</param>
+            <param name="options">Resolution options</param>
+            <returns>Instance of type</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException">Unable to resolve the type.</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Resolve``1">
+            <summary>
+            Attempts to resolve a type using default options.
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <returns>Instance of type</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException">Unable to resolve the type.</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Resolve``1(TinyIoC.ResolveOptions)">
+            <summary>
+            Attempts to resolve a type using specified options.
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="options">Resolution options</param>
+            <returns>Instance of type</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException">Unable to resolve the type.</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Resolve``1(System.String)">
+            <summary>
+            Attempts to resolve a type using default options and the supplied name.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="name">Name of registration</param>
+            <returns>Instance of type</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException">Unable to resolve the type.</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Resolve``1(System.String,TinyIoC.ResolveOptions)">
+            <summary>
+            Attempts to resolve a type using supplied options and  name.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="name">Name of registration</param>
+            <param name="options">Resolution options</param>
+            <returns>Instance of type</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException">Unable to resolve the type.</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Resolve``1(TinyIoC.NamedParameterOverloads)">
+            <summary>
+            Attempts to resolve a type using default options and the supplied constructor parameters.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="parameters">User specified constructor parameters</param>
+            <returns>Instance of type</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException">Unable to resolve the type.</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Resolve``1(TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Attempts to resolve a type using specified options and the supplied constructor parameters.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="parameters">User specified constructor parameters</param>
+            <param name="options">Resolution options</param>
+            <returns>Instance of type</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException">Unable to resolve the type.</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Resolve``1(System.String,TinyIoC.NamedParameterOverloads)">
+            <summary>
+            Attempts to resolve a type using default options and the supplied constructor parameters and name.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="name">Name of registration</param>
+            <param name="parameters">User specified constructor parameters</param>
+            <returns>Instance of type</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException">Unable to resolve the type.</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Resolve``1(System.String,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Attempts to resolve a named type using specified options and the supplied constructor parameters.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="name">Name of registration</param>
+            <param name="parameters">User specified constructor parameters</param>
+            <param name="options">Resolution options</param>
+            <returns>Instance of type</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException">Unable to resolve the type.</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CanResolve(System.Type)">
+            <summary>
+            Attempts to predict whether a given type can be resolved with default options.
+            Note: Resolution may still fail if user defined factory registations fail to construct objects when called.
+            </summary>
+            <param name="resolveType">Type to resolve</param>
+            <returns>Bool indicating whether the type can be resolved</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CanResolve(System.Type,System.String)">
+            <summary>
+            Attempts to predict whether a given named type can be resolved with default options.
+            Note: Resolution may still fail if user defined factory registations fail to construct objects when called.
+            </summary>
+            <param name="resolveType">Type to resolve</param>
+            <param name="name">The name.</param>
+            <returns>Bool indicating whether the type can be resolved</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CanResolve(System.Type,TinyIoC.ResolveOptions)">
+            <summary>
+            Attempts to predict whether a given type can be resolved with the specified options.
+            Note: Resolution may still fail if user defined factory registations fail to construct objects when called.
+            </summary>
+            <param name="resolveType">Type to resolve</param>
+            <param name="options">Resolution options</param>
+            <returns>Bool indicating whether the type can be resolved</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CanResolve(System.Type,System.String,TinyIoC.ResolveOptions)">
+            <summary>
+            Attempts to predict whether a given named type can be resolved with the specified options.
+            Note: Resolution may still fail if user defined factory registations fail to construct objects when called.
+            </summary>
+            <param name="resolveType">Type to resolve</param>
+            <param name="name">Name of registration</param>
+            <param name="options">Resolution options</param>
+            <returns>Bool indicating whether the type can be resolved</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CanResolve(System.Type,TinyIoC.NamedParameterOverloads)">
+            <summary>
+            Attempts to predict whether a given type can be resolved with the supplied constructor parameters and default options.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            Note: Resolution may still fail if user defined factory registations fail to construct objects when called.
+            </summary>
+            <param name="resolveType">Type to resolve</param>
+            <param name="parameters">User supplied named parameter overloads</param>
+            <returns>Bool indicating whether the type can be resolved</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CanResolve(System.Type,System.String,TinyIoC.NamedParameterOverloads)">
+            <summary>
+            Attempts to predict whether a given named type can be resolved with the supplied constructor parameters and default options.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            Note: Resolution may still fail if user defined factory registations fail to construct objects when called.
+            </summary>
+            <param name="resolveType">Type to resolve</param>
+            <param name="name">Name of registration</param>
+            <param name="parameters">User supplied named parameter overloads</param>
+            <returns>Bool indicating whether the type can be resolved</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CanResolve(System.Type,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Attempts to predict whether a given type can be resolved with the supplied constructor parameters options.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            Note: Resolution may still fail if user defined factory registations fail to construct objects when called.
+            </summary>
+            <param name="resolveType">Type to resolve</param>
+            <param name="parameters">User supplied named parameter overloads</param>
+            <param name="options">Resolution options</param>
+            <returns>Bool indicating whether the type can be resolved</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CanResolve(System.Type,System.String,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Attempts to predict whether a given named type can be resolved with the supplied constructor parameters options.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            Note: Resolution may still fail if user defined factory registations fail to construct objects when called.
+            </summary>
+            <param name="resolveType">Type to resolve</param>
+            <param name="name">Name of registration</param>
+            <param name="parameters">User supplied named parameter overloads</param>
+            <param name="options">Resolution options</param>
+            <returns>Bool indicating whether the type can be resolved</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CanResolve``1">
+            <summary>
+            Attempts to predict whether a given type can be resolved with default options.
+            Note: Resolution may still fail if user defined factory registations fail to construct objects when called.
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <returns>Bool indicating whether the type can be resolved</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CanResolve``1(System.String)">
+            <summary>
+            Attempts to predict whether a given named type can be resolved with default options.
+            Note: Resolution may still fail if user defined factory registations fail to construct objects when called.
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="name">The name.</param>
+            <returns>Bool indicating whether the type can be resolved</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CanResolve``1(TinyIoC.ResolveOptions)">
+            <summary>
+            Attempts to predict whether a given type can be resolved with the specified options.
+            Note: Resolution may still fail if user defined factory registations fail to construct objects when called.
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="options">Resolution options</param>
+            <returns>Bool indicating whether the type can be resolved</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CanResolve``1(System.String,TinyIoC.ResolveOptions)">
+            <summary>
+            Attempts to predict whether a given named type can be resolved with the specified options.
+            Note: Resolution may still fail if user defined factory registations fail to construct objects when called.
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="name">Name of registration</param>
+            <param name="options">Resolution options</param>
+            <returns>Bool indicating whether the type can be resolved</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CanResolve``1(TinyIoC.NamedParameterOverloads)">
+            <summary>
+            Attempts to predict whether a given type can be resolved with the supplied constructor parameters and default options.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            Note: Resolution may still fail if user defined factory registations fail to construct objects when called.
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="parameters">User supplied named parameter overloads</param>
+            <returns>Bool indicating whether the type can be resolved</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CanResolve``1(System.String,TinyIoC.NamedParameterOverloads)">
+            <summary>
+            Attempts to predict whether a given named type can be resolved with the supplied constructor parameters and default options.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            Note: Resolution may still fail if user defined factory registations fail to construct objects when called.
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="name">Name of registration</param>
+            <param name="parameters">User supplied named parameter overloads</param>
+            <returns>Bool indicating whether the type can be resolved</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CanResolve``1(TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Attempts to predict whether a given type can be resolved with the supplied constructor parameters options.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            Note: Resolution may still fail if user defined factory registations fail to construct objects when called.
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="parameters">User supplied named parameter overloads</param>
+            <param name="options">Resolution options</param>
+            <returns>Bool indicating whether the type can be resolved</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CanResolve``1(System.String,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Attempts to predict whether a given named type can be resolved with the supplied constructor parameters options.
+            Parameters are used in conjunction with normal container resolution to find the most suitable constructor (if one exists).
+            All user supplied parameters must exist in at least one resolvable constructor of RegisterType or resolution will fail.
+            Note: Resolution may still fail if user defined factory registations fail to construct objects when called.
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="name">Name of registration</param>
+            <param name="parameters">User supplied named parameter overloads</param>
+            <param name="options">Resolution options</param>
+            <returns>Bool indicating whether the type can be resolved</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TryResolve(System.Type,System.Object@)">
+            <summary>
+            Attemps to resolve a type using the default options
+            </summary>
+            <param name="resolveType">Type of the resolve.</param>
+            <param name="resolvedType">Resolved type or default if resolve fails</param>
+            <returns>True if resolved sucessfully, false otherwise</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TryResolve(System.Type,TinyIoC.ResolveOptions,System.Object@)">
+            <summary>
+            Attemps to resolve a type using the given options
+            </summary>
+            <param name="resolveType">Type of the resolve.</param>
+            <param name="options">Resolution options</param>
+            <param name="resolvedType">Resolved type or default if resolve fails</param>
+            <returns>True if resolved sucessfully, false otherwise</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TryResolve(System.Type,System.String,System.Object@)">
+            <summary>
+            Attemps to resolve a type using the default options and given name
+            </summary>
+            <param name="resolveType">Type of the resolve.</param>
+            <param name="name">Name of registration</param>
+            <param name="resolvedType">Resolved type or default if resolve fails</param>
+            <returns>True if resolved sucessfully, false otherwise</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TryResolve(System.Type,System.String,TinyIoC.ResolveOptions,System.Object@)">
+            <summary>
+            Attemps to resolve a type using the given options and name
+            </summary>
+            <param name="resolveType">Type of the resolve.</param>
+            <param name="name">Name of registration</param>
+            <param name="options">Resolution options</param>
+            <param name="resolvedType">Resolved type or default if resolve fails</param>
+            <returns>True if resolved sucessfully, false otherwise</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TryResolve(System.Type,TinyIoC.NamedParameterOverloads,System.Object@)">
+            <summary>
+            Attemps to resolve a type using the default options and supplied constructor parameters
+            </summary>
+            <param name="resolveType">Type of the resolve.</param>
+            <param name="parameters">User specified constructor parameters</param>
+            <param name="resolvedType">Resolved type or default if resolve fails</param>
+            <returns>True if resolved sucessfully, false otherwise</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TryResolve(System.Type,System.String,TinyIoC.NamedParameterOverloads,System.Object@)">
+            <summary>
+            Attemps to resolve a type using the default options and supplied name and constructor parameters
+            </summary>
+            <param name="resolveType">Type of the resolve.</param>
+            <param name="name">Name of registration</param>
+            <param name="parameters">User specified constructor parameters</param>
+            <param name="resolvedType">Resolved type or default if resolve fails</param>
+            <returns>True if resolved sucessfully, false otherwise</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TryResolve(System.Type,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions,System.Object@)">
+            <summary>
+            Attemps to resolve a type using the supplied options and constructor parameters
+            </summary>
+            <param name="resolveType">Type of the resolve.</param>
+            <param name="parameters">User specified constructor parameters</param>
+            <param name="options">Resolution options</param>
+            <param name="resolvedType">Resolved type or default if resolve fails</param>
+            <returns>True if resolved sucessfully, false otherwise</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TryResolve(System.Type,System.String,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions,System.Object@)">
+            <summary>
+            Attemps to resolve a type using the supplied name, options and constructor parameters
+            </summary>
+            <param name="resolveType">Type of the resolve.</param>
+            <param name="name">Name of registration</param>
+            <param name="parameters">User specified constructor parameters</param>
+            <param name="options">Resolution options</param>
+            <param name="resolvedType">Resolved type or default if resolve fails</param>
+            <returns>True if resolved sucessfully, false otherwise</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TryResolve``1(``0@)">
+            <summary>
+            Attemps to resolve a type using the default options
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="resolvedType">Resolved type or default if resolve fails</param>
+            <returns>True if resolved sucessfully, false otherwise</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TryResolve``1(TinyIoC.ResolveOptions,``0@)">
+            <summary>
+            Attemps to resolve a type using the given options
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="options">Resolution options</param>
+            <param name="resolvedType">Resolved type or default if resolve fails</param>
+            <returns>True if resolved sucessfully, false otherwise</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TryResolve``1(System.String,``0@)">
+            <summary>
+            Attemps to resolve a type using the default options and given name
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="name">Name of registration</param>
+            <param name="resolvedType">Resolved type or default if resolve fails</param>
+            <returns>True if resolved sucessfully, false otherwise</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TryResolve``1(System.String,TinyIoC.ResolveOptions,``0@)">
+            <summary>
+            Attemps to resolve a type using the given options and name
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="name">Name of registration</param>
+            <param name="options">Resolution options</param>
+            <param name="resolvedType">Resolved type or default if resolve fails</param>
+            <returns>True if resolved sucessfully, false otherwise</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TryResolve``1(TinyIoC.NamedParameterOverloads,``0@)">
+            <summary>
+            Attemps to resolve a type using the default options and supplied constructor parameters
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="parameters">User specified constructor parameters</param>
+            <param name="resolvedType">Resolved type or default if resolve fails</param>
+            <returns>True if resolved sucessfully, false otherwise</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TryResolve``1(System.String,TinyIoC.NamedParameterOverloads,``0@)">
+            <summary>
+            Attemps to resolve a type using the default options and supplied name and constructor parameters
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="name">Name of registration</param>
+            <param name="parameters">User specified constructor parameters</param>
+            <param name="resolvedType">Resolved type or default if resolve fails</param>
+            <returns>True if resolved sucessfully, false otherwise</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TryResolve``1(TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions,``0@)">
+            <summary>
+            Attemps to resolve a type using the supplied options and constructor parameters
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="parameters">User specified constructor parameters</param>
+            <param name="options">Resolution options</param>
+            <param name="resolvedType">Resolved type or default if resolve fails</param>
+            <returns>True if resolved sucessfully, false otherwise</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TryResolve``1(System.String,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions,``0@)">
+            <summary>
+            Attemps to resolve a type using the supplied name, options and constructor parameters
+            </summary>
+            <typeparam name="ResolveType">Type to resolve</typeparam>
+            <param name="name">Name of registration</param>
+            <param name="parameters">User specified constructor parameters</param>
+            <param name="options">Resolution options</param>
+            <param name="resolvedType">Resolved type or default if resolve fails</param>
+            <returns>True if resolved sucessfully, false otherwise</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.ResolveAll(System.Type,System.Boolean)">
+            <summary>
+            Returns all registrations of a type
+            </summary>
+            <param name="resolveType">Type of the resolve.</param>
+            <param name="includeUnnamed">Whether to include un-named (default) registrations</param>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.ResolveAll(System.Type)">
+            <summary>
+            Returns all registrations of a type, both named and unnamed
+            </summary>
+            <param name="resolveType">Type of the resolve.</param>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.ResolveAll``1(System.Boolean)">
+            <summary>
+            Returns all registrations of a type
+            </summary>
+            <typeparam name="ResolveType">Type to resolveAll</typeparam>
+            <param name="includeUnnamed">Whether to include un-named (default) registrations</param>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.ResolveAll``1">
+            <summary>
+            Returns all registrations of a type, both named and unnamed
+            </summary>
+            <typeparam name="ResolveType">Type to resolveAll</typeparam>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.BuildUp(System.Object)">
+            <summary>
+            Attempts to resolve all public property dependencies on the given object.
+            </summary>
+            <param name="input">Object to "build up"</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.BuildUp(System.Object,TinyIoC.ResolveOptions)">
+            <summary>
+            Attempts to resolve all public property dependencies on the given object using the given resolve options.
+            </summary>
+            <param name="input">Object to "build up"</param>
+            <param name="resolveOptions">Resolve options to use</param>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer._Current">
+            <summary>
+            The _ current
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:TinyIoC.TinyIoCContainer"/> class.
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer._RegisteredTypes">
+            <summary>
+            The _ registered types
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCContainer"/> class.
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer._Parent">
+            <summary>
+            The _ parent
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.#ctor(TinyIoC.TinyIoCContainer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCContainer"/> class.
+            </summary>
+            <param name="parent">The parent.</param>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer._AutoRegisterLock">
+            <summary>
+            The _ automatic register lock
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.AutoRegisterInternal(System.Collections.Generic.IEnumerable{System.Reflection.Assembly},System.Boolean,System.Func{System.Type,System.Boolean})">
+            <summary>
+            Automatics the register internal.
+            </summary>
+            <param name="assemblies">The assemblies.</param>
+            <param name="ignoreDuplicateImplementations">if set to <c>true</c> [ignore duplicate implementations].</param>
+            <param name="registrationPredicate">The registration predicate.</param>
+            <exception cref="T:TinyIoC.TinyIoCAutoRegistrationException"></exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.IsIgnoredAssembly(System.Reflection.Assembly)">
+            <summary>
+            Determines whether [is ignored assembly] [the specified assembly].
+            </summary>
+            <param name="assembly">The assembly.</param>
+            <returns><c>true</c> if [is ignored assembly] [the specified assembly]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.IsIgnoredType(System.Type,System.Func{System.Type,System.Boolean})">
+            <summary>
+            Determines whether [is ignored type] [the specified type].
+            </summary>
+            <param name="type">The type.</param>
+            <param name="registrationPredicate">The registration predicate.</param>
+            <returns><c>true</c> if [is ignored type] [the specified type]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.RegisterDefaultTypes">
+            <summary>
+            Registers the default types.
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.GetCurrentFactory(TinyIoC.TinyIoCContainer.TypeRegistration)">
+            <summary>
+            Gets the current factory.
+            </summary>
+            <param name="registration">The registration.</param>
+            <returns>ObjectFactoryBase.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.RegisterInternal(System.Type,System.String,TinyIoC.TinyIoCContainer.ObjectFactoryBase)">
+            <summary>
+            Registers the internal.
+            </summary>
+            <param name="registerType">Type of the register.</param>
+            <param name="name">The name.</param>
+            <param name="factory">The factory.</param>
+            <returns>RegisterOptions.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.AddUpdateRegistration(TinyIoC.TinyIoCContainer.TypeRegistration,TinyIoC.TinyIoCContainer.ObjectFactoryBase)">
+            <summary>
+            Adds the update registration.
+            </summary>
+            <param name="typeRegistration">The type registration.</param>
+            <param name="factory">The factory.</param>
+            <returns>RegisterOptions.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.RemoveRegistration(TinyIoC.TinyIoCContainer.TypeRegistration)">
+            <summary>
+            Removes the registration.
+            </summary>
+            <param name="typeRegistration">The type registration.</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.GetDefaultObjectFactory(System.Type,System.Type)">
+            <summary>
+            Gets the default object factory.
+            </summary>
+            <param name="registerType">Type of the register.</param>
+            <param name="registerImplementation">The register implementation.</param>
+            <returns>ObjectFactoryBase.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CanResolveInternal(TinyIoC.TinyIoCContainer.TypeRegistration,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Determines whether this instance [can resolve internal] the specified registration.
+            </summary>
+            <param name="registration">The registration.</param>
+            <param name="parameters">The parameters.</param>
+            <param name="options">The options.</param>
+            <returns><c>true</c> if this instance [can resolve internal] the specified registration; otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentNullException">parameters</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.IsIEnumerableRequest(System.Type)">
+            <summary>
+            Determines whether [is i enumerable request] [the specified type].
+            </summary>
+            <param name="type">The type.</param>
+            <returns><c>true</c> if [is i enumerable request] [the specified type]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.IsAutomaticLazyFactoryRequest(System.Type)">
+            <summary>
+            Determines whether [is automatic lazy factory request] [the specified type].
+            </summary>
+            <param name="type">The type.</param>
+            <returns><c>true</c> if [is automatic lazy factory request] [the specified type]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.GetParentObjectFactory(TinyIoC.TinyIoCContainer.TypeRegistration)">
+            <summary>
+            Gets the parent object factory.
+            </summary>
+            <param name="registration">The registration.</param>
+            <returns>ObjectFactoryBase.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.ResolveInternal(TinyIoC.TinyIoCContainer.TypeRegistration,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Resolves the internal.
+            </summary>
+            <param name="registration">The registration.</param>
+            <param name="parameters">The parameters.</param>
+            <param name="options">The options.</param>
+            <returns>System.Object.</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException">
+            </exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.GetIEnumerableRequest(System.Type)">
+            <summary>
+            Gets the i enumerable request.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CanConstruct(System.Reflection.ConstructorInfo,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Determines whether this instance can construct the specified ctor.
+            </summary>
+            <param name="ctor">The ctor.</param>
+            <param name="parameters">The parameters.</param>
+            <param name="options">The options.</param>
+            <returns><c>true</c> if this instance can construct the specified ctor; otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentNullException">parameters</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.GetBestConstructor(System.Type,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Gets the best constructor.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="parameters">The parameters.</param>
+            <param name="options">The options.</param>
+            <returns>ConstructorInfo.</returns>
+            <exception cref="T:System.ArgumentNullException">parameters</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.GetTypeConstructors(System.Type)">
+            <summary>
+            Gets the type constructors.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>IEnumerable&lt;ConstructorInfo&gt;.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.ConstructType(System.Type,System.Type,TinyIoC.ResolveOptions)">
+            <summary>
+            Constructs the type.
+            </summary>
+            <param name="requestedType">Type of the requested.</param>
+            <param name="implementationType">Type of the implementation.</param>
+            <param name="options">The options.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.ConstructType(System.Type,System.Type,System.Reflection.ConstructorInfo,TinyIoC.ResolveOptions)">
+            <summary>
+            Constructs the type.
+            </summary>
+            <param name="requestedType">Type of the requested.</param>
+            <param name="implementationType">Type of the implementation.</param>
+            <param name="constructor">The constructor.</param>
+            <param name="options">The options.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.ConstructType(System.Type,System.Type,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Constructs the type.
+            </summary>
+            <param name="requestedType">Type of the requested.</param>
+            <param name="implementationType">Type of the implementation.</param>
+            <param name="parameters">The parameters.</param>
+            <param name="options">The options.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.ConstructType(System.Type,System.Type,System.Reflection.ConstructorInfo,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Constructs the type.
+            </summary>
+            <param name="requestedType">Type of the requested.</param>
+            <param name="implementationType">Type of the implementation.</param>
+            <param name="constructor">The constructor.</param>
+            <param name="parameters">The parameters.</param>
+            <param name="options">The options.</param>
+            <returns>System.Object.</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException">
+            </exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.BuildUpInternal(System.Object,TinyIoC.ResolveOptions)">
+            <summary>
+            Builds up internal.
+            </summary>
+            <param name="input">The input.</param>
+            <param name="resolveOptions">The resolve options.</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.GetParentRegistrationsForType(System.Type)">
+            <summary>
+            Gets the type of the parent registrations for.
+            </summary>
+            <param name="resolveType">Type of the resolve.</param>
+            <returns>IEnumerable&lt;TypeRegistration&gt;.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.ResolveAllInternal(System.Type,System.Boolean)">
+            <summary>
+            Resolves all internal.
+            </summary>
+            <param name="resolveType">Type of the resolve.</param>
+            <param name="includeUnnamed">if set to <c>true</c> [include unnamed].</param>
+            <returns>IEnumerable&lt;System.Object&gt;.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.IsValidAssignment(System.Type,System.Type)">
+            <summary>
+            Determines whether [is valid assignment] [the specified register type].
+            </summary>
+            <param name="registerType">Type of the register.</param>
+            <param name="registerImplementation">The register implementation.</param>
+            <returns><c>true</c> if [is valid assignment] [the specified register type]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.disposed">
+            <summary>
+            The disposed
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.Current">
+            <summary>
+            Lazy created Singleton instance of the container for simple scenarios
+            </summary>
+            <value>The current.</value>
+        </member>
+        <member name="T:TinyIoC.TinyIoCContainer.RegisterOptions">
+            <summary>
+            Registration options for "fluent" API
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.RegisterOptions._Container">
+            <summary>
+            The _ container
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.RegisterOptions._Registration">
+            <summary>
+            The _ registration
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.RegisterOptions.#ctor(TinyIoC.TinyIoCContainer,TinyIoC.TinyIoCContainer.TypeRegistration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCContainer.RegisterOptions"/> class.
+            </summary>
+            <param name="container">The container.</param>
+            <param name="registration">The registration.</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.RegisterOptions.AsSingleton">
+            <summary>
+            Make registration a singleton (single instance) if possible
+            </summary>
+            <returns>RegisterOptions</returns>
+            <exception cref="T:TinyIoC.TinyIoCRegistrationException">singleton</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.RegisterOptions.AsMultiInstance">
+            <summary>
+            Make registration multi-instance if possible
+            </summary>
+            <returns>RegisterOptions</returns>
+            <exception cref="T:TinyIoC.TinyIoCRegistrationException">multi-instance</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.RegisterOptions.WithWeakReference">
+            <summary>
+            Make registration hold a weak reference if possible
+            </summary>
+            <returns>RegisterOptions</returns>
+            <exception cref="T:TinyIoC.TinyIoCRegistrationException">weak reference</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.RegisterOptions.WithStrongReference">
+            <summary>
+            Make registration hold a strong reference if possible
+            </summary>
+            <returns>RegisterOptions</returns>
+            <exception cref="T:TinyIoC.TinyIoCRegistrationException">strong reference</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.RegisterOptions.UsingConstructor``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Make registration using constructor
+            </summary>
+            <returns>RegisterOptions</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.RegisterOptions.ToCustomLifetimeManager(TinyIoC.TinyIoCContainer.RegisterOptions,TinyIoC.TinyIoCContainer.ITinyIoCObjectLifetimeProvider,System.String)">
+            <summary>
+            Switches to a custom lifetime manager factory if possible.
+            Usually used for RegisterOptions "To*" extension methods such as the ASP.Net per-request one.
+            </summary>
+            <param name="instance">RegisterOptions instance</param>
+            <param name="lifetimeProvider">Custom lifetime manager</param>
+            <param name="errorString">Error string to display if switch fails</param>
+            <returns>RegisterOptions</returns>
+            <exception cref="T:System.ArgumentNullException">
+            instance;instance is null.
+            or
+            lifetimeProvider;lifetimeProvider is null.
+            </exception>
+            <exception cref="T:System.ArgumentException">errorString is null or empty.;errorString</exception>
+            <exception cref="T:TinyIoC.TinyIoCRegistrationException"></exception>
+        </member>
+        <member name="T:TinyIoC.TinyIoCContainer.MultiRegisterOptions">
+            <summary>
+            Registration options for "fluent" API when registering multiple implementations
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.MultiRegisterOptions._RegisterOptions">
+            <summary>
+            The _ register options
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.MultiRegisterOptions.#ctor(System.Collections.Generic.IEnumerable{TinyIoC.TinyIoCContainer.RegisterOptions})">
+            <summary>
+            Initializes a new instance of the MultiRegisterOptions class.
+            </summary>
+            <param name="registerOptions">Registration options</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.MultiRegisterOptions.AsSingleton">
+            <summary>
+            Make registration a singleton (single instance) if possible
+            </summary>
+            <returns>RegisterOptions</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.MultiRegisterOptions.AsMultiInstance">
+            <summary>
+            Make registration multi-instance if possible
+            </summary>
+            <returns>MultiRegisterOptions</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.MultiRegisterOptions.ExecuteOnAllRegisterOptions(System.Func{TinyIoC.TinyIoCContainer.RegisterOptions,TinyIoC.TinyIoCContainer.RegisterOptions})">
+            <summary>
+            Executes the on all register options.
+            </summary>
+            <param name="action">The action.</param>
+            <returns>IEnumerable&lt;RegisterOptions&gt;.</returns>
+        </member>
+        <member name="T:TinyIoC.TinyIoCContainer.ITinyIoCObjectLifetimeProvider">
+            <summary>
+            Provides custom lifetime management for ASP.Net per-request lifetimes etc.
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.ITinyIoCObjectLifetimeProvider.GetObject">
+            <summary>
+            Gets the stored object if it exists, or null if not
+            </summary>
+            <returns>Object instance or null</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.ITinyIoCObjectLifetimeProvider.SetObject(System.Object)">
+            <summary>
+            Store the object
+            </summary>
+            <param name="value">Object to store</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.ITinyIoCObjectLifetimeProvider.ReleaseObject">
+            <summary>
+            Release the object
+            </summary>
+        </member>
+        <member name="T:TinyIoC.TinyIoCContainer.ObjectFactoryBase">
+            <summary>
+            Class ObjectFactoryBase.
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.ObjectFactoryBase.GetObject(System.Type,TinyIoC.TinyIoCContainer,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Create the type
+            </summary>
+            <param name="requestedType">Type user requested to be resolved</param>
+            <param name="container">Container that requested the creation</param>
+            <param name="parameters">Any user parameters passed</param>
+            <param name="options">The options.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.ObjectFactoryBase.GetCustomObjectLifetimeVariant(TinyIoC.TinyIoCContainer.ITinyIoCObjectLifetimeProvider,System.String)">
+            <summary>
+            Gets the custom object lifetime variant.
+            </summary>
+            <param name="lifetimeProvider">The lifetime provider.</param>
+            <param name="errorString">The error string.</param>
+            <returns>ObjectFactoryBase.</returns>
+            <exception cref="T:TinyIoC.TinyIoCRegistrationException"></exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.ObjectFactoryBase.SetConstructor(System.Reflection.ConstructorInfo)">
+            <summary>
+            Sets the constructor.
+            </summary>
+            <param name="constructor">The constructor.</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.ObjectFactoryBase.GetFactoryForChildContainer(System.Type,TinyIoC.TinyIoCContainer,TinyIoC.TinyIoCContainer)">
+            <summary>
+            Gets the factory for child container.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="parent">The parent.</param>
+            <param name="child">The child.</param>
+            <returns>ObjectFactoryBase.</returns>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.ObjectFactoryBase.AssumeConstruction">
+            <summary>
+            Whether to assume this factory sucessfully constructs its objects
+            Generally set to true for delegate style factories as CanResolve cannot delve
+            into the delegates they contain.
+            </summary>
+            <value><c>true</c> if [assume construction]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.ObjectFactoryBase.CreatesType">
+            <summary>
+            The type the factory instantiates
+            </summary>
+            <value>The type of the creates.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.ObjectFactoryBase.Constructor">
+            <summary>
+            Constructor to use, if specified
+            </summary>
+            <value>The constructor.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.ObjectFactoryBase.SingletonVariant">
+            <summary>
+            Gets the singleton variant.
+            </summary>
+            <value>The singleton variant.</value>
+            <exception cref="T:TinyIoC.TinyIoCRegistrationException">singleton</exception>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.ObjectFactoryBase.MultiInstanceVariant">
+            <summary>
+            Gets the multi instance variant.
+            </summary>
+            <value>The multi instance variant.</value>
+            <exception cref="T:TinyIoC.TinyIoCRegistrationException">multi-instance</exception>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.ObjectFactoryBase.StrongReferenceVariant">
+            <summary>
+            Gets the strong reference variant.
+            </summary>
+            <value>The strong reference variant.</value>
+            <exception cref="T:TinyIoC.TinyIoCRegistrationException">strong reference</exception>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.ObjectFactoryBase.WeakReferenceVariant">
+            <summary>
+            Gets the weak reference variant.
+            </summary>
+            <value>The weak reference variant.</value>
+            <exception cref="T:TinyIoC.TinyIoCRegistrationException">weak reference</exception>
+        </member>
+        <member name="T:TinyIoC.TinyIoCContainer.MultiInstanceFactory">
+            <summary>
+            IObjectFactory that creates new instances of types for each resolution
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.MultiInstanceFactory.registerType">
+            <summary>
+            The register type
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.MultiInstanceFactory.registerImplementation">
+            <summary>
+            The register implementation
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.MultiInstanceFactory.#ctor(System.Type,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCContainer.MultiInstanceFactory"/> class.
+            </summary>
+            <param name="registerType">Type of the register.</param>
+            <param name="registerImplementation">The register implementation.</param>
+            <exception cref="T:TinyIoC.TinyIoCRegistrationTypeException">
+            MultiInstanceFactory
+            or
+            MultiInstanceFactory
+            </exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.MultiInstanceFactory.GetObject(System.Type,TinyIoC.TinyIoCContainer,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Create the type
+            </summary>
+            <param name="requestedType">Type user requested to be resolved</param>
+            <param name="container">Container that requested the creation</param>
+            <param name="parameters">Any user parameters passed</param>
+            <param name="options">The options.</param>
+            <returns>System.Object.</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException"></exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.MultiInstanceFactory.GetCustomObjectLifetimeVariant(TinyIoC.TinyIoCContainer.ITinyIoCObjectLifetimeProvider,System.String)">
+            <summary>
+            Gets the custom object lifetime variant.
+            </summary>
+            <param name="lifetimeProvider">The lifetime provider.</param>
+            <param name="errorString">The error string.</param>
+            <returns>ObjectFactoryBase.</returns>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.MultiInstanceFactory.CreatesType">
+            <summary>
+            The type the factory instantiates
+            </summary>
+            <value>The type of the creates.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.MultiInstanceFactory.SingletonVariant">
+            <summary>
+            Gets the singleton variant.
+            </summary>
+            <value>The singleton variant.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.MultiInstanceFactory.MultiInstanceVariant">
+            <summary>
+            Gets the multi instance variant.
+            </summary>
+            <value>The multi instance variant.</value>
+        </member>
+        <member name="T:TinyIoC.TinyIoCContainer.DelegateFactory">
+            <summary>
+            IObjectFactory that invokes a specified delegate to construct the object
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.DelegateFactory.registerType">
+            <summary>
+            The register type
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.DelegateFactory._factory">
+            <summary>
+            The _factory
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.DelegateFactory.GetObject(System.Type,TinyIoC.TinyIoCContainer,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Create the type
+            </summary>
+            <param name="requestedType">Type user requested to be resolved</param>
+            <param name="container">Container that requested the creation</param>
+            <param name="parameters">Any user parameters passed</param>
+            <param name="options">The options.</param>
+            <returns>System.Object.</returns>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException"></exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.DelegateFactory.#ctor(System.Type,System.Func{TinyIoC.TinyIoCContainer,TinyIoC.NamedParameterOverloads,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCContainer.DelegateFactory"/> class.
+            </summary>
+            <param name="registerType">Type of the register.</param>
+            <param name="factory">The factory.</param>
+            <exception cref="T:System.ArgumentNullException">factory</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.DelegateFactory.SetConstructor(System.Reflection.ConstructorInfo)">
+            <summary>
+            Sets the constructor.
+            </summary>
+            <param name="constructor">The constructor.</param>
+            <exception cref="T:TinyIoC.TinyIoCConstructorResolutionException">Constructor selection is not possible for delegate factory registrations</exception>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.DelegateFactory.AssumeConstruction">
+            <summary>
+            Whether to assume this factory sucessfully constructs its objects
+            Generally set to true for delegate style factories as CanResolve cannot delve
+            into the delegates they contain.
+            </summary>
+            <value><c>true</c> if [assume construction]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.DelegateFactory.CreatesType">
+            <summary>
+            The type the factory instantiates
+            </summary>
+            <value>The type of the creates.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.DelegateFactory.WeakReferenceVariant">
+            <summary>
+            Gets the weak reference variant.
+            </summary>
+            <value>The weak reference variant.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.DelegateFactory.StrongReferenceVariant">
+            <summary>
+            Gets the strong reference variant.
+            </summary>
+            <value>The strong reference variant.</value>
+        </member>
+        <member name="T:TinyIoC.TinyIoCContainer.WeakDelegateFactory">
+            <summary>
+            IObjectFactory that invokes a specified delegate to construct the object
+            Holds the delegate using a weak reference
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.WeakDelegateFactory.registerType">
+            <summary>
+            The register type
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.WeakDelegateFactory._factory">
+            <summary>
+            The _factory
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.WeakDelegateFactory.GetObject(System.Type,TinyIoC.TinyIoCContainer,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Create the type
+            </summary>
+            <param name="requestedType">Type user requested to be resolved</param>
+            <param name="container">Container that requested the creation</param>
+            <param name="parameters">Any user parameters passed</param>
+            <param name="options">The options.</param>
+            <returns>System.Object.</returns>
+            <exception cref="T:TinyIoC.TinyIoCWeakReferenceException"></exception>
+            <exception cref="T:TinyIoC.TinyIoCResolutionException"></exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.WeakDelegateFactory.#ctor(System.Type,System.Func{TinyIoC.TinyIoCContainer,TinyIoC.NamedParameterOverloads,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCContainer.WeakDelegateFactory"/> class.
+            </summary>
+            <param name="registerType">Type of the register.</param>
+            <param name="factory">The factory.</param>
+            <exception cref="T:System.ArgumentNullException">factory</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.WeakDelegateFactory.SetConstructor(System.Reflection.ConstructorInfo)">
+            <summary>
+            Sets the constructor.
+            </summary>
+            <param name="constructor">The constructor.</param>
+            <exception cref="T:TinyIoC.TinyIoCConstructorResolutionException">Constructor selection is not possible for delegate factory registrations</exception>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.WeakDelegateFactory.AssumeConstruction">
+            <summary>
+            Whether to assume this factory sucessfully constructs its objects
+            Generally set to true for delegate style factories as CanResolve cannot delve
+            into the delegates they contain.
+            </summary>
+            <value><c>true</c> if [assume construction]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.WeakDelegateFactory.CreatesType">
+            <summary>
+            The type the factory instantiates
+            </summary>
+            <value>The type of the creates.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.WeakDelegateFactory.StrongReferenceVariant">
+            <summary>
+            Gets the strong reference variant.
+            </summary>
+            <value>The strong reference variant.</value>
+            <exception cref="T:TinyIoC.TinyIoCWeakReferenceException"></exception>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.WeakDelegateFactory.WeakReferenceVariant">
+            <summary>
+            Gets the weak reference variant.
+            </summary>
+            <value>The weak reference variant.</value>
+        </member>
+        <member name="T:TinyIoC.TinyIoCContainer.InstanceFactory">
+            <summary>
+            Stores an particular instance to return for a type
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.InstanceFactory.registerType">
+            <summary>
+            The register type
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.InstanceFactory.registerImplementation">
+            <summary>
+            The register implementation
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.InstanceFactory._instance">
+            <summary>
+            The _instance
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.InstanceFactory.#ctor(System.Type,System.Type,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCContainer.InstanceFactory"/> class.
+            </summary>
+            <param name="registerType">Type of the register.</param>
+            <param name="registerImplementation">The register implementation.</param>
+            <param name="instance">The instance.</param>
+            <exception cref="T:TinyIoC.TinyIoCRegistrationTypeException">InstanceFactory</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.InstanceFactory.GetObject(System.Type,TinyIoC.TinyIoCContainer,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Create the type
+            </summary>
+            <param name="requestedType">Type user requested to be resolved</param>
+            <param name="container">Container that requested the creation</param>
+            <param name="parameters">Any user parameters passed</param>
+            <param name="options">The options.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.InstanceFactory.SetConstructor(System.Reflection.ConstructorInfo)">
+            <summary>
+            Sets the constructor.
+            </summary>
+            <param name="constructor">The constructor.</param>
+            <exception cref="T:TinyIoC.TinyIoCConstructorResolutionException">Constructor selection is not possible for instance factory registrations</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.InstanceFactory.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.InstanceFactory.AssumeConstruction">
+            <summary>
+            Whether to assume this factory sucessfully constructs its objects
+            Generally set to true for delegate style factories as CanResolve cannot delve
+            into the delegates they contain.
+            </summary>
+            <value><c>true</c> if [assume construction]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.InstanceFactory.CreatesType">
+            <summary>
+            The type the factory instantiates
+            </summary>
+            <value>The type of the creates.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.InstanceFactory.MultiInstanceVariant">
+            <summary>
+            Gets the multi instance variant.
+            </summary>
+            <value>The multi instance variant.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.InstanceFactory.WeakReferenceVariant">
+            <summary>
+            Gets the weak reference variant.
+            </summary>
+            <value>The weak reference variant.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.InstanceFactory.StrongReferenceVariant">
+            <summary>
+            Gets the strong reference variant.
+            </summary>
+            <value>The strong reference variant.</value>
+        </member>
+        <member name="T:TinyIoC.TinyIoCContainer.WeakInstanceFactory">
+            <summary>
+            Stores an particular instance to return for a type
+            Stores the instance with a weak reference
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.WeakInstanceFactory.registerType">
+            <summary>
+            The register type
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.WeakInstanceFactory.registerImplementation">
+            <summary>
+            The register implementation
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.WeakInstanceFactory._instance">
+            <summary>
+            The _instance
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.WeakInstanceFactory.#ctor(System.Type,System.Type,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCContainer.WeakInstanceFactory"/> class.
+            </summary>
+            <param name="registerType">Type of the register.</param>
+            <param name="registerImplementation">The register implementation.</param>
+            <param name="instance">The instance.</param>
+            <exception cref="T:TinyIoC.TinyIoCRegistrationTypeException">WeakInstanceFactory</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.WeakInstanceFactory.GetObject(System.Type,TinyIoC.TinyIoCContainer,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Create the type
+            </summary>
+            <param name="requestedType">Type user requested to be resolved</param>
+            <param name="container">Container that requested the creation</param>
+            <param name="parameters">Any user parameters passed</param>
+            <param name="options">The options.</param>
+            <returns>System.Object.</returns>
+            <exception cref="T:TinyIoC.TinyIoCWeakReferenceException"></exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.WeakInstanceFactory.SetConstructor(System.Reflection.ConstructorInfo)">
+            <summary>
+            Sets the constructor.
+            </summary>
+            <param name="constructor">The constructor.</param>
+            <exception cref="T:TinyIoC.TinyIoCConstructorResolutionException">Constructor selection is not possible for instance factory registrations</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.WeakInstanceFactory.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.WeakInstanceFactory.CreatesType">
+            <summary>
+            The type the factory instantiates
+            </summary>
+            <value>The type of the creates.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.WeakInstanceFactory.MultiInstanceVariant">
+            <summary>
+            Gets the multi instance variant.
+            </summary>
+            <value>The multi instance variant.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.WeakInstanceFactory.WeakReferenceVariant">
+            <summary>
+            Gets the weak reference variant.
+            </summary>
+            <value>The weak reference variant.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.WeakInstanceFactory.StrongReferenceVariant">
+            <summary>
+            Gets the strong reference variant.
+            </summary>
+            <value>The strong reference variant.</value>
+            <exception cref="T:TinyIoC.TinyIoCWeakReferenceException"></exception>
+        </member>
+        <member name="T:TinyIoC.TinyIoCContainer.SingletonFactory">
+            <summary>
+            A factory that lazy instantiates a type and always returns the same instance
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.SingletonFactory.registerType">
+            <summary>
+            The register type
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.SingletonFactory.registerImplementation">
+            <summary>
+            The register implementation
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.SingletonFactory.SingletonLock">
+            <summary>
+            The singleton lock
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.SingletonFactory._Current">
+            <summary>
+            The _ current
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.SingletonFactory.#ctor(System.Type,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCContainer.SingletonFactory"/> class.
+            </summary>
+            <param name="registerType">Type of the register.</param>
+            <param name="registerImplementation">The register implementation.</param>
+            <exception cref="T:TinyIoC.TinyIoCRegistrationTypeException">
+            SingletonFactory
+            or
+            SingletonFactory
+            </exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.SingletonFactory.GetObject(System.Type,TinyIoC.TinyIoCContainer,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Create the type
+            </summary>
+            <param name="requestedType">Type user requested to be resolved</param>
+            <param name="container">Container that requested the creation</param>
+            <param name="parameters">Any user parameters passed</param>
+            <param name="options">The options.</param>
+            <returns>System.Object.</returns>
+            <exception cref="T:System.ArgumentException">Cannot specify parameters for singleton types</exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.SingletonFactory.GetCustomObjectLifetimeVariant(TinyIoC.TinyIoCContainer.ITinyIoCObjectLifetimeProvider,System.String)">
+            <summary>
+            Gets the custom object lifetime variant.
+            </summary>
+            <param name="lifetimeProvider">The lifetime provider.</param>
+            <param name="errorString">The error string.</param>
+            <returns>ObjectFactoryBase.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.SingletonFactory.GetFactoryForChildContainer(System.Type,TinyIoC.TinyIoCContainer,TinyIoC.TinyIoCContainer)">
+            <summary>
+            Gets the factory for child container.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="parent">The parent.</param>
+            <param name="child">The child.</param>
+            <returns>ObjectFactoryBase.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.SingletonFactory.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.SingletonFactory.CreatesType">
+            <summary>
+            The type the factory instantiates
+            </summary>
+            <value>The type of the creates.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.SingletonFactory.SingletonVariant">
+            <summary>
+            Gets the singleton variant.
+            </summary>
+            <value>The singleton variant.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.SingletonFactory.MultiInstanceVariant">
+            <summary>
+            Gets the multi instance variant.
+            </summary>
+            <value>The multi instance variant.</value>
+        </member>
+        <member name="T:TinyIoC.TinyIoCContainer.CustomObjectLifetimeFactory">
+            <summary>
+            A factory that offloads lifetime to an external lifetime provider
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.CustomObjectLifetimeFactory.SingletonLock">
+            <summary>
+            The singleton lock
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.CustomObjectLifetimeFactory.registerType">
+            <summary>
+            The register type
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.CustomObjectLifetimeFactory.registerImplementation">
+            <summary>
+            The register implementation
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.CustomObjectLifetimeFactory._LifetimeProvider">
+            <summary>
+            The _ lifetime provider
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CustomObjectLifetimeFactory.#ctor(System.Type,System.Type,TinyIoC.TinyIoCContainer.ITinyIoCObjectLifetimeProvider,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCContainer.CustomObjectLifetimeFactory"/> class.
+            </summary>
+            <param name="registerType">Type of the register.</param>
+            <param name="registerImplementation">The register implementation.</param>
+            <param name="lifetimeProvider">The lifetime provider.</param>
+            <param name="errorMessage">The error message.</param>
+            <exception cref="T:System.ArgumentNullException">lifetimeProvider;lifetimeProvider is null.</exception>
+            <exception cref="T:TinyIoC.TinyIoCRegistrationTypeException">
+            SingletonFactory
+            or
+            </exception>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CustomObjectLifetimeFactory.GetObject(System.Type,TinyIoC.TinyIoCContainer,TinyIoC.NamedParameterOverloads,TinyIoC.ResolveOptions)">
+            <summary>
+            Create the type
+            </summary>
+            <param name="requestedType">Type user requested to be resolved</param>
+            <param name="container">Container that requested the creation</param>
+            <param name="parameters">Any user parameters passed</param>
+            <param name="options">The options.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CustomObjectLifetimeFactory.GetCustomObjectLifetimeVariant(TinyIoC.TinyIoCContainer.ITinyIoCObjectLifetimeProvider,System.String)">
+            <summary>
+            Gets the custom object lifetime variant.
+            </summary>
+            <param name="lifetimeProvider">The lifetime provider.</param>
+            <param name="errorString">The error string.</param>
+            <returns>ObjectFactoryBase.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CustomObjectLifetimeFactory.GetFactoryForChildContainer(System.Type,TinyIoC.TinyIoCContainer,TinyIoC.TinyIoCContainer)">
+            <summary>
+            Gets the factory for child container.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="parent">The parent.</param>
+            <param name="child">The child.</param>
+            <returns>ObjectFactoryBase.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.CustomObjectLifetimeFactory.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.CustomObjectLifetimeFactory.CreatesType">
+            <summary>
+            The type the factory instantiates
+            </summary>
+            <value>The type of the creates.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.CustomObjectLifetimeFactory.SingletonVariant">
+            <summary>
+            Gets the singleton variant.
+            </summary>
+            <value>The singleton variant.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.CustomObjectLifetimeFactory.MultiInstanceVariant">
+            <summary>
+            Gets the multi instance variant.
+            </summary>
+            <value>The multi instance variant.</value>
+        </member>
+        <member name="T:TinyIoC.TinyIoCContainer.TypeRegistration">
+            <summary>
+            Class TypeRegistration. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="F:TinyIoC.TinyIoCContainer.TypeRegistration._hashCode">
+            <summary>
+            The _hash code
+            </summary>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TypeRegistration.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCContainer.TypeRegistration"/> class.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TypeRegistration.#ctor(System.Type,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TinyIoC.TinyIoCContainer.TypeRegistration"/> class.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="name">The name.</param>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TypeRegistration.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to this instance.
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns><c>true</c> if the specified <see cref="T:System.Object"/> is equal to this instance; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:TinyIoC.TinyIoCContainer.TypeRegistration.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.TypeRegistration.Type">
+            <summary>
+            Gets the type.
+            </summary>
+            <value>The type.</value>
+        </member>
+        <member name="P:TinyIoC.TinyIoCContainer.TypeRegistration.Name">
+            <summary>
+            Gets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="T:System.Reflection.ReverseTypeExtender">
+            <summary>
+            Class ReverseTypeExtender.
+            </summary>
+        </member>
+        <member name="M:System.Reflection.ReverseTypeExtender.IsClass(System.Type)">
+            <summary>
+            Determines whether the specified type is class.
+            </summary>
+            <param name="type">The type.</param>
+            <returns><c>true</c> if the specified type is class; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:System.Reflection.ReverseTypeExtender.IsAbstract(System.Type)">
+            <summary>
+            Determines whether the specified type is abstract.
+            </summary>
+            <param name="type">The type.</param>
+            <returns><c>true</c> if the specified type is abstract; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:System.Reflection.ReverseTypeExtender.IsInterface(System.Type)">
+            <summary>
+            Determines whether the specified type is interface.
+            </summary>
+            <param name="type">The type.</param>
+            <returns><c>true</c> if the specified type is interface; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:System.Reflection.ReverseTypeExtender.IsPrimitive(System.Type)">
+            <summary>
+            Determines whether the specified type is primitive.
+            </summary>
+            <param name="type">The type.</param>
+            <returns><c>true</c> if the specified type is primitive; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:System.Reflection.ReverseTypeExtender.IsValueType(System.Type)">
+            <summary>
+            Determines whether [is value type] [the specified type].
+            </summary>
+            <param name="type">The type.</param>
+            <returns><c>true</c> if [is value type] [the specified type]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:System.Reflection.ReverseTypeExtender.IsGenericType(System.Type)">
+            <summary>
+            Determines whether [is generic type] [the specified type].
+            </summary>
+            <param name="type">The type.</param>
+            <returns><c>true</c> if [is generic type] [the specified type]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:System.Reflection.ReverseTypeExtender.IsGenericParameter(System.Type)">
+            <summary>
+            Determines whether [is generic parameter] [the specified type].
+            </summary>
+            <param name="type">The type.</param>
+            <returns><c>true</c> if [is generic parameter] [the specified type]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:System.Reflection.ReverseTypeExtender.IsGenericTypeDefinition(System.Type)">
+            <summary>
+            Determines whether [is generic type definition] [the specified type].
+            </summary>
+            <param name="type">The type.</param>
+            <returns><c>true</c> if [is generic type definition] [the specified type]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:System.Reflection.ReverseTypeExtender.BaseType(System.Type)">
+            <summary>
+            Bases the type.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>Type.</returns>
+        </member>
+        <member name="M:System.Reflection.ReverseTypeExtender.Assembly(System.Type)">
+            <summary>
+            Assemblies the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>Assembly.</returns>
+        </member>
+        <member name="T:XLabs.Ioc.TinyIOC.TinyResolver">
+            <summary>
+            The tiny resolver.
+            </summary>
+        </member>
+        <member name="M:XLabs.Ioc.TinyIOC.TinyResolver.#ctor(TinyIoC.TinyIoCContainer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:XLabs.Ioc.TinyIOC.TinyResolver"/> class.
+            </summary>
+            <param name="container">
+            The container.
+            </param>
+        </member>
+        <member name="M:XLabs.Ioc.TinyIOC.TinyResolver.Resolve``1">
+            <summary>
+            Resolve a dependency.
+            </summary>
+            <typeparam name="T">Type of instance to get.</typeparam>
+            <returns>An instance of {T} if successful, otherwise null.</returns>
+        </member>
+        <member name="M:XLabs.Ioc.TinyIOC.TinyResolver.Resolve(System.Type)">
+            <summary>
+            Resolve a dependency by type.
+            </summary>
+            <param name="type">Type of object.</param>
+            <returns>An instance to type if found as <see cref="T:System.Object"/>, otherwise null.</returns>
+        </member>
+        <member name="M:XLabs.Ioc.TinyIOC.TinyResolver.ResolveAll``1">
+            <summary>
+            Resolve a dependency.
+            </summary>
+            <typeparam name="T">Type of instance to get.</typeparam>
+            <returns>All instances of {T} if successful, otherwise null.</returns>
+        </member>
+        <member name="M:XLabs.Ioc.TinyIOC.TinyResolver.ResolveAll(System.Type)">
+            <summary>
+            Resolve a dependency by type.
+            </summary>
+            <param name="type">Type of object.</param>
+            <returns>All instances of type if found as <see cref="T:System.Object"/>, otherwise null.</returns>
+        </member>
+        <member name="M:XLabs.Ioc.TinyIOC.TinyResolver.IsRegistered(System.Type)">
+            <summary>
+            Determines whether the specified type is registered.
+            </summary>
+            <param name="type">The type.</param>
+            <returns><c>true</c> if the specified type is registered; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:XLabs.Ioc.TinyIOC.TinyResolver.IsRegistered``1">
+            <summary>
+            Determines whether this instance is registered.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns><c>true</c> if this instance is registered; otherwise, <c>false</c>.</returns>
+        </member>
+    </members>
+</doc>
