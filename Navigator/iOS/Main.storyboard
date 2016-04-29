@@ -61,7 +61,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="900" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                 <rect key="frame" x="12" y="617" width="349" height="30"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.49803921568627452" green="0" blue="0.49803921568627452" alpha="1"/>
-                                <state key="normal" title="Path Not Selected">
+                                <state key="normal" title="Change Floor">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
                                 </state>
@@ -207,6 +207,8 @@
         <image name="Images/dcsFloor1.png" width="1295" height="1037"/>
         <image name="Images/dcsFloor1Grid.png" width="1295" height="1037"/>
         <image name="Images/ConFloorGrid.png" width="296" height="798"/>
+        <image name="Images/final2ndFloor.png" width="1373" height="1241"/>
+        <image name="Images/final2ndFloorDisplay.png" width="1295" height="1037"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedScreenMetrics key="destination" type="retina47"/>

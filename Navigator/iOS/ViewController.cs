@@ -34,9 +34,11 @@ namespace Navigator.iOS
 
 		//Will de used to display the floorplans
 		private UIImageView floorplanImageView;
+        private UIImage floorplanWallCol;
         private UIImage floorplanImageNoGrid;
         private UIImage floorplanImageWithGrid;
         private UIImage floorplanFirstFloorNoGrid;
+        private UIImage floorplanFirstFloorWallCol;
         private UIImage floorplanSci;
         private UIImage wallCollImg;
 
@@ -111,8 +113,8 @@ namespace Navigator.iOS
             //var directionsController = new CustomDirectionsController (this, directionsTable, pf.Rooms);
 
             floorPlanGraph = Graph.Load(asset);
-
-            wallCollImg = UIImage.FromBundle("Images/dcsfloorWideDoors.png");
+            floorplanWallCol = UIImage.FromBundle("Images/dcsfloorWideDoors.png");
+            wallCollImg = floorplanWallCol;
 
             col = new Collision(floorPlanGraph, new StepDetector());
 
@@ -134,8 +136,10 @@ namespace Navigator.iOS
 			//Load floorplan images
             floorplanImageNoGrid = UIImage.FromBundle("Images/FinalDcsFloor1.png");
             floorplanImageWithGrid = UIImage.FromBundle("Images/dcsFloorWideDoorsGrid.png");
-            floorplanFirstFloorNoGrid = UIImage.FromBundle ("Images/dcsFloor1Grid");
+            floorplanFirstFloorNoGrid = UIImage.FromBundle ("Images/final2ndFloorDisplay.png");
             floorplanSci = UIImage.FromBundle ("Images/ConFloorGrid");
+            floorplanFirstFloorWallCol = UIImage.FromBundle ("Images/dcsFloor1.png");
+
 
 			//Initiate the location arrow
             locationArrow = new LocationArrowImageView();
@@ -183,17 +187,6 @@ namespace Navigator.iOS
                     //displayAccelVal((float)accelZ);
                 });
 
-			/*
-			motionManager.StartDeviceMotionUpdates(NSOperationQueue.CurrentQueue, (data, error) =>
-				{ 
-					//data.Attitude.MultiplyByInverseOfAttitude(data.Attitude);
-					var test = data.UserAcceleration.X;
-					var accelRelZ = data.Attitude.RotationMatrix.m31 * accelX + data.Attitude.RotationMatrix.m32 * accelY + data.Attitude.RotationMatrix.m33 * accelZ;
-					debugLabel.Text = "" + Math.Round(test, 2);//Math.Round(accelRelZ, 2);
-				}
-			);
-			*/
-
 			//LongPressManager will cause the path input menu to appear after a stationary long press
             longPressManager.AllowableMovement = 0;
             longPressManager.AddTarget(() => handleLongPress(longPressManager, floorPlanGraph));
@@ -216,11 +209,12 @@ namespace Navigator.iOS
                 if (floor == 0) {
                     floor = 1;
                     changeFloorPlanImage(floorplanImageView, floorplanFirstFloorNoGrid);
-                    setStartPoint( 447,  998);
+                    setStartPoint( 447.0f,  850.0f);
+                    asset2 = assembly.GetManifestResourceStream("Navigator.iOS.Resources.dcsFloor1.xml");
                     floorPlanGraph = Graph.Load(asset2);
                     floorPlanGraph.setFloor(floor);
-
-                    wallCollImg = floorplanFirstFloorNoGrid;
+        
+                    wallCollImg = floorplanFirstFloorWallCol;
 
                     col = new Collision(floorPlanGraph, new StepDetector());
 
@@ -229,18 +223,20 @@ namespace Navigator.iOS
 
                     pathView = new PathView (wallColTest, this);
 
-                    col.SetLocation(447, 998);
+                    col.SetLocation(447, 850);
                     col.PositionChanged += HandleStepsTaken;
 
                 }
                 else if (floor == 1) {
-                    floor = 2;
-                    changeFloorPlanImage(floorplanImageView, floorplanSci);
-                    setStartPoint( 447,  998);
-                    floorPlanGraph = Graph.Load(assetSci);
+                    floor = 0;
+                    changeFloorPlanImage(floorplanImageView, floorplanImageNoGrid);
+                    setStartPoint(690.0f, 840.0f);
+                    asset = assembly.GetManifestResourceStream("Navigator.iOS.Resources.dcsfloorWideDoors.xml");
+
+                    floorPlanGraph = Graph.Load(asset);
                     floorPlanGraph.setFloor(floor);
 
-                    wallCollImg = floorplanSci;
+                    wallCollImg = floorplanWallCol;
 
                     col = new Collision(floorPlanGraph, new StepDetector());
 
@@ -249,33 +245,11 @@ namespace Navigator.iOS
 
                     pathView = new PathView (wallColTest, this);
 
-                    col.SetLocation(447, 998);
+                    col.SetLocation(690, 840);
                     col.PositionChanged += HandleStepsTaken;
                 }
                 else 
                     floor = 0;
-
-
-                /*
-                locationArrow.setLocation((float)directionsPointList[directionCount].X, (float)directionsPointList[directionCount].Y);
-
-                if(directionCount < directionsPointList.Count-1) {
-                    var v = getLineHeading(directionsPointList[directionCount], directionsPointList[directionCount+1]);
-
-                    if (v < 0) {
-                        directionsButton.SetTitle("Turn behind you and travel towards" + v,  UIControlState.Normal);
-
-                    } else {
-
-                        directionsButton.SetTitle("Look ahead and travel towards" + v,  UIControlState.Normal);
-                    }
-                } else if (directionsPointList.Count == 0) {
-                }
-                else {
-                    directionsButton.SetTitle("You have reached your destination",  UIControlState.Normal);
-                }
-                directionCount++;
-                */
 
             };
 
