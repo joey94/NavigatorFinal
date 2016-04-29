@@ -1,19 +1,18 @@
 ﻿using System;
 using CoreGraphics;
-using UIKit;
 using Navigator.Helpers;
-using System.Collections.Generic;
+using UIKit;
 
 namespace Navigator.iOS
 {
     public class PathView : UIView
     {
-        private nfloat _scaleFactor;
         private readonly CGPath path;
-        private CGPoint[] pointsList;
-        private bool pathSet = false;
-        private WallCollision wallCol;
+        private readonly WallCollision wallCol;
+        private nfloat _scaleFactor;
         private ViewController mainView;
+        private bool pathSet;
+        private CGPoint[] pointsList;
 
         public PathView(WallCollision wc, ViewController v)
         {
@@ -22,7 +21,6 @@ namespace Navigator.iOS
             path = new CGPath();
             wallCol = wc;
             mainView = v;
-
         }
 
         public nfloat ScaleFactor
@@ -39,12 +37,11 @@ namespace Navigator.iOS
         {
             return path.CurrentPoint;
         }
-         
 
         public void setPoints(CGPoint[] points)
         {
             pathSet = true;
-			path.AddLines(points);
+            path.AddLines(points);
             pointsList = points;
             SetNeedsDisplay();
         }
@@ -73,18 +70,18 @@ namespace Navigator.iOS
         }
         */
 
-        public override void Draw (CGRect rect)
+        public override void Draw(CGRect rect)
         {
-            if (pathSet == true) {
-                base.Draw (rect);
+            if (pathSet)
+            {
+                base.Draw(rect);
 
-                using (var context = UIGraphics.GetCurrentContext ()) {
-                
-
+                using (var context = UIGraphics.GetCurrentContext())
+                {
                     //set up drawing attributes
-                    context.SetLineWidth (3 / _scaleFactor);
-                    UIColor.Cyan.SetStroke ();
-                    context.SetShadow (new CGSize (1, 1), 10, UIColor.Blue.CGColor);
+                    context.SetLineWidth(3/_scaleFactor);
+                    UIColor.Cyan.SetStroke();
+                    context.SetShadow(new CGSize(1, 1), 10, UIColor.Blue.CGColor);
 
                     var lineStart = pointsList[0];
                     var lineEnd = pointsList[0];
@@ -92,18 +89,20 @@ namespace Navigator.iOS
                     var line = new CGPoint[2];
 
 
-                    foreach(var pathPoint in pointsList){
+                    foreach (var pathPoint in pointsList)
+                    {
                         // If we can make a non obstructed path from our start to end , just continue
-                        int originX = (int)lineStart.X;
-                        int originY = (int)lineStart.Y;
-                        int targetX = (int)pathPoint.X;
-                        int targetY = (int)pathPoint.Y;
-                        if(wallCol.IsValidStep(originX,originY,targetX,targetY))
+                        var originX = (int) lineStart.X;
+                        var originY = (int) lineStart.Y;
+                        var targetX = (int) pathPoint.X;
+                        var targetY = (int) pathPoint.Y;
+                        if (wallCol.IsValidStep(originX, originY, targetX, targetY))
                         {
                             // Our step is valid
                             lineEnd = pathPoint;
-
-                        }else{
+                        }
+                        else
+                        {
                             // We cannot perform this step, revert to last one
                             line[0] = lineStart;
                             line[1] = lineEnd;
@@ -124,9 +123,6 @@ namespace Navigator.iOS
                     //context.DrawPath(CGPathDrawingMode.Stroke);
 
 
-              
-
-
                     /*
                     // Draw a quad curve with end points s,e and control point cp1
                     context.SetStrokeColor (1, 1, 1, 1);
@@ -139,7 +135,6 @@ namespace Navigator.iOS
 
                     context.StrokePath ();
                     */
-
                 }
             }
         }

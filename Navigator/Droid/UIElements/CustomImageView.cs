@@ -58,14 +58,12 @@ namespace Navigator.Droid.UIElements
             //SetAdjustViewBounds(true);
         }
 
-
         private float GetMatrixValue(int identifier)
         {
             var _values = new float[9];
             _matrix.GetValues(_values);
             return _values[identifier];
         }
-
 
         /// <summary>
         ///     Updates the matrix to correspond to zooming to a specific location on a defined scale
@@ -130,7 +128,6 @@ namespace Navigator.Droid.UIElements
 
             ImageMatrix = _matrix;
         }
-
 
         public override void SetImageBitmap(Bitmap bm)
         {

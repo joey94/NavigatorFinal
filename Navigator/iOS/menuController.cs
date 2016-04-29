@@ -1,35 +1,30 @@
-using Foundation;
 using System;
-using System.CodeDom.Compiler;
 using UIKit;
 
 namespace Navigator.iOS
 {
-	partial class menuController : UIViewController
-	{
-		public menuController (IntPtr handle) : base (handle)
-		{
-                   
+    partial class menuController : UIViewController
+    {
+        private UIImage backImg;
 
-		}
-
-        UIImage backImg;
+        public menuController(IntPtr handle) : base(handle)
+        {
+        }
 
         public override void ViewDidLoad()
         {
-            base.ViewDidLoad ();
+            base.ViewDidLoad();
 
             backImg = UIImage.FromBundle("Images/menuBackground.png");
-            backImg = UIImageEffects.ApplyLightEffect (backImg);
+            backImg = backImg.ApplyLightEffect();
             menuBackgroundImage.Image = backImg;
-            menuBackgroundImage.SizeToFit ();
+            menuBackgroundImage.SizeToFit();
 
-            menuPageMapButton.TouchUpInside += delegate(object sender, EventArgs e) {
-                ViewController nextView = this.Storyboard.InstantiateViewController("ViewController") as ViewController;
+            menuPageMapButton.TouchUpInside += delegate
+            {
+                var nextView = this.Storyboard.InstantiateViewController("ViewController") as ViewController;
                 this.NavigationController.PushViewController(nextView, true);
             };
-
-
         }
-	}
+    }
 }

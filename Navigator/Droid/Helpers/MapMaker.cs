@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Android.Content.Res;
 using Android.Graphics;
 using Navigator.Droid.UIElements;
@@ -24,11 +23,9 @@ namespace Navigator.Droid.Helpers
         };
 
         public CustomImageView CIVInstance;
-
         public Bitmap CurrentImage;
         public Bitmap CurrentUserRepresentation;
         public Vector2 EndPoint;
-
 
         public Paint PaintBrush = new Paint
         {
@@ -37,7 +34,6 @@ namespace Navigator.Droid.Helpers
         };
 
         public Graph PathfindingGraph;
-
         public Vector2 StartPoint;
         public float UserHeading;
         public List<UndirEdge> UserPath = new List<UndirEdge>();
@@ -62,7 +58,7 @@ namespace Navigator.Droid.Helpers
                 PlainMapGrid = BitmapFactory.DecodeResource(res, Resource.Drawable.dcsFloorGrid);
             if (UserRepresentation == null)
                 UserRepresentation = BitmapFactory.DecodeResource(res, Resource.Drawable.arrow);
-            if(CurrentUserRepresentation == null)
+            if (CurrentUserRepresentation == null)
                 CurrentUserRepresentation = Bitmap.CreateScaledBitmap(UserRepresentation, 20, 20, true);
 
             // Just some checks to see if we have everything

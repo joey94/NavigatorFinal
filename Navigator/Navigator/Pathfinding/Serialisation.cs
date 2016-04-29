@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
-using QuickGraph;
 using Navigator.Primitives;
+using QuickGraph;
 
 namespace Navigator.Pathfinding
 {
     public class GraphData
     {
         public List<UndirEdge> Edges = new List<UndirEdge>();
-        public List<string> Vertices = new List<string>();
         public List<Room> Rooms = new List<Room>();
+        public List<string> Vertices = new List<string>();
     }
 
     public class UndirEdge : UndirectedEdge<string>
@@ -32,12 +32,20 @@ namespace Navigator.Pathfinding
         public new string Target { get; set; }
     }
 
-    public class Room {
+    public class Room
+    {
+        public Room()
+        {
+            Properties = new List<RoomProperty>();
+        }
+
         public List<RoomProperty> Properties { get; set; }
 
         [XmlIgnore]
-        public bool IsStairs {
-            get { return Properties.Any(x => x.Type == RoomPropertyType.Stairs && x.Value == "true"); }}
+        public bool IsStairs
+        {
+            get { return Properties.Any(x => x.Type == RoomPropertyType.Stairs && x.Value == "true"); }
+        }
 
         [XmlIgnore]
         public int Floor
@@ -45,17 +53,17 @@ namespace Navigator.Pathfinding
             get { return int.Parse(Properties.First(x => x.Type == RoomPropertyType.Floor).Value); }
         }
 
-		[XmlIgnore]
-		public Vector2 Position
-		{
-			get { return new Vector2(Properties.First(x => x.Type == RoomPropertyType.Position).Value); }
-		}
+        [XmlIgnore]
+        public Vector2 Position
+        {
+            get { return new Vector2(Properties.First(x => x.Type == RoomPropertyType.Position).Value); }
+        }
 
-		[XmlIgnore]
-		public string Name
-		{
-			get { return Properties.First(x => x.Type == RoomPropertyType.Name).Value; }
-		}
+        [XmlIgnore]
+        public string Name
+        {
+            get { return Properties.First(x => x.Type == RoomPropertyType.Name).Value; }
+        }
 
         [XmlIgnore]
         public string Type
@@ -66,37 +74,34 @@ namespace Navigator.Pathfinding
         [XmlIgnore]
         public Vector2 DoorInside
         {
-            get {  return new Vector2(Properties.First(x => x.Type == RoomPropertyType.DoorInside).Value); }
+            get { return new Vector2(Properties.First(x => x.Type == RoomPropertyType.DoorInside).Value); }
         }
 
         [XmlIgnore]
         public Vector2 DoorOutside
         {
-            get {  return new Vector2(Properties.First(x => x.Type == RoomPropertyType.DoorOutside).Value); }
-        }
-
-        public Room() {
-            Properties = new List<RoomProperty>();
+            get { return new Vector2(Properties.First(x => x.Type == RoomPropertyType.DoorOutside).Value); }
         }
     }
 
-    public class RoomProperty {
+    public class RoomProperty
+    {
+        public RoomProperty(RoomPropertyType type, string val)
+        {
+            Type = type;
+            Value = val;
+        }
+
+        public RoomProperty()
+        {
+            Type = RoomPropertyType.None;
+            Value = "";
+        }
 
         [XmlAttribute("type")]
         public RoomPropertyType Type { get; set; }
 
         [XmlAttribute("value")]
         public string Value { get; set; }
-
-
-        public RoomProperty(RoomPropertyType type, string val) {
-            Type = type;
-            Value = val;
-        }
-
-        public RoomProperty() {
-            Type = RoomPropertyType.None;
-            Value = "";
-        }
     }
 }

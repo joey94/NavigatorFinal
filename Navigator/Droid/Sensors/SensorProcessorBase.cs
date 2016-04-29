@@ -13,14 +13,12 @@ namespace Navigator.Droid.Sensors
         public readonly List<SensorType> AcceptedSensorTypes;
 
         protected DateTime LastReading = DateTime.MinValue;
-
         protected long ReadingDelay = 0;
 
         /// <summary>
         ///     Keeps track of the last 10 values produced by this sensor processor
         /// </summary>
         public FixedSizeQueue<T> ValueHistory;
-
 
         protected SensorProcessorBase(SensorManager manager)
         {

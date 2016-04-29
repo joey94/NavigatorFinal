@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Threading;
+using Android;
 using Android.App;
 using Android.Graphics;
 using Android.Hardware;
@@ -20,7 +19,8 @@ using Navigator.Primitives;
 
 namespace Navigator.Droid
 {
-    [Activity(Label = "Navigator", MainLauncher = true, Icon = "@mipmap/icon", Theme = "@android:style/Theme.Holo.Light")]
+    [Activity(Label = "Navigator", MainLauncher = true, Icon = "@mipmap/icon", Theme = "@android:style/Theme.Holo.Light"
+        )]
     public class MainActivity : Activity, ISensorEventListener
     {
         private Collision _collision;
@@ -54,21 +54,21 @@ namespace Navigator.Droid
             _collision = new Collision(graphInstance, new StepDetector());
             _collision.SetLocation(707.0f, 677.0f);
             _collision.PassHeading(90);
-            
+
             _collision.PositionChanged += CollisionOnPositionChanged;
             _collision.StepDetector.OnStep += StepDetectorOnStep;
 
-            collisionMap = BitmapFactory.DecodeResource(Resources,Resource.Drawable.dcsFloor);
+            collisionMap = BitmapFactory.DecodeResource(Resources, Resource.Drawable.dcsFloor);
 
-            _walCol = new WallCollision((x,y)=>collisionMap.GetPixel(x,y));
+            _walCol = new WallCollision((x, y) => collisionMap.GetPixel(x, y));
             _collision.WallCol = _walCol;
 
 
-            pf = new Pathfinding.Pathfinding(new Dictionary<int, Stream>()
+            pf = new Pathfinding.Pathfinding(new Dictionary<int, Stream>
             {
-                {0,Assets.Open("dcsGroundFloor.xml") },
-                {1,Assets.Open("dcsFloor1.xml") }
-            },Assets.Open("Rooms.xml") );
+                {0, Assets.Open("dcsGroundFloor.xml")},
+                {1, Assets.Open("dcsFloor1.xml")}
+            }, Assets.Open("Rooms.xml"));
             pf.CurrentFloor = 0;
 
 
@@ -87,7 +87,7 @@ namespace Navigator.Droid
 
         private void CollisionOnPositionChanged(object sender, PositionChangedHandlerEventArgs args)
         {
-            _mapMaker.UserPosition = new Vector2(args.newX,args.newY);
+            _mapMaker.UserPosition = new Vector2(args.newX, args.newY);
         }
 
         private void StepDetectorOnStep(bool startFromStat)
@@ -104,30 +104,30 @@ namespace Navigator.Droid
         {
             //var roomNames = rooms.ConvertAll(r => r.Name);
             roomNames = new string[rooms.Count];
-            for(int i = 0; i < roomNames.Length; i++)
+            for (var i = 0; i < roomNames.Length; i++)
             {
                 var properties = rooms[i].Properties;
-                foreach(RoomProperty p in properties)
+                foreach (var p in properties)
                 {
-                    if(p.Type == RoomPropertyType.Name)
+                    if (p.Type == RoomPropertyType.Name)
                         roomNames[i] = p.Value;
                 }
             }
 
             var spinner = FindViewById<Spinner>(Resource.Id.roomSpinner);
             spinner.ItemSelected += spinnerItemSelected;
-            var adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, roomNames);
+            var adapter = new ArrayAdapter<string>(this, Resource.Layout.SimpleSpinnerItem, roomNames);
 
-            adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            adapter.SetDropDownViewResource(Resource.Layout.SimpleSpinnerDropDownItem);
 
             spinner.Adapter = adapter;
         }
 
         private void spinnerItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
-            Spinner spinner = (Spinner) sender;
-            string toast = string.Format ("The room is {0}", spinner.GetItemAtPosition (e.Position));
-            Toast.MakeText (this, toast, ToastLength.Long).Show();
+            var spinner = (Spinner) sender;
+            var toast = string.Format("The room is {0}", spinner.GetItemAtPosition(e.Position));
+            Toast.MakeText(this, toast, ToastLength.Long).Show();
         }
 
         private void setUpUITabs()
@@ -186,7 +186,7 @@ namespace Navigator.Droid
         private void AccelerationProcessorOnValueChanged(Vector3 value)
         {
             // Pass our values
-            _collision.PassSensorReadings(CollisionSensorType.Accelometer, value.X,value.Y,value.Z);
+            _collision.PassSensorReadings(CollisionSensorType.Accelometer, value.X, value.Y, value.Z);
             if (inDebug)
             {
                 RunOnUiThread(() =>

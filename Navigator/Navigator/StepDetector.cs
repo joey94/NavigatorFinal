@@ -4,29 +4,48 @@ namespace Navigator
 {
     public delegate void StepHandler(bool startFromStat);
 
-	public interface IStepDetector{
-		event StepHandler OnStep;
-		void passValue (double accelValueX, double accelValueY, double accelValueZ) ;
-	}
+    public interface IStepDetector
+    {
+        event StepHandler OnStep;
+        void passValue(double accelValueX, double accelValueY, double accelValueZ);
+    }
 
-	public class StepDetector : IStepDetector
+    public class StepDetector : IStepDetector
     {
         private readonly double[] accelValues = new double[3];
-
+        private readonly ButterworthLowPassFilter lowPassFilter = new ButterworthLowPassFilter();
         private int functionCalledCounter;
+        private long iMilli = DateTime.Now.Ticks/TimeSpan.TicksPerSecond;
         private long initialMilliseconds = DateTime.Now.Ticks/TimeSpan.TicksPerMillisecond;
-        private long iMilli = DateTime.Now.Ticks / TimeSpan.TicksPerSecond;
-
         private double lastPeakValue = -1;
         private double lastTroughValue = -1;
-        private readonly ButterworthLowPassFilter lowPassFilter = new ButterworthLowPassFilter();
         private bool stationaryStart;
         public int StepCounter;
         public long stepMilli;
-
         private double troughToPeakDifference = -1;
-
         public event StepHandler OnStep;
+
+        public void passValue(double accelValueX, double accelValueY, double accelValueZ)
+        {
+            if (functionCalledCounter < 3)
+            {
+                // we have a window of 3 values, so for the first 3 values just fill in the window
+                accelValues[functionCalledCounter] = getFilteredMagnitude(accelValueX, accelValueY, accelValueZ);
+                functionCalledCounter++;
+                if (functionCalledCounter == 2)
+                {
+                    stepCheck();
+                }
+                return;
+            }
+
+            // last 2 values of previous window become first 2 of new window
+            Array.Copy(accelValues, 1, accelValues, 0, accelValues.Length - 1);
+            // last value of new window is the filtered vector magnitude
+            accelValues[2] = getFilteredMagnitude(accelValueX, accelValueY, accelValueZ);
+            functionCalledCounter++;
+            stepCheck();
+        }
 
         private void stepCheck()
         {
@@ -76,12 +95,13 @@ namespace Navigator
                         }
                         // for gaps of more than 2 seconds we can assume user starts from stationary position, so add the 2 steps that the
                         // filter misses out on initially 
-                        else if (currentMilliseconds - initialMilliseconds >= 2500)  {
-                            if (StepCounter == 0) 
+                        else if (currentMilliseconds - initialMilliseconds >= 2500)
+                        {
+                            if (StepCounter == 0)
                             {
-                                iMilli = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+                                iMilli = DateTime.Now.Ticks/TimeSpan.TicksPerMillisecond;
                             }
-                            stepMilli = (DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond) - iMilli;
+                            stepMilli = (DateTime.Now.Ticks/TimeSpan.TicksPerMillisecond) - iMilli;
 
                             initialMilliseconds = currentMilliseconds;
                             StepCounter++;
@@ -126,35 +146,12 @@ namespace Navigator
             //reset all local variables
         }
 
-        public void passValue(double accelValueX, double accelValueY, double accelValueZ)
-        {
-            if (functionCalledCounter < 3)
-            {
-                // we have a window of 3 values, so for the first 3 values just fill in the window
-                accelValues[functionCalledCounter] = getFilteredMagnitude(accelValueX, accelValueY, accelValueZ);
-                functionCalledCounter++;
-                if (functionCalledCounter == 2)
-                {
-                    stepCheck();
-                }
-                return;
-            }
-
-            // last 2 values of previous window become first 2 of new window
-            Array.Copy(accelValues, 1, accelValues, 0, accelValues.Length - 1);
-            // last value of new window is the filtered vector magnitude
-            accelValues[2] = getFilteredMagnitude(accelValueX, accelValueY, accelValueZ);
-            functionCalledCounter++;
-            stepCheck();
-        }
-
         public double getFilteredMagnitude(double accelValueX, double accelValueY, double accelValueZ)
         {
             // double magnitude = Math.Sqrt(Math.Pow(accelValueX, 2) + Math.Pow(accelValueY, 2) + Math.Pow(accelValueZ, 2));
             var magnitude = accelValueZ;
             return lowPassFilter.getNewFilteredValue(magnitude);
         }
-
 
         public virtual void OnStepTaken()
         {
