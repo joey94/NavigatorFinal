@@ -211,7 +211,6 @@ namespace Navigator.iOS
                 
                 if (floor == 0) {
                     Console.Out.WriteLine("Changing to floor 1 ");
-                    removePath();
                     floor = 1;
                     changeFloorPlanImage(floorplanImageView, floorplanFirstFloorNoGrid);
                     setStartPoint( 447.0f,  850.0f, this.floor,false);
@@ -232,7 +231,6 @@ namespace Navigator.iOS
                 }
                 else if (floor == 1) {
                     Console.Out.WriteLine("Changing to floor 0 ");
-                    removePath();
                     floor = 0;
                     changeFloorPlanImage(floorplanImageView, floorplanImageNoGrid);
 
@@ -405,7 +403,7 @@ namespace Navigator.iOS
 			actionSheetAlert.AddAction(UIAlertAction.Create("Cancel",UIAlertActionStyle.Cancel, null));
             actionSheetAlert.AddAction(UIAlertAction.Create("Set Start Point",UIAlertActionStyle.Default, (action) => {pathDisplayed = false;setStartPoint(locationX, locationY,roomFloor);}));
             actionSheetAlert.AddAction(UIAlertAction.Create("Set End Point",UIAlertActionStyle.Default, (action) => {pathDisplayed = true;setEndPoint(locationX, locationY,roomFloor);}));
-            actionSheetAlert.AddAction(UIAlertAction.Create("Remove Path",UIAlertActionStyle.Default, (action) => removePath()));
+            actionSheetAlert.AddAction(UIAlertAction.Create("Remove Path",UIAlertActionStyle.Default, (action) => removePath(true)));
 
 
 			// Display alert
@@ -416,11 +414,17 @@ namespace Navigator.iOS
             directionsPointList = pl;
         }
 
-        private void removePath() {
+        private void removePath(bool removePath = false) {
             InvokeOnMainThread (() => {
                 Console.Out.WriteLine ("DROPPING THE FUCKING SHIT");
-                pathView.RemoveFromSuperview ();
-                pathView.Dispose ();
+
+                foreach(var subview in floorplanImageView.Subviews){
+                    subview.RemoveFromSuperview();
+                }
+
+                if (removePath)
+                    CurrentUserPath = new Dictionary<int, List<UndirEdge>>();
+                
                 pathView = new PathView (wallColTest, this);
                 pathView.ScaleFactor = floorplanView.ZoomScale;
                 pathView.Frame = new CGRect (new CGPoint (0, 0), floorplanImageNoGrid.Size);
