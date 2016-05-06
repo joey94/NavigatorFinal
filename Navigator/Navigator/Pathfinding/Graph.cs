@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
@@ -10,6 +11,7 @@ using QuickGraph.Algorithms.ShortestPath;
 
 namespace Navigator.Pathfinding
 {
+    
     public interface IGraph
     {
         List<UndirEdge> FindPath(string start, string end);
@@ -18,7 +20,8 @@ namespace Navigator.Pathfinding
 
     public class Graph : UndirectedGraph<string, UndirEdge>, IGraph
     {
-        public int floor;
+        public int floor = 0;
+
         public List<Room> Rooms { get; set; }
 
         public List<UndirEdge> FindPath(string start, string end)
@@ -30,21 +33,18 @@ namespace Navigator.Pathfinding
             var nodeCheckX = Vertices.FirstOrDefault(node => node == start);
             var nodeCheckY = Vertices.FirstOrDefault(node => node == end);
 
-            if (nodeCheckX != null && nodeCheckY != null)
-            {
-                dijkstra.Compute(start);
+            if (nodeCheckX != null && nodeCheckY != null) {
+                dijkstra.Compute (start);
                 IEnumerable<UndirEdge> path = null;
-                try
-                {
-                    observer.TryGetPath(end, out path);
-                }
-                catch
-                {
+                try {
+                    observer.TryGetPath (end, out path);
+                } catch {
                 }
 
-                return path.ToList();
+                return path.ToList ();
+            } else {
+                return null;
             }
-            return null;
         }
 
         public Vector2 FindClosestNode(float searchX, float searchY, int searchDistance)
@@ -52,73 +52,71 @@ namespace Navigator.Pathfinding
             var tempNode = new Vector2(-1, -1);
             double distanceFromTempToReal = -1;
             double a, b, newDistance;
-            int tempX, tempY;
+			int tempX, tempY;
             string nodeCoords;
 
-            var moduloX = (int) searchX%20;
-            var moduloY = (int) searchY%20;
-            var tt = floor;
-            if (floor == 0)
-            {
+			int moduloX = (int)searchX % 20;
+			int moduloY = (int)searchY % 20;
+            int tt = floor;
+            if (floor == 0) {
                 if (moduloX == 6)
-                    tempX = (int) searchX;
+                    tempX = (int)searchX;
                 else if (moduloX > 16)
-                    tempX = (int) searchX - moduloX + 26;
+                    tempX = (int)searchX - moduloX + 26;
                 else
-                    tempX = (int) searchX - moduloX + 6;
+                    tempX = (int)searchX - moduloX + 6;
 
                 if (moduloY == 0)
-                    tempY = (int) searchY;
+                    tempY = (int)searchY;
                 else if (moduloY >= 10)
-                    tempY = (int) searchY + (20 - moduloY);
+                    tempY = (int)searchY + (20 - moduloY);
                 else
-                    tempY = (int) searchY - moduloY;
+                    tempY = (int)searchY - moduloY;
 
-                tempNode = new Vector2(tempX, tempY);
+                tempNode = new Vector2 (tempX, tempY);
 
                 return tempNode;
-            }
-            if (floor == 1)
-            {
+            } else if (floor == 1) {
                 if (moduloX == 7)
-                    tempX = (int) searchX;
+                    tempX = (int)searchX;
                 else if (moduloX > 17)
-                    tempX = (int) searchX - moduloX + 27;
+                    tempX = (int)searchX - moduloX + 27;
                 else
-                    tempX = (int) searchX - moduloX + 7;
+                    tempX = (int)searchX - moduloX + 7;
 
                 if (moduloY == 18)
-                    tempY = (int) searchY;
+                    tempY = (int)searchY;
                 else if (moduloY <= 8)
-                    tempY = (int) searchY - moduloY - 2;
+                    tempY = (int)searchY - moduloY - 2;
                 else
-                    tempY = (int) searchY - moduloY + 18;
+                    tempY = (int)searchY - moduloY + 18;
 
-                tempNode = new Vector2(tempX, tempY);
+                tempNode = new Vector2 (tempX, tempY);
+
+                return tempNode;
+            } else {
+                if (moduloX == 8)
+                    tempX = (int)searchX;
+                else if (moduloX > 3)
+                    tempX = (int)searchX - moduloX + 8;
+                else
+                    tempX = (int)searchX - moduloX - 2;
+
+                if (moduloY == 9)
+                    tempY = (int)searchY;
+                else if (moduloY <= 4)
+                    tempY = (int)searchY - moduloY - 1;
+                else
+                    tempY = (int)searchY - moduloY + 9;
+
+                tempNode = new Vector2 (tempX, tempY);
 
                 return tempNode;
             }
-            if (moduloX == 8)
-                tempX = (int) searchX;
-            else if (moduloX > 3)
-                tempX = (int) searchX - moduloX + 8;
-            else
-                tempX = (int) searchX - moduloX - 2;
 
-            if (moduloY == 9)
-                tempY = (int) searchY;
-            else if (moduloY <= 4)
-                tempY = (int) searchY - moduloY - 1;
-            else
-                tempY = (int) searchY - moduloY + 9;
-
-            tempNode = new Vector2(tempX, tempY);
-
-            return tempNode;
         }
 
-        public void setFloor(int f)
-        {
+        public void setFloor (int f) {
             floor = f;
         }
 

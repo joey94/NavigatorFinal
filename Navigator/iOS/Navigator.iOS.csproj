@@ -152,6 +152,8 @@
     <BundleResource Include="Images\dcsFloor1.png" />
     <BundleResource Include="Images\dcsFloor1Grid.png" />
     <BundleResource Include="Images\ConFloorGrid.png" />
+    <BundleResource Include="Images\final2ndFloor.png" />
+    <BundleResource Include="Images\final2ndFloorDisplay.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\test.xml" />

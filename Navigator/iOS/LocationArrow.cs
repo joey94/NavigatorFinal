@@ -6,10 +6,10 @@ namespace Navigator.iOS
 {
     public class LocationArrowImageView : UIImageView
     {
+        private nfloat _scaleFactor;
+
         private readonly UIImage locationArrow =
             UIImage.FromBundle("Images/location-arrow-solid.png").Scale(new CGSize(20, 20));
-
-        private nfloat _scaleFactor;
 
         public LocationArrowImageView()
         {
@@ -44,10 +44,12 @@ namespace Navigator.iOS
             calculateRelPositions();
         }
 
+
         public void lookAtHeading(float angle)
         {
             Transform = CGAffineTransform.MakeRotation(angle);
         }
+
 
         public void calculateRelPositions()
         {

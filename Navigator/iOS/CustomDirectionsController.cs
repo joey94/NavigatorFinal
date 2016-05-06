@@ -1,21 +1,25 @@
-﻿using System.Collections.Generic;
-using Navigator.Pathfinding;
+﻿using System;
 using UIKit;
+using System.Collections.Generic;
+using Navigator.Pathfinding;
 
 namespace Navigator.iOS
 {
     public class CustomDirectionsController
     {
-        private readonly UITableView _directionsTable;
-        private readonly TableSource tableSource;
+        UITableView _directionsTable;
 
-        public CustomDirectionsController(ViewController owner, UITableView searchPredictionTable, List<Room> rooms)
+        TableSource tableSource;
+
+
+        public CustomDirectionsController (ViewController owner, UITableView searchPredictionTable, List<Room> rooms)
         {
             _directionsTable = searchPredictionTable;
+           
 
-
-            tableSource = new TableSource(owner, rooms);
+            tableSource = new TableSource (owner, rooms);
             _directionsTable.Source = tableSource;
         }
     }
 }
+

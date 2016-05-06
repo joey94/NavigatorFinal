@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Navigator.Helpers;
 using Navigator.Pathfinding;
 using Navigator.Primitives;
+using System.Linq;
+using Navigator.Helpers;
 
 namespace Navigator
 {
@@ -31,37 +32,38 @@ namespace Navigator
 
     public class Collision : ICollision
     {
+        //Other values
+        private float totalStride = 28.0f; //should be 28
+        private float strideLength = 12.0f;
         private const int searchDistance = 6;
+
         //graph information
         private readonly IGraph _graph;
+
         //path holder
         private readonly Queue<Vector2> _graphPath;
-        //public event HeadingHandler newHeading;
-        private readonly FixedSizeQueue<float> headingQueue = new FixedSizeQueue<float>(15);
+
         //StepDetector Class
         public readonly IStepDetector StepDetector;
-        //Other values
-        private readonly float totalStride = 28.0f; //should be 28
-
-        private double currentTime = Math.Round(DateTime.Now.ToUniversalTime().Subtract(
-            new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)
-            ).TotalMilliseconds, 0);
-
         private float Heading;
         private Vector2 nearestGraphNode;
+
         //Values that are being tracked
         private Vector2 realPosition;
-
+        //public event HeadingHandler newHeading;
+        private FixedSizeQueue<float> headingQueue = new FixedSizeQueue<float>(15);
+        private double currentTime = Math.Round(DateTime.Now.ToUniversalTime().Subtract(
+            new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)
+        ).TotalMilliseconds, 0);
         private double referenceTime = Math.Round(DateTime.Now.ToUniversalTime().Subtract(
             new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)
-            ).TotalMilliseconds, 0);
+        ).TotalMilliseconds, 0);
 
-        private float strideLength = 12.0f;
         public WallCollision WallCol;
 
-        public Collision(IGraph graph, IStepDetector stepDetector)
+		public Collision(IGraph graph, IStepDetector stepDetector)
         {
-            StepDetector = stepDetector;
+			StepDetector = stepDetector;
             StepDetector.OnStep += StepTaken;
             _graph = graph;
             _graphPath = new Queue<Vector2>();
@@ -99,89 +101,80 @@ namespace Navigator
         {
             currentTime = Math.Round(DateTime.Now.ToUniversalTime().Subtract(
                 new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)
-                ).TotalMilliseconds, 0);
+            ).TotalMilliseconds, 0);
             Heading = nHeading;
-            var test = currentTime - referenceTime;
+            double test = currentTime - referenceTime;
 
             //if (currentTime - referenceTime > 100) {
-            headingQueue.Enqueue(nHeading);
+            headingQueue.Enqueue (nHeading);
             referenceTime = currentTime;
             //}
+
         }
 
         //method is public for now inorder to manually trigger steps on iOS for testing. 
         //Should be made private and removed from interface eventually
         public void StepTaken(bool startFromStat)
         {
-            var stepIterations = (int) Math.Floor(totalStride/strideLength);
+            int stepIterations = (int)Math.Floor (totalStride / strideLength);
 
-            var extraStep = totalStride%strideLength;
+            float extraStep = totalStride % strideLength;
 
-            var args = new PositionChangedHandlerEventArgs(realPosition.X, realPosition.Y);
+            var args = new PositionChangedHandlerEventArgs (realPosition.X, realPosition.Y);
             //StepCounter = 1;
-            if (startFromStat == false)
-            {
-                for (var i = 0; i < stepIterations; i++)
-                {
-                    if (i == 0)
-                    {
-                        testStepTrigger(Heading);
-                        args = new PositionChangedHandlerEventArgs(realPosition.X, realPosition.Y);
+            if (startFromStat == false) {
+
+                for (int i = 0; i < stepIterations; i++) {
+
+                    if (i == 0) {
+                        testStepTrigger (Heading);
+                        args = new PositionChangedHandlerEventArgs (realPosition.X, realPosition.Y);
+                    } else {
+                        testStepTrigger (Heading);
+                        args = new PositionChangedHandlerEventArgs (realPosition.X, realPosition.Y);
                     }
-                    else
-                    {
-                        testStepTrigger(Heading);
-                        args = new PositionChangedHandlerEventArgs(realPosition.X, realPosition.Y);
-                    }
-                    PositionChanged(this, args);
+                    PositionChanged (this, args);
                 }
 
-                if (extraStep != 0)
-                {
+                if (extraStep != 0) {
                     strideLength = extraStep;
-                    testStepTrigger(Heading);
-                    args = new PositionChangedHandlerEventArgs(realPosition.X, realPosition.Y);
-                    PositionChanged(this, args);
+                    testStepTrigger (Heading);
+                    args = new PositionChangedHandlerEventArgs (realPosition.X, realPosition.Y);
+                    PositionChanged (this, args);
                     strideLength = 12.0f;
                 }
-            }
-            else
-            {
-                var headings = new float[headingQueue.Count];
-                headingQueue.CopyTo(headings, 0);
+            } else {
+                float[] headings = new float[headingQueue.Count];
+                headingQueue.CopyTo (headings,0);
 
-                for (var j = 0; j < 3; j++)
-                {
-                    for (var i = 0; i < stepIterations; i++)
-                    {
-                        if (i == 0)
-                        {
-                            testStepTrigger(headings[4 + (j*4)]);
-                            args = new PositionChangedHandlerEventArgs(realPosition.X, realPosition.Y);
+                for (int j = 0; j < 3; j++) {
+                    for (int i = 0; i < stepIterations; i++) {
+
+                        if (i == 0) {
+                            testStepTrigger (headings [4+ (j*4)]);
+                            args = new PositionChangedHandlerEventArgs (realPosition.X, realPosition.Y);
+                        } else {
+                            testStepTrigger (headings [4 + (j*4)]);
+                            args = new PositionChangedHandlerEventArgs (realPosition.X, realPosition.Y);
                         }
-                        else
-                        {
-                            testStepTrigger(headings[4 + (j*4)]);
-                            args = new PositionChangedHandlerEventArgs(realPosition.X, realPosition.Y);
-                        }
-                        PositionChanged(this, args);
+                        PositionChanged (this, args);
                     }
-                    if (extraStep != 0)
-                    {
+                    if (extraStep != 0) {
                         strideLength = extraStep;
-                        testStepTrigger(headings[4 + (j*4)]);
-                        args = new PositionChangedHandlerEventArgs(realPosition.X, realPosition.Y);
-                        PositionChanged(this, args);
+                        testStepTrigger (headings [4 + (j*4)]);
+                        args = new PositionChangedHandlerEventArgs (realPosition.X, realPosition.Y);
+                        PositionChanged (this, args);
                         strideLength = 12.0f;
                     }
                 }
+
             }
         }
 
         private int CalculateNearestNode()
         {
             var tempNode = _graph.FindClosestNode(realPosition.X, realPosition.Y, searchDistance);
-            //var contains = ((Graph) _graph).Vertices.Contains(tempNode.ToPointString());
+			//var contains = ((Graph) _graph).Vertices.Contains(tempNode.ToPointString());
 
             //case where this is the initial position, figure out how for initial to avoid wall hopping
             if (nearestGraphNode == null)
@@ -246,18 +239,21 @@ namespace Navigator
                 if (!nearestHolder.Equals(nearestGraphNode))
                 {
                     start = nearestGraphNode.ToPointString();
-                    end = nearestHolder.ToPointString();
+					end = nearestHolder.ToPointString();
 
-                    if (start != end)
-                    {
-                        if (
-                            !WallCol.IsValidStep((int) nearestGraphNode.X, (int) nearestGraphNode.Y,
-                                (int) nearestHolder.X, (int) nearestHolder.Y))
-                        {
+                    if (start != end) {
+
+                        if (!WallCol.IsValidStep ((int)nearestGraphNode.X, (int)nearestGraphNode.Y, (int)nearestHolder.X, (int)nearestHolder.Y)) {
+
                             realPosition = realHolder;
                             nearestGraphNode = nearestHolder;
+
                         }
+
+                    } else {
+                        //realPosition = realHolder;
                     }
+
                 }
             }
             else

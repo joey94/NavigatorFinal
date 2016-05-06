@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Navigator.Helpers
 {
@@ -12,17 +16,16 @@ namespace Navigator.Helpers
 
     public class WallCollision
     {
-        private readonly Func<int, int, int> pixelMethod;
-
-        private readonly List<int> wallColors = new List<int>
+        private bool[,] isWall;
+        private List<int> wallColors = new List<int>()
         {
-            Color.FromArgb(255, 255, 255, 255).ToArgb(),
-            Color.FromArgb(0, 0, 0, 0).ToArgb()
+            Color.FromArgb(255,255,255,255).ToArgb(),
+            Color.FromArgb(0,0,0,0).ToArgb()
         };
 
-        private bool[,] isWall;
+        Func<int,int,int> pixelMethod;
 
-        public WallCollision(Func<int, int, int> getPixel)
+        public WallCollision(Func<int,int,int> getPixel)
         {
             pixelMethod = getPixel;
         }
@@ -34,14 +37,14 @@ namespace Navigator.Helpers
             var x1 = p2x;
             var y1 = p2y;
             int x,
-                cx,
-                deltax,
-                xstep,
-                y,
-                cy,
-                deltay,
-                ystep,
-                error;
+            cx,
+            deltax,
+            xstep,
+            y,
+            cy,
+            deltay,
+            ystep,
+            error;
             bool st;
             st = Math.Abs(y1 - y0) > Math.Abs(x1 - x0);
             if (st)
@@ -121,7 +124,7 @@ namespace Navigator.Helpers
             return true;
         }
 
-        private enum CheckDirection
+        enum CheckDirection
         {
             Up,
             Down,

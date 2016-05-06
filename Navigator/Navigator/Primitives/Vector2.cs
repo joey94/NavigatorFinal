@@ -35,10 +35,7 @@ namespace Navigator.Primitives
         public float X { get; set; }
         public float Y { get; set; }
 
-        public bool IsValidCoordinate
-        {
-            get { return X != -1 && Y != -1; }
-        }
+        public bool IsValidCoordinate { get { return X != -1 && Y != -1; } }
 
         public float Distance2D(Vector2 otherVector)
         {

@@ -24,7 +24,7 @@
       <RoomProperty type="DoorOutside" value="466-520" />
     </Properties>
   </Room>
-  <Room>
+    <Room>
     <Properties>
       <RoomProperty type="Position" value="686-680" />
       <RoomProperty type="Name" value="CS0.03 - Hardware Lab" />
@@ -35,7 +35,7 @@
       <RoomProperty type="DoorOutside" value="686-700" />
     </Properties>
   </Room>
-  <Room>
+    <Room>
     <Properties>
       <RoomProperty type="Position" value="546-280" />
       <RoomProperty type="Name" value="CS0.04a - Server Room" />
@@ -46,7 +46,7 @@
       <RoomProperty type="DoorOutside" value="546-320" />
     </Properties>
   </Room>
-  <Room>
+    <Room>
     <Properties>
       <RoomProperty type="Position" value="486-120" />
       <RoomProperty type="Name" value="CS0.04b - Server Room" />
@@ -57,7 +57,7 @@
       <RoomProperty type="DoorOutside" value="506-120" />
     </Properties>
   </Room>
-  <Room>
+    <Room>
     <Properties>
       <RoomProperty type="Position" value="766-980" />
       <RoomProperty type="Name" value="CS0.05 - Reception" />
@@ -68,7 +68,7 @@
       <RoomProperty type="DoorOutside" value="766-960" />
     </Properties>
   </Room>
-  <Room>
+    <Room>
     <Properties>
       <RoomProperty type="Position" value="906-940" />
       <RoomProperty type="Name" value="CS0.06 - Lab" />
@@ -79,7 +79,7 @@
       <RoomProperty type="DoorOutside" value="886-940" />
     </Properties>
   </Room>
-  <Room>
+    <Room>
     <Properties>
       <RoomProperty type="Position" value="946-720" />
       <RoomProperty type="Name" value="CS0.07 - Seminar Room" />
@@ -90,7 +90,7 @@
       <RoomProperty type="DoorOutside" value="926-720" />
     </Properties>
   </Room>
-  <Room>
+    <Room>
     <Properties>
       <RoomProperty type="Position" value="966-420" />
       <RoomProperty type="Name" value="CS0.08 - Office" />
@@ -101,7 +101,7 @@
       <RoomProperty type="DoorOutside" value="946-420" />
     </Properties>
   </Room>
-  <Room>
+    <Room>
     <Properties>
       <RoomProperty type="Position" value="946-140" />
       <RoomProperty type="Name" value="CS0.09 - Storage" />
@@ -112,7 +112,7 @@
       <RoomProperty type="DoorOutside" value="926-140" />
     </Properties>
   </Room>
-  <Room>
+    <Room>
     <Properties>
       <RoomProperty type="Position" value="986-180" />
       <RoomProperty type="Name" value="CS0.10 - Storage" />
@@ -123,7 +123,7 @@
       <RoomProperty type="DoorOutside" value="986-160" />
     </Properties>
   </Room>
-  <Room>
+    <Room>
     <Properties>
       <RoomProperty type="Position" value="426-740" />
       <RoomProperty type="Name" value="Men's Toilet" />
@@ -134,7 +134,7 @@
       <RoomProperty type="DoorOutside" value="446-740" />
     </Properties>
   </Room>
-  <Room>
+    <Room>
     <Properties>
       <RoomProperty type="Position" value="406-520" />
       <RoomProperty type="Name" value="Women's Toilet" />
@@ -145,7 +145,7 @@
       <RoomProperty type="DoorOutside" value="406-540" />
     </Properties>
   </Room>
-  <Room>
+    <Room>
     <Properties>
       <RoomProperty type="Position" value="386-580" />
       <RoomProperty type="Name" value="Disabled Toilet" />
@@ -158,200 +158,200 @@
   </Room>
   <Room>
     <Properties>
-      <RoomProperty type="Position" value="546-1080" />
+      <RoomProperty type="Position" value="486-980" />
       <RoomProperty type="Stairs" value="true" />
-      <RoomProperty type="Name" value="Stairs" />
-      <RoomProperty type="Floor" value="1" />
-      <RoomProperty type="Type" value="Stairs" />
+      <RoomProperty type="Name" value="Ground Floor Stairs" />
+      <RoomProperty type="Floor" value="0" />
+	  <RoomProperty type="Type" value="Stairs" />
       <RoomProperty type="DoorInside" value="546-1080" />
       <RoomProperty type="DoorOutside" value="526-1080" />
     </Properties>
   </Room>
   <Room>
     <Properties>
-      <RoomProperty type="Position" value="546-1080" />
-      <RoomProperty type="Stairs" value="false" />
-      <RoomProperty type="Name" value="" />
+      <RoomProperty type="Position" value="447-818" />
+      <RoomProperty type="Stairs" value="true" />
+      <RoomProperty type="Name" value="First Floor Stairs" />
       <RoomProperty type="Floor" value="1" />
-      <RoomProperty type="Type" value="" />
+	  <RoomProperty type="Type" value="Stairs" />
       <RoomProperty type="DoorInside" value="0-0" />
       <RoomProperty type="DoorOutside" value="0-0" />
     </Properties>
   </Room>
   <Room>
-    <Properties>
-      <RoomProperty type="Position" value="347-778" />
-      <RoomProperty type="Name" value="CS1.01" />
-      <RoomProperty type="Type" value="Office" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="487-898" />
-      <RoomProperty type="Name" value="Stairs" />
-      <RoomProperty type="Type" value="Office" />
-      <RoomProperty type="Floor" value="2" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="547-818" />
-      <RoomProperty type="Name" value="Elevator" />
-      <RoomProperty type="Type" value="Office" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="347-738" />
-      <RoomProperty type="Name" value="CS1.02" />
-      <RoomProperty type="Type" value="Office" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="727-798" />
-      <RoomProperty type="Name" value="CS1.07" />
-      <RoomProperty type="Type" value="Office" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="767-798" />
-      <RoomProperty type="Name" value="CS1.08" />
-      <RoomProperty type="Type" value="Office" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="907-838" />
-      <RoomProperty type="Name" value="CS1.09" />
-      <RoomProperty type="Type" value="Office" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="987-838" />
-      <RoomProperty type="Name" value="CS1.11" />
-      <RoomProperty type="Type" value="Office" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="1107-838" />
-      <RoomProperty type="Name" value="CS1.13" />
-      <RoomProperty type="Type" value="Office" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="1187-838" />
-      <RoomProperty type="Name" value="CS1.15" />
-      <RoomProperty type="Type" value="Office" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="1227-798" />
-      <RoomProperty type="Name" value="CS1.17" />
-      <RoomProperty type="Type" value="Office" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="1227-738" />
-      <RoomProperty type="Name" value="CS1.18" />
-      <RoomProperty type="Type" value="Office" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="1147-738" />
-      <RoomProperty type="Name" value="CS1.16" />
-      <RoomProperty type="Type" value="Office" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="1107-738" />
-      <RoomProperty type="Name" value="CS1.14" />
-      <RoomProperty type="Type" value="Office" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="987-738" />
-      <RoomProperty type="Name" value="CS1.12" />
-      <RoomProperty type="Type" value="Office" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="947-738" />
-      <RoomProperty type="Name" value="CS1.10" />
-      <RoomProperty type="Type" value="Office" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="867-738" />
-      <RoomProperty type="Name" value="Female toilets" />
-      <RoomProperty type="Type" value="Toilet" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="507-678" />
-      <RoomProperty type="Name" value="Male toilets" />
-      <RoomProperty type="Type" value="Toilet" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="507-538" />
-      <RoomProperty type="Name" value="Disabled toilets" />
-      <RoomProperty type="Type" value="Toilet" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="627-518" />
-      <RoomProperty type="Name" value="CS1.05" />
-      <RoomProperty type="Type" value="Office" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="527-438" />
-      <RoomProperty type="Name" value="CS1.03" />
-      <RoomProperty type="Type" value="Office" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-  <Room>
-    <Properties>
-      <RoomProperty type="Position" value="587-438" />
-      <RoomProperty type="Name" value="CS1.04" />
-      <RoomProperty type="Type" value="Lab" />
-      <RoomProperty type="Floor" value="1" />
-    </Properties>
-  </Room>
-</ArrayOfRoom>
+      <Properties>
+        <RoomProperty type="Position" value="347-778" />
+        <RoomProperty type="Name" value="CS1.01" />
+        <RoomProperty type="Type" value="Office" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="487-898" />
+        <RoomProperty type="Name" value="Stairs" />
+        <RoomProperty type="Type" value="Office" />
+        <RoomProperty type="Floor" value="2" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="547-818" />
+        <RoomProperty type="Name" value="Elevator" />
+        <RoomProperty type="Type" value="Office" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="347-738" />
+        <RoomProperty type="Name" value="CS1.02" />
+        <RoomProperty type="Type" value="Office" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="727-798" />
+        <RoomProperty type="Name" value="CS1.07" />
+        <RoomProperty type="Type" value="Office" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="767-798" />
+        <RoomProperty type="Name" value="CS1.08" />
+        <RoomProperty type="Type" value="Office" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="907-838" />
+        <RoomProperty type="Name" value="CS1.09" />
+        <RoomProperty type="Type" value="Office" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="987-838" />
+        <RoomProperty type="Name" value="CS1.11" />
+        <RoomProperty type="Type" value="Office" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="1107-838" />
+        <RoomProperty type="Name" value="CS1.13" />
+        <RoomProperty type="Type" value="Office" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="1187-838" />
+        <RoomProperty type="Name" value="CS1.15" />
+        <RoomProperty type="Type" value="Office" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="1227-798" />
+        <RoomProperty type="Name" value="CS1.17" />
+        <RoomProperty type="Type" value="Office" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="1227-738" />
+        <RoomProperty type="Name" value="CS1.18" />
+        <RoomProperty type="Type" value="Office" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="1147-738" />
+        <RoomProperty type="Name" value="CS1.16" />
+        <RoomProperty type="Type" value="Office" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="1107-738" />
+        <RoomProperty type="Name" value="CS1.14" />
+        <RoomProperty type="Type" value="Office" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="987-738" />
+        <RoomProperty type="Name" value="CS1.12" />
+        <RoomProperty type="Type" value="Office" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="947-738" />
+        <RoomProperty type="Name" value="CS1.10" />
+        <RoomProperty type="Type" value="Office" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="867-738" />
+        <RoomProperty type="Name" value="Female toilets" />
+        <RoomProperty type="Type" value="Toilet" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="507-678" />
+        <RoomProperty type="Name" value="Male toilets" />
+        <RoomProperty type="Type" value="Toilet" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="507-538" />
+        <RoomProperty type="Name" value="Disabled toilets" />
+        <RoomProperty type="Type" value="Toilet" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="627-518" />
+        <RoomProperty type="Name" value="CS1.05" />
+        <RoomProperty type="Type" value="Office" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="527-438" />
+        <RoomProperty type="Name" value="CS1.03" />
+        <RoomProperty type="Type" value="Office" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+    <Room>
+      <Properties>
+        <RoomProperty type="Position" value="587-438" />
+        <RoomProperty type="Name" value="CS1.04" />
+        <RoomProperty type="Type" value="Lab" />
+        <RoomProperty type="Floor" value="1" />
+      </Properties>
+    </Room>
+ </ArrayOfRoom>
