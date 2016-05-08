@@ -72,6 +72,9 @@ namespace Navigator.iOS
         public GraphLocatable StartNavigationPosition = null;
         public GraphLocatable EndNavgiationPosition = null;
 
+		private UIVisualEffectView topblurView;
+		private UIVisualEffectView bottomblurView;
+
         public ViewController(IntPtr handle) : base(handle)
         {
         }
@@ -143,10 +146,10 @@ namespace Navigator.iOS
 
 
 			var blur = UIBlurEffect.FromStyle (UIBlurEffectStyle.Dark);
-			var topblurView = new UIVisualEffectView (blur) {
+			topblurView = new UIVisualEffectView (blur) {
 				Frame = new RectangleF (0, 0, (float) View.Frame.Width, 90)
 			};
-			var bottomblurView = new UIVisualEffectView (blur) {
+			bottomblurView = new UIVisualEffectView (blur) {
 				Frame = new RectangleF (0, (float) View.Frame.Height - 70, (float) View.Frame.Width, 70)
 			};
 
@@ -497,6 +500,9 @@ namespace Navigator.iOS
 		}
 
         public void showContextMenu(float locationX, float locationY, int roomFloor){
+			handleAnimate (topblurView, bottomblurView, false);
+
+
 			UIAlertController actionSheetAlert = UIAlertController.Create("Options", null, UIAlertControllerStyle.Alert);
 
 			// Add Actions
@@ -518,7 +524,7 @@ namespace Navigator.iOS
             InvokeOnMainThread (() => {
                 Console.Out.WriteLine ("DROPPING THE FUCKING SHIT");
 
-                foreach(var subview in floorplanImageView.Subviews){
+                foreach(PathView subview in floorplanImageView.Subviews){
                     subview.RemoveFromSuperview();
                 }
 
