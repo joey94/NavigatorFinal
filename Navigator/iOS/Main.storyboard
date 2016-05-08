@@ -125,8 +125,11 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="872" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="952" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="Images/logo.png">
+                                <rect key="frame" x="-84" y="-136" width="567" height="491"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="747" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="0.0" y="206" width="375" height="68"/>
+                                <rect key="frame" x="15" y="207" width="345" height="70"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.49803921568627452" green="0" blue="0.49803921568627452" alpha="1"/>
                                 <state key="normal" title="Start Navigation">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -134,11 +137,8 @@
                                 </state>
                                 <connections/>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="952" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="Images/logo.png">
-                                <rect key="frame" x="-84" y="-136" width="567" height="491"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="940" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="0.0" y="300" width="375" height="68"/>
+                                <rect key="frame" x="15" y="300" width="345" height="70"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.49803921568627452" green="0" blue="0.49803921568627452" alpha="1"/>
                                 <state key="normal" title="User Guide">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -147,7 +147,7 @@
                                 <connections/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="941" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="0.0" y="395" width="375" height="68"/>
+                                <rect key="frame" x="15" y="395" width="345" height="70"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.49803921568627452" green="0" blue="0.49803921568627452" alpha="1"/>
                                 <state key="normal" title="About Us">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

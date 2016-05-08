@@ -24,6 +24,18 @@ namespace Navigator.iOS
             menuBackgroundImage.Image = backImg;
             menuBackgroundImage.SizeToFit ();
 
+            menuPageMapButton.Layer.CornerRadius = 35;
+            menuPageMapButton.Layer.BorderWidth = 2;
+            menuPageMapButton.Layer.BorderColor = UIColor.White.CGColor;
+
+            aboutUsButton.Layer.CornerRadius = 35;
+            aboutUsButton.Layer.BorderWidth = 2;
+            aboutUsButton.Layer.BorderColor = UIColor.White.CGColor;
+
+            userGuideButton.Layer.CornerRadius = 35;
+            userGuideButton.Layer.BorderWidth = 2;
+            userGuideButton.Layer.BorderColor = UIColor.White.CGColor;
+
             menuPageMapButton.TouchUpInside += delegate(object sender, EventArgs e) {
                 ViewController nextView = this.Storyboard.InstantiateViewController("ViewController") as ViewController;
                 this.NavigationController.PushViewController(nextView, true);

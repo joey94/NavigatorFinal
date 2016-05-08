@@ -592,7 +592,8 @@ namespace Navigator.iOS
 
 		partial void ReturnButton_TouchUpInside (UIButton sender)
 		{
-			throw new NotImplementedException ();
+            NavigationController.PopViewController (true);
 		}
+
     }
 }
