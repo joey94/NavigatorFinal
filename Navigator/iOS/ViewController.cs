@@ -110,9 +110,65 @@ namespace Navigator.iOS
 					break;
 				Thread.Sleep(500);
 			}
+
+
+
+
+
+
+
+
+
+
+
+
 				
 			//set up the search bar and prediction box
-			var searchController = new CustomSearchController(this, SearchBar, SearchPredictionTable, pf.Rooms);
+			SearchBar.TintColor = UIColor.White;
+			UITextView.AppearanceWhenContainedIn (typeof(UISearchBar)).BackgroundColor = UIColor.White;
+			UITextView.AppearanceWhenContainedIn (typeof(UISearchBar)).TintColor = UIColor.White;
+			UITextField.AppearanceWhenContainedIn (typeof(UISearchBar)).BackgroundColor = UIColor.White;
+			UITextField.AppearanceWhenContainedIn (typeof(UISearchBar)).TintColor = UIColor.White;
+
+
+			var shadowView = new UIView(SearchPredictionTable.Frame);
+			shadowView.BackgroundColor = UIColor.White;
+			shadowView.Layer.ShadowColor = UIColor.DarkGray.CGColor;
+			shadowView.Layer.ShadowOpacity = 1.0f;
+			shadowView.Layer.ShadowRadius = 6.0f;
+			shadowView.Layer.ShadowOffset = new System.Drawing.SizeF(0f, 3f);
+			shadowView.Layer.ShouldRasterize = true;
+			shadowView.Layer.MasksToBounds = false;
+			Add (shadowView);
+
+
+			var blur = UIBlurEffect.FromStyle (UIBlurEffectStyle.Dark);
+			var topblurView = new UIVisualEffectView (blur) {
+				Frame = new RectangleF (0, 0, (float) View.Frame.Width, 90)
+			};
+			var bottomblurView = new UIVisualEffectView (blur) {
+				Frame = new RectangleF (0, (float) View.Frame.Height - 70, (float) View.Frame.Width, 70)
+			};
+
+			View.Add (topblurView);
+			View.Add (bottomblurView);
+
+			View.BringSubviewToFront (SearchPredictionTable);
+			View.BringSubviewToFront (returnButton);
+			View.BringSubviewToFront (SearchBar);
+			View.BringSubviewToFront (directionsButton);
+
+
+
+
+
+
+
+
+
+
+
+			var searchController = new CustomSearchController(this, SearchBar, SearchPredictionTable, shadowView, pf.Rooms);
             //var directionsController = new CustomDirectionsController (this, directionsTable, pf.Rooms);
 
             floorPlanGraph = Graph.Load(asset);
@@ -177,6 +233,27 @@ namespace Navigator.iOS
                 pathView.ScaleFactor = floorplanView.ZoomScale;
             };
 
+
+
+
+
+
+
+
+
+
+			floorplanView.DraggingStarted += (sender, e) => 
+			{
+				handleAnimate(topblurView, bottomblurView, true);
+			};
+
+			var tapGestureRecognizer = new UITapGestureRecognizer();
+			tapGestureRecognizer.NumberOfTapsRequired = 1;
+			tapGestureRecognizer.AddTarget (() => {
+				handleAnimate (topblurView, bottomblurView, false);
+			});
+			floorplanView.AddGestureRecognizer(tapGestureRecognizer);
+
 			//Pass acceleremoter values to the collision class
             motionManager.StartAccelerometerUpdates(NSOperationQueue.CurrentQueue,
                 (data, error) =>
@@ -203,7 +280,6 @@ namespace Navigator.iOS
             locationManager.StartUpdatingHeading();
 
 			//Another testing button
-            simulationButton.TouchUpInside += delegate { col.StepTaken(false); };
 
             returnButton.TouchUpInside += delegate{ returnToMenu(); };
 
@@ -385,7 +461,6 @@ namespace Navigator.iOS
 			// Create a new Alert Controller
             showContextMenu(tapX,tapY,this.floor);
 
-            debugLabel.Text = "" + floorPlanGraph.FindClosestNode ((int)tapX, (int)tapY);
 
 			/*
 			CGPoint point = new CGPoint (gesture.LocationInView (floorplanImageView).X, gesture.LocationInView (floorplanImageView).Y);
@@ -396,6 +471,31 @@ namespace Navigator.iOS
 				//presentationPopover.PermittedArrowDirections = UIPopoverArrowDirection.Up;
 			}
 			*/      
+		}
+
+		private bool menuHidden = false;	
+		private void handleAnimate(UIView topblurView, UIView bottomblurView, bool hide){
+			var d = 90;
+			if (hide != menuHidden) {
+				if (hide == true && menuHidden == false) d = 90;
+				else d = -90;
+				UIView.Animate (0.4, 0, UIViewAnimationOptions.CurveEaseInOut , 
+					() => {
+						topblurView.Center = new CGPoint (topblurView.Center.X, topblurView.Center.Y - d);
+						bottomblurView.Center = new CGPoint (bottomblurView.Center.X, bottomblurView.Center.Y + d);
+						SearchBar.Center = new CGPoint (SearchBar.Center.X, SearchBar.Center.Y - d);
+						returnButton.Center = new CGPoint (returnButton.Center.X, returnButton.Center.Y - d);
+						directionsButton.Center = new CGPoint (directionsButton.Center.X, directionsButton.Center.Y + d);
+					}, () => {
+					topblurView.Center = topblurView.Center;
+					bottomblurView.Center = bottomblurView.Center;
+					SearchBar.Center = SearchBar.Center;
+					returnButton.Center = returnButton.Center;
+					directionsButton.Center = directionsButton.Center;
+				});
+				menuHidden = !menuHidden;
+			}
+
 		}
 
         public void showContextMenu(float locationX, float locationY, int roomFloor){
@@ -432,13 +532,11 @@ namespace Navigator.iOS
 
         public void displayAccelVal(float a) {
             count++;
-            debugLabel.Text = "" + count;
             if (count > 400) {
                 breakpointCheck (a);
             }
         }
         private void breakpointCheck (float a){
-            debugLabel.Text = "" + count;
 
         }
 
@@ -479,8 +577,12 @@ namespace Navigator.iOS
         {
             base.DidReceiveMemoryWarning();
             counter2++;
-            debugLabel.Text = "Memory leak" + counter2;
             // Release any cached data, images, etc that aren't in use.		
         }
+
+		partial void ReturnButton_TouchUpInside (UIButton sender)
+		{
+			throw new NotImplementedException ();
+		}
     }
 }

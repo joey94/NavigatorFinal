@@ -16,24 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="878" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="12" y="563" width="351" height="39"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes/>
-                            </tableView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="259" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="202" y="534" width="159" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="234" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="1" y="530" width="161" height="30"/>
-                                <state key="normal" title="Start Simulation">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="13" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
                                 <rect key="frame" x="-2" y="188" width="379" height="338"/>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -42,22 +24,16 @@
                                 <subviews/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.43529411764705883" green="0.4392156862745098" blue="0.43529411764705883" alpha="1"/>
                             </scrollView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="355" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="69" width="335" height="211"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="355" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="0.0" y="90" width="375" height="190"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes/>
                                 <color key="separatorColor" cocoaTouchSystemColor="darkTextColor"/>
                             </tableView>
-                            <searchBar contentMode="redraw" id="361" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Search" searchBarStyle="minimal" misplaced="YES">
-                                <rect key="frame" x="55" y="30" width="306" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
+                            <searchBar contentMode="redraw" id="361" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Search" misplaced="YES" searchBarStyle="minimal">
+                                <rect key="frame" x="73" y="30" width="288" height="44"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="light"/>
                             </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="796" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="1" y="37" width="55" height="30"/>
-                                <state key="normal" title="Return">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="900" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                 <rect key="frame" x="12" y="617" width="349" height="30"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.49803921568627452" green="0" blue="0.49803921568627452" alpha="1"/>
@@ -65,6 +41,16 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
                                 </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="796" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="10" y="37" width="55" height="30"/>
+                                <state key="normal" title="&lt; Menu">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                </state>
+                                <connections>
+                                    <action selector="ReturnButton_TouchUpInside:" destination="BYZ-38-t0r" id="1012" eventType="touchUpInside"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" customColorSpace="calibratedWhite" colorSpace="calibratedWhite" white="1" alpha="1"/>
@@ -75,21 +61,15 @@
                             <constraint id="268" firstItem="13" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom"/>
                             <constraint id="370" firstItem="361" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="30"/>
                             <constraint id="371" firstItem="8bC-Xf-vdC" firstAttribute="trailing" secondItem="361" secondAttribute="trailing" constant="14"/>
-                            <constraint id="372" firstItem="355" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20"/>
-                            <constraint id="373" firstItem="8bC-Xf-vdC" firstAttribute="trailing" secondItem="355" secondAttribute="trailing" constant="20"/>
-                            <constraint id="374" firstItem="355" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="69"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="floorplanView" destination="13" id="name-outlet-13"/>
                         <outlet property="OptionsButton" destination="103" id="name-outlet-103"/>
-                        <outlet property="simulationButton" destination="234" id="name-outlet-234"/>
-                        <outlet property="debugLabel" destination="259" id="name-outlet-259"/>
                         <outlet property="SearchPredictionTable" destination="355" id="name-outlet-355"/>
                         <outlet property="SearchBar" destination="361" id="name-outlet-361"/>
-                        <outlet property="returnButton" destination="796" id="name-outlet-796"/>
-                        <outlet property="directionsTable" destination="878" id="name-outlet-878"/>
                         <outlet property="directionsButton" destination="900" id="name-outlet-900"/>
+                        <outlet property="returnButton" destination="796" id="name-outlet-796"/>
                     </connections>
                     <navigationItem title="Floorplan" id="87" key="navigationItem">
                         <barButtonItem style="plain" id="104" key="rightBarButtonItem">

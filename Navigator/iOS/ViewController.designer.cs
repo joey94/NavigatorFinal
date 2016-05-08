@@ -19,15 +19,7 @@ namespace Navigator.iOS
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel debugLabel { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
 		UIButton directionsButton { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UITableView directionsTable { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
@@ -49,23 +41,15 @@ namespace Navigator.iOS
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UITableView SearchPredictionTable { get; set; }
 
-		[Outlet]
+		[Action ("ReturnButton_TouchUpInside:")]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UIButton simulationButton { get; set; }
+		partial void ReturnButton_TouchUpInside (UIButton sender);
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (debugLabel != null) {
-				debugLabel.Dispose ();
-				debugLabel = null;
-			}
 			if (directionsButton != null) {
 				directionsButton.Dispose ();
 				directionsButton = null;
-			}
-			if (directionsTable != null) {
-				directionsTable.Dispose ();
-				directionsTable = null;
 			}
 			if (floorplanView != null) {
 				floorplanView.Dispose ();
@@ -86,10 +70,6 @@ namespace Navigator.iOS
 			if (SearchPredictionTable != null) {
 				SearchPredictionTable.Dispose ();
 				SearchPredictionTable = null;
-			}
-			if (simulationButton != null) {
-				simulationButton.Dispose ();
-				simulationButton = null;
 			}
 		}
 	}

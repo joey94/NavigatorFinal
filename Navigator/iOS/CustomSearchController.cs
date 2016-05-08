@@ -12,12 +12,13 @@ namespace Navigator.iOS
 		UITableView _searchPredictionTable;
 
 		TableSource tableSource;
-		public CustomSearchController (ViewController owner, UISearchBar searchBar, UITableView searchPredictionTable, List<Room> rooms)
+		public CustomSearchController (ViewController owner, UISearchBar searchBar, UITableView searchPredictionTable, UIView shadowViewHack, List<Room> rooms)
 		{
 			_searchBar = searchBar;
 			_searchPredictionTable = searchPredictionTable;
 			owner.InvokeOnMainThread (delegate() {
 				_searchPredictionTable.Alpha = 0;
+				shadowViewHack.Alpha = 0;
 			});
 
 			tableSource = new TableSource (owner, rooms);
@@ -38,9 +39,11 @@ namespace Navigator.iOS
 			_searchBar.OnEditingStarted += (sender, e) => {
 				_searchBar.ShowsCancelButton = true;
 				_searchPredictionTable.Alpha = 1;
+				shadowViewHack.Alpha = 1;
 			};
             _searchBar.OnEditingStopped += (sender, e) => {
                 _searchPredictionTable.Alpha = 0;
+				shadowViewHack.Alpha = 0;
                 _searchBar.ResignFirstResponder ();
 
             };
