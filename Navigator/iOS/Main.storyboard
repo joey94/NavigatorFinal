@@ -24,7 +24,7 @@
                                 <subviews/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.43529411764705883" green="0.4392156862745098" blue="0.43529411764705883" alpha="1"/>
                             </scrollView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="355" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="355" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
                                 <rect key="frame" x="0.0" y="90" width="375" height="190"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes/>
@@ -61,6 +61,8 @@
                             <constraint id="268" firstItem="13" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom"/>
                             <constraint id="370" firstItem="361" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="30"/>
                             <constraint id="371" firstItem="8bC-Xf-vdC" firstAttribute="trailing" secondItem="361" secondAttribute="trailing" constant="14"/>
+                            <constraint id="1109" firstItem="355" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="90"/>
+                            <constraint id="1110" firstItem="8bC-Xf-vdC" firstAttribute="bottom" secondItem="355" secondAttribute="bottom" constant="70"/>
                         </constraints>
                     </view>
                     <connections>
