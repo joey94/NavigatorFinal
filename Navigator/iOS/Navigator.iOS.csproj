@@ -133,6 +133,14 @@
     <Compile Include="UIImageEffects.cs" />
     <Compile Include="tableSourceDirections.cs" />
     <Compile Include="CustomDirectionsController.cs" />
+    <Compile Include="userGuidePage.cs" />
+    <Compile Include="userGuidePage.designer.cs">
+      <DependentUpon>userGuidePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="aboutUsView.cs" />
+    <Compile Include="aboutUsView.designer.cs">
+      <DependentUpon>aboutUsView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -154,6 +162,7 @@
     <BundleResource Include="Images\ConFloorGrid.png" />
     <BundleResource Include="Images\final2ndFloor.png" />
     <BundleResource Include="Images\final2ndFloorDisplay.png" />
+    <BundleResource Include="Images\test5-darkLikePedsHeart.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\test.xml" />
