@@ -75,7 +75,7 @@ namespace Navigator.Pathfinding
 
                 tempNode = new Vector2 (tempX, tempY);
 
-                return tempNode;
+                return this.Vertices.Contains (tempNode.ToPointString ())?tempNode:null;
             } else if (floor == 1) {
                 if (moduloX == 7)
                     tempX = (int)searchX;
@@ -93,7 +93,7 @@ namespace Navigator.Pathfinding
 
                 tempNode = new Vector2 (tempX, tempY);
 
-                return tempNode;
+                return this.Vertices.Contains (tempNode.ToPointString ())?tempNode:null;
             } else {
                 if (moduloX == 8)
                     tempX = (int)searchX;
@@ -111,7 +111,7 @@ namespace Navigator.Pathfinding
 
                 tempNode = new Vector2 (tempX, tempY);
 
-                return tempNode;
+                return this.Vertices.Contains (tempNode.ToPointString ())?tempNode:null;
             }
 
         }

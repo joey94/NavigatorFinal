@@ -41,6 +41,16 @@ namespace Navigator.iOS
                 this.NavigationController.PushViewController(nextView, true);
             };
 
+            userGuideButton.TouchUpInside += delegate(object sender, EventArgs e) {
+                userGuidePage userGuidePage = this.Storyboard.InstantiateViewController("userGuideView") as userGuidePage;
+                this.NavigationController.PushViewController(userGuidePage, true);
+            };
+
+            aboutUsButton.TouchUpInside += delegate(object sender, EventArgs e) {
+                aboutUsView aboutUsPage = this.Storyboard.InstantiateViewController("aboutUsPage") as aboutUsView;
+                this.NavigationController.PushViewController(aboutUsPage, true);
+            };
+
 
         }
 	}

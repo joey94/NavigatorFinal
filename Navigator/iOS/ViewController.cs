@@ -69,6 +69,8 @@ namespace Navigator.iOS
 
         public int floor = 0;
 
+        private bool initStep = false;
+
         public GraphLocatable StartNavigationPosition = null;
         public GraphLocatable EndNavgiationPosition = null;
 
@@ -128,11 +130,11 @@ namespace Navigator.iOS
 				
 			//set up the search bar and prediction box
 			SearchBar.TintColor = UIColor.White;
+
 			UITextView.AppearanceWhenContainedIn (typeof(UISearchBar)).BackgroundColor = UIColor.White;
 			UITextView.AppearanceWhenContainedIn (typeof(UISearchBar)).TintColor = UIColor.White;
 			UITextField.AppearanceWhenContainedIn (typeof(UISearchBar)).BackgroundColor = UIColor.White;
 			UITextField.AppearanceWhenContainedIn (typeof(UISearchBar)).TintColor = UIColor.White;
-
 
 			var shadowView = new UIView(SearchPredictionTable.Frame);
 			shadowView.BackgroundColor = UIColor.White;
@@ -145,7 +147,7 @@ namespace Navigator.iOS
 			Add (shadowView);
 
 
-			var blur = UIBlurEffect.FromStyle (UIBlurEffectStyle.Dark);
+            var blur = UIBlurEffect.FromStyle (UIBlurEffectStyle.Dark);
 			topblurView = new UIVisualEffectView (blur) {
 				Frame = new RectangleF (0, 0, (float) View.Frame.Width, 90)
 			};
@@ -257,18 +259,6 @@ namespace Navigator.iOS
 			});
 			floorplanView.AddGestureRecognizer(tapGestureRecognizer);
 
-			//Pass acceleremoter values to the collision class
-            motionManager.StartAccelerometerUpdates(NSOperationQueue.CurrentQueue,
-                (data, error) =>
-                {
-					accelX = data.Acceleration.X*9.8;
-					accelY = data.Acceleration.Y*9.8;
-					accelZ = Math.Sqrt(Math.Pow(accelX, 2) + Math.Pow(accelY, 2) + Math.Pow(data.Acceleration.Z*9.8, 2));
-
-                    col.PassSensorReadings(CollisionSensorType.Accelometer, accelX,
-                        accelY, accelZ);
-                    //displayAccelVal((float)accelZ);
-                });
 
 			//LongPressManager will cause the path input menu to appear after a stationary long press
             longPressManager.AllowableMovement = 0;
@@ -287,8 +277,25 @@ namespace Navigator.iOS
             returnButton.TouchUpInside += delegate{ returnToMenu(); };
 
             directionsButton.TouchUpInside += delegate {
-                
-                if (floor == 0) {
+
+                if(!initStep) {
+                    //Pass acceleremoter values to the collision class
+                    motionManager.StartAccelerometerUpdates(NSOperationQueue.CurrentQueue,
+                        (data, error) =>
+                        {
+                            accelX = data.Acceleration.X*9.8;
+                            accelY = data.Acceleration.Y*9.8;
+                            accelZ = Math.Sqrt(Math.Pow(accelX, 2) + Math.Pow(accelY, 2) + Math.Pow(data.Acceleration.Z*9.8, 2));
+
+                            col.PassSensorReadings(CollisionSensorType.Accelometer, accelX,
+                                accelY, accelZ);
+                            //displayAccelVal((float)accelZ);
+                        });
+
+                    directionsButton.SetTitle("Change Floor", UIControlState.Normal);
+                    initStep = true;
+                }
+                else if (floor == 0) {
                     Console.Out.WriteLine("Changing to floor 1 ");
                     floor = 1;
                     changeFloorPlanImage(floorplanImageView, floorplanFirstFloorNoGrid);
@@ -380,6 +387,35 @@ namespace Navigator.iOS
         {
             GlobalStepCounter++;
             locationArrow.setLocation(args.newX, args.newY);
+
+            if (EndNavgiationPosition != null && floor == EndNavgiationPosition.Floor) {
+
+                if (
+                    this.pf.FloorGraphs [EndNavgiationPosition.Floor].FindClosestNode (EndNavgiationPosition.X, EndNavgiationPosition.Y, 6).X -20
+                    <= this.pf.FloorGraphs [floor].FindClosestNode (locationArrow.X, locationArrow.Y, 6).X && 
+                    this.pf.FloorGraphs [EndNavgiationPosition.Floor].FindClosestNode (EndNavgiationPosition.X, EndNavgiationPosition.Y, 6).X +20
+                    >= this.pf.FloorGraphs [floor].FindClosestNode (locationArrow.X, locationArrow.Y, 6).X &&
+                    this.pf.FloorGraphs [EndNavgiationPosition.Floor].FindClosestNode (EndNavgiationPosition.X, EndNavgiationPosition.Y, 6).Y -20
+                    <= this.pf.FloorGraphs [floor].FindClosestNode (locationArrow.X, locationArrow.Y, 6).Y && 
+                    this.pf.FloorGraphs [EndNavgiationPosition.Floor].FindClosestNode (EndNavgiationPosition.X, EndNavgiationPosition.Y, 6).Y +20
+                    >= this.pf.FloorGraphs [floor].FindClosestNode (locationArrow.X, locationArrow.Y, 6).Y
+                ) {
+
+                    var okAlertController = UIAlertController.Create ("Arrived!", "You have reached the desired location", UIAlertControllerStyle.Alert);
+
+                    //Add Action
+                    okAlertController.AddAction (UIAlertAction.Create ("Ok", UIAlertActionStyle.Default, null));
+
+                    // Present Alert
+                    PresentViewController (okAlertController, true, null);
+                    StartNavigationPosition = null;
+                    EndNavgiationPosition = null;
+                    removePath ();
+                    drawUserPath ();
+                }
+
+            }
+                
 
 
             /*if (GlobalStepCounter % 12 == 0 && pathDisplayed == true) {
@@ -509,12 +545,20 @@ namespace Navigator.iOS
 			actionSheetAlert.AddAction(UIAlertAction.Create("Cancel",UIAlertActionStyle.Cancel, null));
             actionSheetAlert.AddAction(UIAlertAction.Create("Set Start Point",UIAlertActionStyle.Default, (action) => {pathDisplayed = false;setStartPoint(locationX, locationY,roomFloor);}));
             actionSheetAlert.AddAction(UIAlertAction.Create("Set End Point",UIAlertActionStyle.Default, (action) => {pathDisplayed = true;setEndPoint(locationX, locationY,roomFloor);}));
+            actionSheetAlert.AddAction(UIAlertAction.Create("Redraw Path",UIAlertActionStyle.Default, (action) => redrawPath()));
             actionSheetAlert.AddAction(UIAlertAction.Create("Remove Path",UIAlertActionStyle.Default, (action) => removePath(true)));
 
 
 			// Display alert
 			this.PresentViewController(actionSheetAlert,true,null);
 		}
+
+        public void redrawPath() {
+            StartNavigationPosition = new GraphLocatable ((float)locationArrow.X, (float)locationArrow.Y, floor);
+
+            findUserPath ();
+            drawUserPath ();
+        }
 
         public void pushDirectionsPointsList(List<CGPoint> pl) {
             directionsPointList = pl;
@@ -528,8 +572,11 @@ namespace Navigator.iOS
                     subview.RemoveFromSuperview();
                 }
 
-                if (removePath)
+                if (removePath) {
                     CurrentUserPath = new Dictionary<int, List<UndirEdge>>();
+                    StartNavigationPosition = null;
+                    EndNavgiationPosition = null;
+                }
                 
                 pathView = new PathView (wallColTest, this);
                 pathView.ScaleFactor = floorplanView.ZoomScale;
@@ -551,6 +598,20 @@ namespace Navigator.iOS
         }
 
         public void setStartPoint(nfloat x, nfloat y, int roomFloor,bool shouldPf = true) {
+
+            var test = this.pf.FloorGraphs [roomFloor].FindClosestNode ((float)x, (float)y, 6);
+
+            if (test == null) {
+                var okAlertController = UIAlertController.Create ("Error!", "Please select a location within the floor plan.", UIAlertControllerStyle.Alert);
+
+                //Add Action
+                okAlertController.AddAction (UIAlertAction.Create ("Ok", UIAlertActionStyle.Default, null));
+
+                // Present Alert
+                PresentViewController (okAlertController, true, null);
+                return;
+            }
+
 			locationArrow.setLocation ((float)x, (float)y);
 			col.SetLocation ((float)x, (float)y);
             pathView.RemoveFromSuperview ();
@@ -568,6 +629,20 @@ namespace Navigator.iOS
 		}
 
         public void setEndPoint(nfloat x, nfloat y, int roomFloor) {
+
+            var test = this.pf.FloorGraphs [roomFloor].FindClosestNode ((float)x, (float)y, 6);
+
+            if (test == null) {
+                var okAlertController = UIAlertController.Create ("Error!", "Please select a location within the floor plan.", UIAlertControllerStyle.Alert);
+
+                //Add Action
+                okAlertController.AddAction (UIAlertAction.Create ("Ok", UIAlertActionStyle.Default, null));
+
+                // Present Alert
+                PresentViewController (okAlertController, true, null);
+                return;
+            }
+
             SearchBar.ShowsCancelButton = false;
             SearchBar.ResignFirstResponder();
             endX = x;
@@ -575,6 +650,7 @@ namespace Navigator.iOS
 
             directionCount = 0;
 
+            StartNavigationPosition = new GraphLocatable ((float)locationArrow.X, (float)locationArrow.Y, floor);
             EndNavgiationPosition = new GraphLocatable ((float)x, (float)y, roomFloor);
 
             //if (pathDisplayed == true) {
